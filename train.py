@@ -90,6 +90,9 @@ def main():
     
     if use_cuda:
         model.cuda()
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
     
     # define loss function (criterion), optimizer and scheduler
     criterion = nn.CrossEntropyLoss()
@@ -111,10 +114,11 @@ def main():
 
     
     for epoch in range(start, end):
-    
+        print(train_loader)
+
         # train for one epoch
         train_loss = train(train_loader, model, criterion, optimizer, use_cuda, epoch, n_classes)
-        
+
         # evaluate on validation set
         valid_loss = validate(valid_loader, model, criterion, use_cuda, epoch)
         
@@ -149,6 +153,7 @@ def train(train_loader, model, criterion, optimizer, use_cuda, epoch, n_classes)
     
     end = time.time()
     # pbar = tqdm(enumerate(train_loader))
+
     for batch_idx, (data) in enumerate(train_loader):
         inputs, targets = data  # target size:(batch size,1), input size:(batch size, 1, dim, win)
         targets = targets.view(-1) # target size:(batch size)

@@ -9,6 +9,7 @@ Output : 1) Make DB structure using pd.DataFrame which has 3 columns (file id, f
 """
 import logging
 import os
+import sys
 from glob import glob
 
 import librosa
@@ -17,7 +18,7 @@ import pandas as pd
 
 from configure import SAMPLE_RATE
 
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=sys.maxsize)
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)

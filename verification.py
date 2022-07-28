@@ -106,7 +106,7 @@ def main():
     use_cuda = True # Use cuda or not
     embedding_size = 128 # Dimension of speaker embeddings
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 240 # How many speakers in training data?
+    n_classes = 241 # How many speakers in training data?
     test_frames = 100 # Split the test utterance 
 
     # Load model from checkpoint
@@ -124,10 +124,10 @@ def main():
     """ 
     
     # Set the true speaker
-    enroll_speaker = '230M4087'
+    enroll_speaker = 's3864077'
     
     # Set the claimed speaker
-    test_speaker = '230M4087' 
+    test_speaker = 's3864077'
     
     # Threshold
     thres = 0.95

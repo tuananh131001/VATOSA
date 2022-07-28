@@ -110,7 +110,7 @@ def main():
     log_dir = 'model_saved'
     embedding_size = 128
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 240
+    n_classes = 241
     test_frames = 200
     
     # Load model from checkpoint
@@ -118,6 +118,7 @@ def main():
     
     # Get the dataframe for enroll DB
     enroll_DB, test_DB = split_enroll_and_test(c.TEST_FEAT_DIR)
+    print(enroll_DB)
     
     # Where to save embeddings
     embedding_dir = 'enroll_embeddings'

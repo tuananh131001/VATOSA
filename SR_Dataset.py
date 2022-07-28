@@ -11,9 +11,11 @@ from DB_wav_reader import read_DB_structure
 def read_MFB(filename):
     with open(filename, 'rb') as f:
         feat_and_label = pickle.load(f)
-        
     feature = feat_and_label['feat'] # size : (n_frames, dim=40)
     label = feat_and_label['label']
+    if label == 'HUY':
+        print(label)
+
     """
     VAD
     """
@@ -193,6 +195,7 @@ class DvectorDataset(data.Dataset):
         feat_path = self.DB['filename'][index]
         feature, label = self.loader(feat_path)
         label = self.spk_to_idx[label]
+
         label = torch.Tensor([label]).long()
         if self.transform:
             feature = self.transform(feature)
