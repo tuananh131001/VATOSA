@@ -23,12 +23,14 @@ IF this , mean you sucess. Congratulation!
 
 ## 2. Use own file
 ### 2.1 Change the config
-###Change your path the folder of the project in ```configure.py``` in ```extraAudio```  
+### Change your path the folder of the project in ```configure.py``` in ```extraAudio```  
 ![image](https://user-images.githubusercontent.com/67695658/181903873-ccec5ec2-608d-4ff3-a544-d0f62fbbb854.png)
 
 ![image](https://user-images.githubusercontent.com/67695658/181903054-fca80df5-c363-475d-b25a-c21ea63a0bdc.png)
 
- ###In extractAudio open folder and put as path wavs->voxceleb1->dev(train)/test(test/enroll)->wav->name(ex:tuananh)->name(ex:tuananh)->putfilehere  
+ ### In extractAudio open folder and put as path 
+``` wavs->voxceleb1->dev(train)/test(test/enroll)->wav->name(ex:tuananh)->name(ex:tuananh)->putfilehere```  
+ 
  ![image](https://user-images.githubusercontent.com/67695658/181903762-0ad7ba73-3759-4bff-9545-6ca2358c20d6.png)
 
 ### 2.2 For the test
