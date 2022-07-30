@@ -6,7 +6,11 @@ https://www.anaconda.com/
 
 Step 2 : clone this Github  ( a bit long)
 
-## ```train```
+## ```train.py```
+
+These can be changed
+
+![image](https://user-images.githubusercontent.com/67695658/181888344-4d58e8a1-4a87-4624-b102-aedf236b3c35.png)
 
 Step 3 : run ```train.py``` and check if it can run
 
@@ -19,7 +23,7 @@ Step 3 : run ```train.py``` and check if it can run
 other no need to config
 
 
-## ``` identification```
+## ``` identification.py```
 ### MUST RUN ```enroll.py``` before identi
 
 ![image](https://user-images.githubusercontent.com/67695658/181879091-d2c2b6c2-7829-45b1-9343-8f1fb6100c8a.png)  
