@@ -110,7 +110,7 @@ def main():
     log_dir = 'model_saved'
     embedding_size = 128
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 241
+    n_classes = 240
     test_frames = 200
     
     # Load model from checkpoint

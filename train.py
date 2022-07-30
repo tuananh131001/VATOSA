@@ -114,7 +114,6 @@ def main():
 
     
     for epoch in range(start, end):
-        print(train_loader)
 
         # train for one epoch
         train_loss = train(train_loader, model, criterion, optimizer, use_cuda, epoch, n_classes)

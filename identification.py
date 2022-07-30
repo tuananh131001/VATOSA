@@ -111,8 +111,8 @@ def main():
     # Settings
     use_cuda = True  # Use cuda or not
     embedding_size = 128  # Dimension of speaker embeddings
-    cp_num = 24  # Which checkpoint to use?
-    n_classes = 241  # How many speakers in training data?
+    cp_num = 27  # Which checkpoint to use?
+    n_classes = 240  # How many speakers in training data?
     test_frames = 100  # Split the test utterance
 
     # Load model from checkpoint
@@ -130,10 +130,10 @@ def main():
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', '240M3063', 's3864077']
+                '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy']
 
     # Set the test speaker
-    test_speaker = '233F4013'
+    test_speaker = 's3864077'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
