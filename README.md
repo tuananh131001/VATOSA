@@ -1,3 +1,8 @@
+STEP 1 : Install Pycharm and Annaconda
+https://www.jetbrains.com/pycharm/
+https://www.anaconda.com/
+
+Step 2 : clone this Github  ( a bit long)
 
 # Feature Extraction ( take information from voice files)
 ## 1. Setup Enviroment
@@ -37,13 +42,9 @@ IF this , mean you sucess. Congratulation!
   you only need 2 file wav name it "enroll" and "test" .The path will be above
 
 # Run Authentication (RUN ONLY ON WINDOWS)
-STEP 1 : Install Pycharm and Annaconda
-https://www.jetbrains.com/pycharm/
-https://www.anaconda.com/
 
-Step 2 : clone this Github  ( a bit long)
-Step 3 : run ```train.py``` and check if it can run
-
+## 1. Setup Enviroment
+### Step 1. Change python interepter to anaconda ![image](https://user-images.githubusercontent.com/67695658/181905230-e7516a70-7be9-4f7b-9427-3e7714667516.png)   
 ## ```train.py```
 
 These can be changed
