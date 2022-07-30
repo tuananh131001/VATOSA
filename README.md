@@ -47,14 +47,18 @@ IF this , mean you sucess. Congratulation!
 ### Step 1. Change python interepter to anaconda ![image](https://user-images.githubusercontent.com/67695658/181905230-e7516a70-7be9-4f7b-9427-3e7714667516.png)   
 ## ```train.py```
 
+Put train file ```.p``` in feat_logfbank_nfilt40/train/yourfoldername/files.p
+then run  ```train.py```
 These can be changed
-
 ![image](https://user-images.githubusercontent.com/67695658/181888344-4d58e8a1-4a87-4624-b102-aedf236b3c35.png)
 
 
 
 
 ## ```enroll.py```
+
+Put enroll file ```.p``` in feat_logfbank_nfilt40/test/yourfoldername/enroll.p (must name enroll)
+then run  ```enroll.py```
 
 ![image](https://user-images.githubusercontent.com/67695658/181884579-4573ba22-d9af-4ea4-b66b-fd49528c0e0f.png)
 - n_classes is num of files trainning
@@ -63,8 +67,10 @@ other no need to config
 
 
 ## ``` identification.py```
-### MUST RUN ```enroll.py``` before identi
 
+### MUST RUN ```enroll.py``` before identi
+Put enroll file ```.p``` in feat_logfbank_nfilt40/test/yourfoldername/test.p (must name test)
+then run  ```enroll.py```
 ![image](https://user-images.githubusercontent.com/67695658/181879091-d2c2b6c2-7829-45b1-9343-8f1fb6100c8a.png)  
 
 Change the test to the test file have enroll and put the list of person have been train into the list
