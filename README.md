@@ -15,7 +15,8 @@ Step 3 : run ```train.py``` and check if it can run
 
 
 ## ``` identification```
-![image](https://user-images.githubusercontent.com/67695658/181879091-d2c2b6c2-7829-45b1-9343-8f1fb6100c8a.png)
+### MUST RUN ```enroll.py``` before identi
+![image](https://user-images.githubusercontent.com/67695658/181879091-d2c2b6c2-7829-45b1-9343-8f1fb6100c8a.png)  
 Change the test to the test file have enroll and put the list of person have been train into the list
 
 
