@@ -1,6 +1,7 @@
 # Feature path
 # save_path = '/root/home/voxceleb'                                           # recommend SSD
-save_path = 'E:/VATOSA/extractAudio/wavs'                                           # recommend SSD
+# save_path = 'E:/VATOSA/extractAudio/wavs'                                           # recommend SSD
+save_path = '../wavs'
 
 TRAIN_FEAT_DIR_1 = save_path + '/voxceleb1/dev/feat/train_logfbank_nfilt40' # train_Vox1
 TEST_FEAT_DIR = save_path + '/voxceleb1/test/feat/test_logfbank_nfilt40'    # test_Vox1
