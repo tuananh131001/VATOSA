@@ -18,9 +18,10 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
         model.cuda()
     print('=> loading checkpoint')
     # original saved file with DataParallel
-    checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth')
+    checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth', map_location=torch.device('cpu'))
     # create new OrderedDict that does not contain `module.`
     model.load_state_dict(checkpoint['state_dict'])
+
     model.eval()
     return model
 
@@ -45,7 +46,7 @@ def load_enroll_embeddings(embedding_dir):
         spk = f.replace('.pth', '')
         # Select the speakers who are in the 'enroll_spk_list'
         embedding_path = os.path.join(embedding_dir, f)
-        tmp_embeddings = torch.load(embedding_path)
+        tmp_embeddings = torch.load(embedding_path, map_location=torch.device('cpu'))
         embeddings[spk] = tmp_embeddings
 
     return embeddings
@@ -109,7 +110,7 @@ def main():
     test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved
 
     # Settings
-    use_cuda = True  # Use cuda or not
+    use_cuda = False  # Use cuda or not
     embedding_size = 128  # Dimension of speaker embeddings
     cp_num = 27  # Which checkpoint to use?
     n_classes = 240  # How many speakers in training data?
@@ -133,7 +134,7 @@ def main():
                 '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy']
 
     # Set the test speaker
-    test_speaker = 's3864077'
+    test_speaker = 'huy'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
