@@ -12,6 +12,24 @@ from scipy.io.wavfile import write
 # create directory
 import pathlib
 
+from tkinter import *
+import customtkinter
+
+
+# tkinter element
+def create_entry(root, entry_name, hidden=False):
+    return customtkinter.CTkEntry(master=root,
+                                  placeholder_text=entry_name.upper(),
+                                  width=120,
+                                  height=25,
+                                  border_width=2,
+                                  corner_radius=10, show=f'{"*" if hidden else ""}')
+
+def create_button(root, btn_name, command):
+    return customtkinter.CTkButton(master=root, text=btn_name,
+                                         command=command)
+
+
 
 class ControlModel:
 
@@ -22,9 +40,9 @@ class ControlModel:
 
         self.has_record_enroll = False
 
-
         self.current_user = None
 
+    # recording
     def record(self, record_type):
 
         # file duration and file name
@@ -63,6 +81,7 @@ class ControlModel:
                 pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
                 write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
 
+    # json file
     def write_file(self, json_dict):
         # Serializing json
         json_object = json.dumps(json_dict, indent=4)
@@ -79,3 +98,5 @@ class ControlModel:
             # Reading from json file
             json_object = json.load(openfile)
         return json_object
+
+

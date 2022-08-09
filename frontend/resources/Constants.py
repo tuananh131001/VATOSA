@@ -1,4 +1,4 @@
-IMG_CONTAINER_URL = "./assets/"
+IMG_CONTAINER_URL = "../resources/assets/"
 background_image_path = 'background.png'
 button_image_path = 'login_button.png'
 json_filepath = "../resources/"

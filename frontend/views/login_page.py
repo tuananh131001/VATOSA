@@ -1,88 +1,77 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
 
-
 from tkinter import *
 import customtkinter
 
-model = ControlModel.ControlModel()
-current_user = model.read_file()
-current_login_count = 0
-voice_match = False
-login_state = False
 
+class LoginPage(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        self.controller = controller
+        self.model = controller.model
 
-def check_voice_login(username_json):
-    model.write_record(username_json, "login")
-    if voice_match:
-        login_state = True
-        return login_state
-    else:
-        print("Invalid Voice")
-        return False
+        self.current_login_count = 0
+        self.current_user = self.model.read_file()
+        self.voice_match = False
 
+        # tkinter elements
+        self.username_entry = None
+        self.password_entry = None
+        self.record_btn = None
 
-def login():
-    global current_login_count, login_state
+        # create and place tkinter elements
+        self.build_page()
 
-    current_login_count += 1
-    print(current_login_count)
+    def build_page(self):
+        # Entry Input
+        self.username_entry = ControlModel.create_entry(self, "Username")
+        self.password_entry = ControlModel.create_entry(self, "Password", True)
 
-    if current_login_count <= 3:
-        if check_voice_login(current_user.get("username")):
-            return True
-        elif current_login_count == 3:
-            # hide voice login button, display login with alternative method
-            record_btn.destroy()
-            # pack
-            username_entry.place(relx=0.5, rely=0.5, anchor=CENTER)
-            password_entry.place(relx=0.5, rely=0.6, anchor=CENTER)
-        return False
-    else:
-        username_input = username_entry.get()
-        password_input = password_entry.get()
+        # Button
+        # record
+        self.record_btn = customtkinter.CTkButton(master=self, text="Record",
+                                                  command=lambda: self.model.record(Constants.SIGNUP_DURATION))
+        login_btn = ControlModel.create_button(self, "Login", self.login)
 
-        # invalid
-        if username_input != current_user.get("username") or password_input != current_user.get("password"):
-            print("Invalid login")
+        # packing
+        self.record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
+        login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+
+    def check_voice_login(self):
+        self.model.write_record(self.current_user.get("username"), "login")
+        if self.voice_match:
+            login_state = True
+            return login_state
+        else:
+            print("Invalid Voice")
             return False
 
-        # delete old input
-        username_entry.delete(0, END)
-        password_entry.delete(0, END)
-        print("Login Successfully")
-        return True
+    def login(self):
+        self.current_login_count += 1
 
+        if self.current_login_count <= 3:
+            if self.check_voice_login():
+                return True
+            if self.current_login_count == 3:
+                # hide voice login button, display login with alternative method
+                self.record_btn.destroy()
+                # pack
+                self.username_entry.place(relx=0.5, rely=0.5, anchor=CENTER)
+                self.password_entry.place(relx=0.5, rely=0.6, anchor=CENTER)
+            return False
+        else:
+            username_input = self.username_entry.get()
+            password_input = self.password_entry.get()
 
-# create window
-root = customtkinter.CTk()
-root.title("Vatosa".upper())
+            # invalid
+            if username_input != self.current_user.get("username") \
+                    or password_input != self.current_user.get("password"):
+                print("Invalid login")
+                return False
 
-# entry
-username_entry = customtkinter.CTkEntry(master=root,
-                                        placeholder_text="Username".upper(),
-                                        width=120,
-                                        height=25,
-                                        border_width=2,
-                                        corner_radius=10)
-password_entry = customtkinter.CTkEntry(master=root,
-                                        placeholder_text="Password".upper(),
-                                        width=120,
-                                        height=25,
-                                        border_width=2,
-                                        corner_radius=10,
-                                        show="*")
-
-# buttons
-record_btn = customtkinter.CTkButton(master=root, text="Record",
-                                     command=lambda: model.record(Constants.SIGNUP_DURATION))
-login_btn = customtkinter.CTkButton(master=root,
-                                    text="Login",
-                                    command=login)
-
-
-# packing
-record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
-
-root.mainloop()
+            # delete old input
+            self.username_entry.delete(0, END)
+            self.password_entry.delete(0, END)
+            print("Login Successfully")
+            return True
