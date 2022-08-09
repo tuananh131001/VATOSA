@@ -1,3 +1,4 @@
+# https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
 # import sys
 # sys.path.append('../resources')
 # from ..resources import Constants
@@ -21,6 +22,9 @@ class ControlModel:
 
         self.has_record_enroll = False
 
+
+        self.current_user = None
+
     def record(self, record_type):
 
         # file duration and file name
@@ -40,13 +44,26 @@ class ControlModel:
         print("Done Recording")
         self.has_record_enroll = True
 
-    def write_record(self, username):
-        # create directory if not exist
-        pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
-        # write recording file
-        write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
+    def write_record(self, username="", type="enroll"):
+        if type == "enroll":
+            # create directory if not exist
+            pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+            # write recording file
+            write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
-    def writeFile(self, json_dict):
+            # add to train here
+        else:
+            try:
+                # write recording file
+                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+
+                # add for authenticate here
+            except:
+                # tam thoi
+                pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+
+    def write_file(self, json_dict):
         # Serializing json
         json_object = json.dumps(json_dict, indent=4)
 
@@ -56,3 +73,9 @@ class ControlModel:
         # Writing to sample.json
         with open(Constants.json_filepath + Constants.json_filename, "w+") as outfile:
             outfile.write(json_object)
+
+    def read_file(self):
+        with open(Constants.json_filepath + Constants.json_filename, 'r') as openfile:
+            # Reading from json file
+            json_object = json.load(openfile)
+        return json_object

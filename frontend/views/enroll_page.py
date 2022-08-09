@@ -20,7 +20,7 @@ def signUp():
 
     # Write date to json file
     user_info_dict = {"username": username, "password": password}
-    model.writeFile(user_info_dict)
+    model.write_file(user_info_dict)
 
     if username != "":
         model.write_record(username)
