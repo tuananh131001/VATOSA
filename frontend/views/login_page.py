@@ -25,8 +25,8 @@ class LoginPage(Frame):
 
     def build_page(self):
         # Entry Input
-        self.username_entry = ControlModel.create_entry(self, "Username")
-        self.password_entry = ControlModel.create_entry(self, "Password", True)
+        self.username_entry = ControlModel.create_input_text(self, "username")
+        self.password_entry = ControlModel.create_input_text(self, "password", True)
 
         # Button
         # record

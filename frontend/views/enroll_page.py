@@ -25,8 +25,8 @@ class EnrollPage(Frame):
 
     def build_page(self):
         # Entry Input
-        username_entry = ControlModel.create_entry(self, "Username")
-        password_entry = ControlModel.create_entry(self, "Password", True)
+        username_entry = ControlModel.create_input_text(self, "Username")
+        password_entry = ControlModel.create_input_text(self, "Password", True)
 
         # Button
         # record
