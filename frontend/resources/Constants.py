@@ -8,3 +8,5 @@ audio_filepath = "../../extractAudio/wavs/voxceleb1/test/wav/"  # wav format fil
 # audio_filepath = "../../extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40"  # wav format file
 SIGNUP_DURATION = 3  # in seconds
 LOGIN_DURATION = 3  # in seconds
+
+main_color = "#2B2C33"

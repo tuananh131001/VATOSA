@@ -1,17 +1,20 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
+from tkinter import font
 import customtkinter
 
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
-from page1 import Page1
 from login_page import LoginPage
+
 
 class VatosaApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
         self.title("Vatosa")
         self.geometry("500x500")
+        # Window only
+        # self.wm_attributes('-transparentcolor', '#ab23ff')
 
         self.model = ControlModel.ControlModel()
 
@@ -40,4 +43,7 @@ class VatosaApp(Tk):
 
 
 app = VatosaApp()
+# app = customtkinter.CTk()
+
+
 app.mainloop()
