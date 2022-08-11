@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
-from tkinter import font
 import customtkinter
 from frontend.resources import Constants
 
@@ -14,16 +13,30 @@ from PIL import ImageTk, Image
 class VatosaApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
+
+        width = self.winfo_screenwidth()
+        height = self.winfo_screenheight()
+
+        frame_width = 500
+        frame_height = 500
+
         self.title("Vatosa")
-        self.geometry("500x500")
+        self.geometry(f'{frame_width + 200}x{frame_height + 200}')
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
         self.model = ControlModel.ControlModel()
 
-        container = Frame(self)
-        container.pack(side="top", fill="both", expand=True)
+        # create container for background and window inside
+        canvas = Canvas(self, width=width, height=height)
+        canvas.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+        background_image = ImageTk.PhotoImage(Image.open(Constants.IMG_CONTAINER_URL + "background.png"))
+        canvas.background_image = background_image
+        canvas.create_image(0, 0, anchor=NW, image=background_image)
+
+        container = Frame(self, bg="")
+        canvas.create_window(width / 2, height / 2, width=frame_width, height=frame_height, window=container)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
@@ -38,7 +51,9 @@ class VatosaApp(Tk):
             self.frames[Page] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
+            # frame.configure(width=300, height=300)
             frame.configure(bg=Constants.main_color)
+        # label.place(relx=0.5, rely=0.5, anchor=CENTER)
 
         # check if open sign up page first or login page first
         self.model.read_file()
@@ -53,5 +68,4 @@ class VatosaApp(Tk):
 
 
 app = VatosaApp()
-# app = customtkinter.CTk()
 app.mainloop()

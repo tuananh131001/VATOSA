@@ -3,14 +3,16 @@ from frontend.control import ControlModel
 
 from tkinter import *
 import customtkinter
+from PIL import ImageTk, Image
 
 
 class LoginPage(Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, root):
         Frame.__init__(self, parent)
 
-        self.controller = controller
-        self.model = controller.model
+        self.controller = root
+        self.model = root.model
+        # self.model = parent.model
         self.model.read_file()
         self.current_user = self.model.current_user
 
@@ -44,6 +46,7 @@ class LoginPage(Frame):
         # packing
         self.record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
         login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+
 
     def check_voice_login(self):
         self.model.write_record(self.current_user.get("username"), "login")

@@ -15,11 +15,11 @@ import customtkinter
 
 
 class EnrollPage(Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, root):
         Frame.__init__(self, parent)
 
-        self.controller = controller
-        self.model = controller.model
+        self.controller = root
+        self.model = root.model
         self.model.read_file()
 
         # tkinter element

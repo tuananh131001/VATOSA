@@ -2,6 +2,7 @@
 # https://stackoverflow.com/questions/27202990/add-an-image-to-tkinter-entry
 # https://www.youtube.com/watch?v=rGOWG7aug58
 # https://maxinterview.com/code/tkinter-get-child-in-frame-D13470A155688BB/
+# https://github.com/petervalberg/Image_as_button-Tkinter/blob/main/ButtonOverImage.py
 # import sys
 # sys.path.append('../resources')
 # from ..resources import Constants
@@ -18,6 +19,10 @@ import pathlib
 from tkinter import *
 import customtkinter
 from PIL import Image, ImageTk
+
+
+# button click
+# def click_voice_button(event):
 
 
 # tkinter element
@@ -84,6 +89,15 @@ def create_button(root, btn_name, command):
     return customtkinter.CTkButton(master=root, text=btn_name,
                                    command=command)
 
+# def create_record_button(root):
+#     playImage = ImageTk.PhotoImage(Image.open("login_button.png").resize((30, 30)))
+#     blankImage = ImageTk.PhotoImage(Image.open("background.png").resize((200, 200)))
+#
+#     canvas1 = Canvas(root, width=400, height=400)
+#     blank = canvas1.create_image(0, 0, anchor=NW, image=blankImage, state=NORMAL)
+#     button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
+#     canvas1.tag_bind(button, "<Button-1>", shiftImage)
+#     canvas1.pack()
 
 class ControlModel:
 
@@ -149,5 +163,7 @@ class ControlModel:
 
     def read_file(self):
         with open(Constants.json_filepath + Constants.json_filename, 'r') as openfile:
+            if openfile.read(2) != '[]':
+                return
             # Reading from json file
             self.current_user = json.load(openfile)
