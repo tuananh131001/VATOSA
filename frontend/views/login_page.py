@@ -12,9 +12,6 @@ class LoginPage(Frame):
 
         self.controller = root
         self.model = root.model
-        # self.model = parent.model
-        self.model.read_file()
-        self.current_user = self.model.current_user
 
         self.current_login_count = 0
         self.voice_match = False
@@ -49,7 +46,10 @@ class LoginPage(Frame):
 
 
     def check_voice_login(self):
-        self.model.write_record(self.current_user.get("username"), "login")
+        if self.model.recording is not None:
+            self.model.write_record(self.model.current_user.get("username"), "login")
+        else:
+            print("Please input voice")
         if self.voice_match:
             login_state = True
             return login_state

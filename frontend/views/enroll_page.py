@@ -20,7 +20,6 @@ class EnrollPage(Frame):
 
         self.controller = root
         self.model = root.model
-        self.model.read_file()
 
         # tkinter element
         self.username_entry = None
@@ -69,4 +68,5 @@ class EnrollPage(Frame):
         self.password_entry.delete(0, END)
         print("Sign up done")
         # move to next page
+        print(self.model.current_user)
         self.controller.show_frame(LoginPage)

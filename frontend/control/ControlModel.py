@@ -6,6 +6,7 @@
 # import sys
 # sys.path.append('../resources')
 # from ..resources import Constants
+import os
 
 from frontend.resources import Constants
 
@@ -107,8 +108,10 @@ class ControlModel:
         self.freq = 22050
 
         self.has_record_enroll = False
+        self.current_user = {}
 
-        self.current_user = None
+        self.read_file()
+
 
     # recording
     def record(self, record_type):
@@ -130,8 +133,8 @@ class ControlModel:
         print("Done Recording")
         self.has_record_enroll = True
 
-    def write_record(self, username="", type="enroll"):
-        if type == "login":
+    def write_record(self, username="", record_type="enroll"):
+        if record_type == "login":
             # create directory if not exist
             pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
             # write recording file
@@ -151,6 +154,7 @@ class ControlModel:
 
     # json file
     def write_file(self, json_dict):
+        self.current_user = json_dict
         # Serializing json
         json_object = json.dumps(json_dict, indent=4)
 
@@ -161,9 +165,14 @@ class ControlModel:
         with open(Constants.json_filepath + Constants.json_filename, "w+") as outfile:
             outfile.write(json_object)
 
+
     def read_file(self):
-        with open(Constants.json_filepath + Constants.json_filename, 'r') as openfile:
-            if openfile.read(2) != '[]':
+        filepath = Constants.json_filepath + Constants.json_filename
+        filesize = os.path.getsize(filepath)
+        with open(filepath, 'r') as openfile:
+            if filesize == 0:
                 return
-            # Reading from json file
-            self.current_user = json.load(openfile)
+            else:
+                # Reading from json file
+                jsonobj = json.load(openfile)
+        self.current_user = jsonobj

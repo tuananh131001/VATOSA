@@ -56,8 +56,7 @@ class VatosaApp(Tk):
         # label.place(relx=0.5, rely=0.5, anchor=CENTER)
 
         # check if open sign up page first or login page first
-        self.model.read_file()
-        if self.model.current_user is not None:
+        if self.model.current_user is not {}:
             self.show_frame(LoginPage)
         else:
             self.show_frame(EnrollPage)
