@@ -8,14 +8,18 @@ import customtkinter
 class LoginPage(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
+
         self.controller = controller
         self.model = controller.model
+        self.model.read_file()
+        self.current_user = self.model.current_user
 
         self.current_login_count = 0
-        self.current_user = self.model.read_file()
         self.voice_match = False
 
         # tkinter elements
+        self.username_box = None
+        self.password_box = None
         self.username_entry = None
         self.password_entry = None
         self.record_btn = None
@@ -25,8 +29,11 @@ class LoginPage(Frame):
 
     def build_page(self):
         # Entry Input
-        self.username_entry = ControlModel.create_input_text(self, "username")
-        self.password_entry = ControlModel.create_input_text(self, "password", True)
+        self.username_box = ControlModel.create_input_text(self, "Username")
+        self.password_box = ControlModel.create_input_text(self, "Password", True)
+
+        self.username_entry = ControlModel.get_input_children(self.username_box)
+        self.password_entry = ControlModel.get_input_children(self.password_box)
 
         # Button
         # record
@@ -57,16 +64,16 @@ class LoginPage(Frame):
                 # hide voice login button, display login with alternative method
                 self.record_btn.destroy()
                 # pack
-                self.username_entry.place(relx=0.5, rely=0.5, anchor=CENTER)
-                self.password_entry.place(relx=0.5, rely=0.6, anchor=CENTER)
+                self.username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
+                self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
             return False
         else:
             username_input = self.username_entry.get()
             password_input = self.password_entry.get()
 
             # invalid
-            if username_input != self.current_user.get("username") \
-                    or password_input != self.current_user.get("password"):
+            if username_input != self.model.current_user.get("username") \
+                    or password_input != self.model.current_user.get("password"):
                 print("Invalid login")
                 return False
 

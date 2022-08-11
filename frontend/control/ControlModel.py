@@ -1,6 +1,7 @@
 # https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
 # https://stackoverflow.com/questions/27202990/add-an-image-to-tkinter-entry
 # https://www.youtube.com/watch?v=rGOWG7aug58
+# https://maxinterview.com/code/tkinter-get-child-in-frame-D13470A155688BB/
 # import sys
 # sys.path.append('../resources')
 # from ..resources import Constants
@@ -20,6 +21,13 @@ from PIL import Image, ImageTk
 
 
 # tkinter element
+def get_input_children(input_container):
+    for children in input_container.winfo_children():
+        # if children is frame -> means is CTkEntry
+        if children.winfo_class() == 'Frame':
+            return children
+
+
 def create_input_text(root, entry_name, hidden=False):
     entry_height = 43
     border_width = 2
@@ -109,7 +117,7 @@ class ControlModel:
         self.has_record_enroll = True
 
     def write_record(self, username="", type="enroll"):
-        if type == "enroll":
+        if type == "login":
             # create directory if not exist
             pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
             # write recording file
@@ -142,5 +150,4 @@ class ControlModel:
     def read_file(self):
         with open(Constants.json_filepath + Constants.json_filename, 'r') as openfile:
             # Reading from json file
-            json_object = json.load(openfile)
-        return json_object
+            self.current_user = json.load(openfile)

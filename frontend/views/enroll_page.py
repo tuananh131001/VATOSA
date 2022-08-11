@@ -16,33 +16,41 @@ import customtkinter
 
 class EnrollPage(Frame):
     def __init__(self, parent, controller):
-        # self.root = root
         Frame.__init__(self, parent)
+
         self.controller = controller
         self.model = controller.model
+        self.model.read_file()
+
+        # tkinter element
+        self.username_entry = None
+        self.password_entry = None
 
         self.build_page()
 
     def build_page(self):
         # Entry Input
-        username_entry = ControlModel.create_input_text(self, "Username")
-        password_entry = ControlModel.create_input_text(self, "Password", True)
+        username_box = ControlModel.create_input_text(self, "Username")
+        password_box = ControlModel.create_input_text(self, "Password", True)
+
+        self.username_entry = ControlModel.get_input_children(username_box)
+        self.password_entry = ControlModel.get_input_children(password_box)
 
         # Button
         # record
         record_btn = customtkinter.CTkButton(master=self, text="Record",
                                              command=lambda: self.model.record(Constants.SIGNUP_DURATION))
-        submit_btn = ControlModel.create_button(self, "Submit", lambda: self.sign_up(username_entry, password_entry))
+        submit_btn = ControlModel.create_button(self, "Submit", self.sign_up)
 
         # packing
-        username_entry.place(relx=0.5, rely=0.5, anchor=CENTER)
-        password_entry.place(relx=0.5, rely=0.6, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
 
-    def sign_up(self, username_entry, password_entry):
-        username = username_entry.get()
-        password = password_entry.get()
+    def sign_up(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
 
         if username == "" or password == "" or not self.model.has_record_enroll:
             # add validate username here
@@ -57,7 +65,8 @@ class EnrollPage(Frame):
             self.model.write_record(username)
 
         # delete old input
-        username_entry.delete(0, END)
-        password_entry.delete(0, END)
+        self.username_entry.delete(0, END)
+        self.password_entry.delete(0, END)
         print("Sign up done")
+        # move to next page
         self.controller.show_frame(LoginPage)

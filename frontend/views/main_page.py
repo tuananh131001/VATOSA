@@ -2,10 +2,13 @@
 from tkinter import *
 from tkinter import font
 import customtkinter
+from frontend.resources import Constants
 
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
+# from page1 import Page1
 from login_page import LoginPage
+from PIL import ImageTk, Image
 
 
 class VatosaApp(Tk):
@@ -35,7 +38,14 @@ class VatosaApp(Tk):
             self.frames[Page] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
-        self.show_frame(EnrollPage)
+            frame.configure(bg=Constants.main_color)
+
+        # check if open sign up page first or login page first
+        self.model.read_file()
+        if self.model.current_user is not None:
+            self.show_frame(LoginPage)
+        else:
+            self.show_frame(EnrollPage)
 
     def show_frame(self, current_frame):
         frame = self.frames[current_frame]
@@ -44,6 +54,4 @@ class VatosaApp(Tk):
 
 app = VatosaApp()
 # app = customtkinter.CTk()
-
-
 app.mainloop()
