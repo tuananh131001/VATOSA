@@ -7,6 +7,7 @@
 # sys.path.append('../resources')
 # from ..resources import Constants
 import os
+import time
 
 from frontend.resources import Constants
 
@@ -18,11 +19,12 @@ from scipy.io.wavfile import write
 import pathlib
 
 from tkinter import *
+from tkinter import messagebox
 import customtkinter
 from PIL import Image, ImageTk
 
 
-# tkinter element
+# ultility
 def get_input_children(input_container):
     for children in input_container.winfo_children():
         # if children is frame -> means is CTkEntry
@@ -30,6 +32,18 @@ def get_input_children(input_container):
             return children
 
 
+# button click
+def click_voice_button(event, model,
+                       record_type="enroll",
+                       activating_img=None,
+                       normal_img=None):
+    model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION,
+                 event.widget,
+                 activating_img,
+                 normal_img)
+
+
+# tkinter element
 def create_input_text(root, entry_name, hidden=False):
     entry_height = 43
     border_width = 2
@@ -49,7 +63,6 @@ def create_input_text(root, entry_name, hidden=False):
                                    relief="solid")
     # for display background of frame when have children inside
     frame.config(bg=Constants.main_color)
-    # frame.pack(side="bottom")
 
     # for storing the icon
     canvas = Canvas(frame, background=Constants.main_color, width=50, height=entry_height)
@@ -70,7 +83,7 @@ def create_input_text(root, entry_name, hidden=False):
                                    show="*" if hidden else "")
 
     # for storing input
-    entry.image = ImageTk.PhotoImage(Image.open(f'../resources/assets/{entry_name}-icon.png')
+    entry.image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + entry_name}-icon.png')
                                      .resize((entry_height - 10, entry_height - 10)))
     canvas.create_image(entry_height / 2,
                         entry_height / 2,
@@ -87,28 +100,41 @@ def create_button(root, btn_name, command):
                                    command=command)
 
 
-# button click
-def click_voice_button(event, model, record_type="enroll"):
-    print("Click")
-    model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION)
+def create_button_image(image_url, image_size):
+    return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
 def create_record_button(root, record_type="enroll"):
+    # initializing the image properties
     if record_type == "enroll":
         image_size = Constants.signup_record_button_size
         image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
     else:
         image_size = Constants.login_record_button_size
         image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
-    playImage = ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
-    root.playImage = playImage
 
+    # create the images
+    root.playImage = playImage = create_button_image(image_url, image_size)
+    root.activating_image = activating_image = create_button_image(
+        f'{Constants.IMG_CONTAINER_URL}login_button_activating.png',
+        image_size)
+
+    # create container
     canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color)
     canvas1.configure(highlightthickness=0)
+
+    # store image to container
     button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
+    # add tag for accessing easier
+    canvas1.itemconfig(button, tag="canvas_button")
+    # add event for it acting like a real button
     canvas1.tag_bind(button, "<Button-1>",
-                     lambda event, a=root.model, b=record_type: click_voice_button(event, a, b))
-    # canvas1.pack()
+                     lambda event, a=root.model,
+                            b=record_type,
+                            activating_img=activating_image,
+                            normal_img=playImage:
+                     click_voice_button(event, a, b, activating_img, normal_img))
+
     return canvas1
 
 
@@ -125,19 +151,27 @@ class ControlModel:
         self.read_file()
 
     # recording
-    def record(self, record_type):
-
+    def record(self, record_type, canvas=None, activating_image=None, normal_image=None):
+        button = canvas.find_withtag("canvas_button")[0]
         # file duration and file name
         if record_type == "enroll":
             duration = Constants.SIGNUP_DURATION
-            file_name = "enroll"
         else:
             duration = Constants.LOGIN_DURATION
-            file_name = "test"
 
         # start recording
         print("Start Recording")
         self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
+        canvas.itemconfig(button, image=activating_image)
+
+        # count down recording time
+        temp = duration
+        while temp > 0:
+            canvas.update()
+            time.sleep(1)
+            temp -= 1
+            if temp == 0:
+                canvas.itemconfig(button, image=normal_image)
         sd.wait()
 
         # write the recorded audio to file
