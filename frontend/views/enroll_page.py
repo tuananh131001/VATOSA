@@ -37,8 +37,9 @@ class EnrollPage(Frame):
 
         # Button
         # record
-        record_btn = customtkinter.CTkButton(master=self, text="Record",
-                                             command=lambda: self.model.record(Constants.SIGNUP_DURATION))
+        record_btn = ControlModel.create_record_button(self)
+        # record_btn = customtkinter.CTkButton(master=self, text="Record",
+        #                                      command=lambda: self.model.record(Constants.SIGNUP_DURATION))
         submit_btn = ControlModel.create_button(self, "Submit", self.sign_up)
 
         # packing

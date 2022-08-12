@@ -14,14 +14,14 @@ class VatosaApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
-        width = self.winfo_screenwidth()
+        width = int(self.winfo_screenwidth() / 1.2)
         height = self.winfo_screenheight()
 
-        frame_width = 500
-        frame_height = 500
+        frame_width = int(width / 1.5)
+        frame_height = int(height / 1.5)
 
         self.title("Vatosa")
-        self.geometry(f'{frame_width + 200}x{frame_height + 200}')
+        self.geometry(f'{width}x{height}')
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
@@ -53,10 +53,9 @@ class VatosaApp(Tk):
             frame.grid(row=0, column=0, sticky="nsew")
             # frame.configure(width=300, height=300)
             frame.configure(bg=Constants.main_color)
-        # label.place(relx=0.5, rely=0.5, anchor=CENTER)
 
         # check if open sign up page first or login page first
-        if self.model.current_user is not {}:
+        if self.model.current_user:
             self.show_frame(LoginPage)
         else:
             self.show_frame(EnrollPage)

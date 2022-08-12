@@ -22,10 +22,6 @@ import customtkinter
 from PIL import Image, ImageTk
 
 
-# button click
-# def click_voice_button(event):
-
-
 # tkinter element
 def get_input_children(input_container):
     for children in input_container.winfo_children():
@@ -90,15 +86,31 @@ def create_button(root, btn_name, command):
     return customtkinter.CTkButton(master=root, text=btn_name,
                                    command=command)
 
-# def create_record_button(root):
-#     playImage = ImageTk.PhotoImage(Image.open("login_button.png").resize((30, 30)))
-#     blankImage = ImageTk.PhotoImage(Image.open("background.png").resize((200, 200)))
-#
-#     canvas1 = Canvas(root, width=400, height=400)
-#     blank = canvas1.create_image(0, 0, anchor=NW, image=blankImage, state=NORMAL)
-#     button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
-#     canvas1.tag_bind(button, "<Button-1>", shiftImage)
-#     canvas1.pack()
+
+# button click
+def click_voice_button(event, model, record_type="enroll"):
+    print("Click")
+    model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION)
+
+
+def create_record_button(root, record_type="enroll"):
+    if record_type == "enroll":
+        image_size = Constants.signup_record_button_size
+        image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
+    else:
+        image_size = Constants.login_record_button_size
+        image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
+    playImage = ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
+    root.playImage = playImage
+
+    canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color)
+    canvas1.configure(highlightthickness=0)
+    button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
+    canvas1.tag_bind(button, "<Button-1>",
+                     lambda event, a=root.model, b=record_type: click_voice_button(event, a, b))
+    # canvas1.pack()
+    return canvas1
+
 
 class ControlModel:
 
@@ -111,7 +123,6 @@ class ControlModel:
         self.current_user = {}
 
         self.read_file()
-
 
     # recording
     def record(self, record_type):
@@ -165,12 +176,12 @@ class ControlModel:
         with open(Constants.json_filepath + Constants.json_filename, "w+") as outfile:
             outfile.write(json_object)
 
-
     def read_file(self):
         filepath = Constants.json_filepath + Constants.json_filename
         filesize = os.path.getsize(filepath)
         with open(filepath, 'r') as openfile:
-            if filesize == 0:
+            if filesize < 2:
+                print("Empty")
                 return
             else:
                 # Reading from json file

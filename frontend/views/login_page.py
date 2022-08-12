@@ -4,7 +4,12 @@ from frontend.control import ControlModel
 from tkinter import *
 import customtkinter
 from PIL import ImageTk, Image
+count = 0
 
+def click_voice_button(event):
+    print(count)
+    globals()['count'] += 1
+    # model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION)
 
 class LoginPage(Frame):
     def __init__(self, parent, root):
@@ -36,13 +41,14 @@ class LoginPage(Frame):
 
         # Button
         # record
-        self.record_btn = customtkinter.CTkButton(master=self, text="Record",
-                                                  command=lambda: self.model.record(Constants.SIGNUP_DURATION))
+        self.record_btn = ControlModel.create_record_button(self, "login")
+        # self.record_btn = customtkinter.CTkButton(master=self, text="Record",
+        #                                           command=lambda: self.model.record(Constants.SIGNUP_DURATION))
         login_btn = ControlModel.create_button(self, "Login", self.login)
 
         # packing
-        self.record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
         login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+        self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 
     def check_voice_login(self):
