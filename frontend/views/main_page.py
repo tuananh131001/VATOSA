@@ -22,7 +22,7 @@ class VatosaApp(Tk):
 
         self.title("Vatosa")
         self.geometry(f'{width}x{height}')
-        self.resizable(False, False)
+        # self.resizable(False, False)
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
