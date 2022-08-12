@@ -5,7 +5,7 @@ from frontend.resources import Constants
 
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
-# from page1 import Page1
+from result_page import ResultPage
 from login_page import LoginPage
 from PIL import ImageTk, Image
 
@@ -44,7 +44,7 @@ class VatosaApp(Tk):
         self.frames = {}
 
         # iterating through page layouts
-        for Page in (EnrollPage, LoginPage):
+        for Page in (EnrollPage, LoginPage, ResultPage):
             frame = Page(container, self)
 
             # init frame and store to array

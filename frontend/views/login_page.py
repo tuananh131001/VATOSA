@@ -1,15 +1,12 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
 
+from result_page import ResultPage
+
 from tkinter import *
 import customtkinter
 from PIL import ImageTk, Image
-count = 0
 
-def click_voice_button(event):
-    print(count)
-    globals()['count'] += 1
-    # model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION)
 
 class LoginPage(Frame):
     def __init__(self, parent, root):
@@ -18,15 +15,13 @@ class LoginPage(Frame):
         self.controller = root
         self.model = root.model
 
-        self.current_login_count = 0
-        self.voice_match = False
-
         # tkinter elements
         self.username_box = None
         self.password_box = None
         self.username_entry = None
         self.password_entry = None
         self.record_btn = None
+        self.login_btn = None
 
         # create and place tkinter elements
         self.build_page()
@@ -41,53 +36,60 @@ class LoginPage(Frame):
 
         # Button
         # record
-        self.record_btn = ControlModel.create_record_button(self, "login")
-        # self.record_btn = customtkinter.CTkButton(master=self, text="Record",
-        #                                           command=lambda: self.model.record(Constants.SIGNUP_DURATION))
-        login_btn = ControlModel.create_button(self, "Login", self.login)
+        self.record_btn = ControlModel.create_record_button(self, "login",
+                                                            lambda event,
+                                                            activating_img,
+                                                            normal_img,
+                                                            deny_img:
+                                                            self.click_record_button(event,
+                                                                                     activating_img,
+                                                                                     normal_img,
+                                                                                     deny_img))
+        self.login_btn = ControlModel.create_button(self, "Login", self.login)
 
         # packing
-        login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+        # login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+    def click_record_button(self, event, activating_img, normal_img, deny_img):
+        # validate voice
+        self.model.identify_voice("login", event, activating_img, normal_img, deny_img)
 
-    def check_voice_login(self):
-        if self.model.recording is not None:
-            self.model.write_record(self.model.current_user.get("username"), "login")
+        # display actions based on the identify result
+        if self.model.current_identify_result:
+            print("Valid Voice", self.model.current_login_count)
+            self.navigate_next_page()
+        elif not self.model.current_identify_result \
+                and self.model.current_login_count == 3:
+            self.change_to_alternative()
+            print("Invalid voice", self.model.current_login_count)
         else:
-            print("Please input voice")
-        if self.voice_match:
-            login_state = True
-            return login_state
-        else:
-            print("Invalid Voice")
-            return False
+            print("Invalid voice", self.model.current_login_count)
+
+    def change_to_alternative(self):
+        # hide voice login button, display login with alternative method
+        self.record_btn.destroy()
+        # pack
+        self.username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
+        self.login_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
 
     def login(self):
-        self.current_login_count += 1
+        username_input = self.username_entry.get()
+        password_input = self.password_entry.get()
 
-        if self.current_login_count <= 3:
-            if self.check_voice_login():
-                return True
-            if self.current_login_count == 3:
-                # hide voice login button, display login with alternative method
-                self.record_btn.destroy()
-                # pack
-                self.username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
-                self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
-            return False
-        else:
-            username_input = self.username_entry.get()
-            password_input = self.password_entry.get()
+        # invalid
+        if username_input != self.model.current_user.get("username") \
+                or password_input != self.model.current_user.get("password"):
+            print("Invalid login")
+            return
 
-            # invalid
-            if username_input != self.model.current_user.get("username") \
-                    or password_input != self.model.current_user.get("password"):
-                print("Invalid login")
-                return False
+        # delete old input
+        self.username_entry.delete(0, END)
+        self.password_entry.delete(0, END)
+        self.model.current_identify_result = True
+        self.navigate_next_page()
+        print("Login Successfully")
 
-            # delete old input
-            self.username_entry.delete(0, END)
-            self.password_entry.delete(0, END)
-            print("Login Successfully")
-            return True
+    def navigate_next_page(self):
+        self.controller.show_frame(ResultPage)

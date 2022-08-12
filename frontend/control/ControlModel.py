@@ -19,29 +19,16 @@ from scipy.io.wavfile import write
 import pathlib
 
 from tkinter import *
-from tkinter import messagebox
 import customtkinter
 from PIL import Image, ImageTk
 
 
-# ultility
+# utility
 def get_input_children(input_container):
     for children in input_container.winfo_children():
         # if children is frame -> means is CTkEntry
         if children.winfo_class() == 'Frame':
             return children
-
-
-# button click
-def click_voice_button(event, model,
-                       record_type="enroll",
-                       activating_img=None,
-                       normal_img=None):
-    model.record(Constants.SIGNUP_DURATION if record_type == "enroll" else Constants.LOGIN_DURATION,
-                 event.widget,
-                 activating_img,
-                 normal_img)
-
 
 # tkinter element
 def create_input_text(root, entry_name, hidden=False):
@@ -104,19 +91,22 @@ def create_button_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
-def create_record_button(root, record_type="enroll"):
+
+def create_record_button(root, record_type="enroll", command=None):
     # initializing the image properties
     if record_type == "enroll":
         image_size = Constants.signup_record_button_size
-        image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
+        deny_image = None
     else:
         image_size = Constants.login_record_button_size
-        image_url = f'{Constants.IMG_CONTAINER_URL}login_button.png'
+        root.deny_image = deny_image = create_button_image(f'{Constants.IMG_CONTAINER_URL}login_button_deny.png',
+                                                           image_size)
 
     # create the images
-    root.playImage = playImage = create_button_image(image_url, image_size)
+    root.playImage = playImage = create_button_image(f'{Constants.IMG_CONTAINER_URL + record_type}_button.png',
+                                                     image_size)
     root.activating_image = activating_image = create_button_image(
-        f'{Constants.IMG_CONTAINER_URL}login_button_activating.png',
+        f'{Constants.IMG_CONTAINER_URL + record_type}_button_activating.png',
         image_size)
 
     # create container
@@ -129,11 +119,11 @@ def create_record_button(root, record_type="enroll"):
     canvas1.itemconfig(button, tag="canvas_button")
     # add event for it acting like a real button
     canvas1.tag_bind(button, "<Button-1>",
-                     lambda event, a=root.model,
-                            b=record_type,
-                            activating_img=activating_image,
-                            normal_img=playImage:
-                     click_voice_button(event, a, b, activating_img, normal_img))
+                     lambda event,
+                     activate_img=activating_image,
+                     normal_img=playImage,
+                     deny_img=deny_image:
+                     command(event, activate_img, normal_img, deny_img))
 
     return canvas1
 
@@ -147,6 +137,9 @@ class ControlModel:
 
         self.has_record_enroll = False
         self.current_user = {}
+
+        self.current_identify_result = False
+        self.current_login_count = 0
 
         self.read_file()
 
@@ -196,6 +189,24 @@ class ControlModel:
                 # tam thoi
                 pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
                 write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+
+    def identify_voice(self,
+                       record_type, event,
+                       activating_img, normal_img, deny_img):
+        self.current_login_count += 1
+        self.record(Constants.LOGIN_DURATION,
+                    event.widget,
+                    activating_img,
+                    normal_img)
+        self.write_record(self.current_user.get("username"), record_type)
+
+        # final result
+        self.current_identify_result = False
+
+        # display result via changing record button appearance
+        if not self.current_identify_result:
+            canvas = event.widget
+            canvas.itemconfig(canvas.find_withtag("canvas_button")[0], image=deny_img)
 
     # json file
     def write_file(self, json_dict):

@@ -37,9 +37,14 @@ class EnrollPage(Frame):
 
         # Button
         # record
-        record_btn = ControlModel.create_record_button(self)
-        # record_btn = customtkinter.CTkButton(master=self, text="Record",
-        #                                      command=lambda: self.model.record(Constants.SIGNUP_DURATION))
+        record_btn = ControlModel.create_record_button(self, "enroll", lambda event,
+                                                                       activating_img,
+                                                                       normal_img,
+                                                                       deny_img=None:
+                                                                       self.click_record_button(event,
+                                                                                                activating_img,
+                                                                                                normal_img,
+                                                                                                deny_img))
         submit_btn = ControlModel.create_button(self, "Submit", self.sign_up)
 
         # packing
@@ -47,6 +52,12 @@ class EnrollPage(Frame):
         password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+
+    def click_record_button(self, event, activating_img, normal_img, deny_img):
+        self.model.record(Constants.SIGNUP_DURATION,
+                          event.widget,
+                          activating_img,
+                          normal_img)
 
     def sign_up(self):
         username = self.username_entry.get()
