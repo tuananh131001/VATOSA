@@ -20,6 +20,7 @@ class EnrollPage(Frame):
 
         self.controller = root
         self.model = root.model
+        self.click = False
 
         # tkinter element
         self.username_entry = None
@@ -28,6 +29,13 @@ class EnrollPage(Frame):
         self.build_page()
 
     def build_page(self):
+        # label
+        label_width = 570
+        label_height = 105
+        welcome_label = ControlModel.create_label_image(self, "vatosa_enroll_title",
+                                                        (label_width, label_height))
+        footer_label = ControlModel.create_footer(self)
+
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username")
         password_box = ControlModel.create_input_text(self, "Password", True)
@@ -48,16 +56,20 @@ class EnrollPage(Frame):
         submit_btn = ControlModel.create_button(self, "Submit", self.sign_up)
 
         # packing
-        username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.4, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+        welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.42, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.6, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.7, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
+        footer_label.place(relx=0.68, rely=0.97, anchor=CENTER)
 
     def click_record_button(self, event, activating_img, normal_img, deny_img):
-        self.model.record(Constants.SIGNUP_DURATION,
-                          event.widget,
-                          activating_img,
-                          normal_img)
+        if not self.click:
+            self.model.record(Constants.SIGNUP_DURATION,
+                              event.widget,
+                              activating_img,
+                              normal_img)
+            self.click = False
 
     def sign_up(self):
         username = self.username_entry.get()

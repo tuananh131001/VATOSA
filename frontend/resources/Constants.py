@@ -9,5 +9,12 @@ LOGIN_DURATION = 3  # in seconds
 
 login_record_button_size = 310
 signup_record_button_size = 180
+entry_height = 43
+entry_radius = 10
 
 main_color = "#2B2C33"
+main_text_color = "white"
+alternative_text_color = "#FEA2A2"
+button_text_color = main_color
+button_bck_color = "white"
+footer_text_color = "white"

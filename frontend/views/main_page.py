@@ -17,11 +17,12 @@ class VatosaApp(Tk):
         width = int(self.winfo_screenwidth() / 1.2)
         height = self.winfo_screenheight()
 
-        frame_width = int(width / 1.5)
-        frame_height = int(height / 1.5)
+        self.frame_width = int(width / 1.5)
+        self.frame_height = int(height / 1.3)
 
         self.title("Vatosa")
         self.geometry(f'{width}x{height}')
+        self.resizable(False, False)
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
@@ -36,7 +37,7 @@ class VatosaApp(Tk):
         canvas.create_image(0, 0, anchor=NW, image=background_image)
 
         container = Frame(self, bg="")
-        canvas.create_window(width / 2, height / 2, width=frame_width, height=frame_height, window=container)
+        canvas.create_window(width / 2, height / 2, width=self.frame_width, height=self.frame_height, window=container)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 

@@ -30,29 +30,27 @@ def get_input_children(input_container):
         if children.winfo_class() == 'Frame':
             return children
 
+
 # tkinter element
 def create_input_text(root, entry_name, hidden=False):
-    entry_height = 43
     border_width = 2
     entry_vertical_padding = 8
     entry_horizontal_padding = border_width + 2
-    entry_radius = 10
 
-    entry_text_color = "white"
     entry_font_size = 20
 
     frame = customtkinter.CTkFrame(master=root,
-                                   corner_radius=entry_radius,
+                                   corner_radius=Constants.entry_radius,
                                    bg_color=Constants.main_color,
                                    fg_color=Constants.main_color,
-                                   border_color=entry_text_color,
+                                   border_color=Constants.main_text_color,
                                    border_width=border_width,
                                    relief="solid")
     # for display background of frame when have children inside
     frame.config(bg=Constants.main_color)
 
     # for storing the icon
-    canvas = Canvas(frame, background=Constants.main_color, width=50, height=entry_height)
+    canvas = Canvas(frame, background=Constants.main_color, width=50, height=Constants.entry_height)
     canvas.config(highlightthickness=0)
     canvas.pack(side="left", fill="y",
                 pady=entry_vertical_padding,
@@ -61,19 +59,19 @@ def create_input_text(root, entry_name, hidden=False):
     entry = customtkinter.CTkEntry(master=frame,
                                    placeholder_text=entry_name.upper(),
                                    width=250,
-                                   height=entry_height,
+                                   height=Constants.entry_height,
                                    border_width=0,
                                    fg_color=Constants.main_color,
                                    bg_color=Constants.main_color,
-                                   text_color=entry_text_color,
+                                   text_color=Constants.main_text_color,
                                    text_font=("Avenir", entry_font_size),
                                    show="*" if hidden else "")
 
     # for storing input
     entry.image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + entry_name}-icon.png')
-                                     .resize((entry_height - 10, entry_height - 10)))
-    canvas.create_image(entry_height / 2,
-                        entry_height / 2,
+                                     .resize((Constants.entry_height - 10, Constants.entry_height - 10)))
+    canvas.create_image(Constants.entry_height / 2,
+                        Constants.entry_height / 2,
                         image=entry.image)
 
     entry.pack(side="right", fill="both", expand=True,
@@ -82,14 +80,44 @@ def create_input_text(root, entry_name, hidden=False):
     return frame
 
 
-def create_button(root, btn_name, command):
-    return customtkinter.CTkButton(master=root, text=btn_name,
+def create_label_image(root, image_name, size):
+    root.image = image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + image_name}.png')
+                                            .resize(size))
+    return Label(root, bg=Constants.main_color, image=image)
+
+
+def create_footer(root):
+    return customtkinter.CTkLabel(master=root,
+                                  text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
+                                  text_color=Constants.footer_text_color,
+                                  bg_color=Constants.main_color,
+                                  text_font=("Heiti SC", 16))
+
+
+def create_text(root, text, text_color=Constants.main_text_color):
+    return customtkinter.CTkLabel(master=root,
+                                  text_color=text_color,
+                                  bg_color=Constants.main_color,
+                                  text=text,
+                                  text_font=("Avenir", 25),
+                                  wraplength=700)
+
+def create_button(root, btn_name, command,
+                  fg_color=Constants.button_bck_color,
+                  text_color=Constants.button_text_color,
+                  underline=False):
+    return customtkinter.CTkButton(master=root,
+                                   text=btn_name,
+                                   fg_color=fg_color,
+                                   text_color=text_color,
+                                   height=Constants.entry_height + 6,
+                                   text_font=("Avenir", 25, f'{"underline" if underline else ""}'),
+                                   width=316,
                                    command=command)
 
 
 def create_button_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
-
 
 
 def create_record_button(root, record_type="enroll", command=None):
@@ -103,8 +131,8 @@ def create_record_button(root, record_type="enroll", command=None):
                                                            image_size)
 
     # create the images
-    root.playImage = playImage = create_button_image(f'{Constants.IMG_CONTAINER_URL + record_type}_button.png',
-                                                     image_size)
+    root.normal_image = playImage = create_button_image(f'{Constants.IMG_CONTAINER_URL + record_type}_button.png',
+                                                        image_size)
     root.activating_image = activating_image = create_button_image(
         f'{Constants.IMG_CONTAINER_URL + record_type}_button_activating.png',
         image_size)
@@ -120,9 +148,9 @@ def create_record_button(root, record_type="enroll", command=None):
     # add event for it acting like a real button
     canvas1.tag_bind(button, "<Button-1>",
                      lambda event,
-                     activate_img=activating_image,
-                     normal_img=playImage,
-                     deny_img=deny_image:
+                            activate_img=activating_image,
+                            normal_img=playImage,
+                            deny_img=deny_image:
                      command(event, activate_img, normal_img, deny_img))
 
     return canvas1
