@@ -7,10 +7,10 @@ audio_filepath = "../../extractAudio/wavs/voxceleb1/test/wav/"  # wav format fil
 SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 10  # in seconds
 
-login_record_button_size = 310
-signup_record_button_size = 180
-entry_height = 43
-entry_radius = 10
+# login_record_button_size = 310
+# signup_record_button_size = 180
+# entry_height = 43
+# entry_radius = 10
 
 main_color = "#2B2C33"
 main_text_color = "white"
