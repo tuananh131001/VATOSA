@@ -5,6 +5,7 @@ from frontend.resources import Constants
 
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
+from frontend.views.traning_page import TrainingPage
 from result_page import ResultPage
 from login_page import LoginPage
 from PIL import ImageTk, Image
@@ -15,6 +16,7 @@ class VatosaApp(Tk):
         Tk.__init__(self, *args, **kwargs)
 
         width = int(self.winfo_screenwidth() / 1.2)
+        # width = self.winfo_screenwidth()
         height = self.winfo_screenheight()
 
         self.frame_width = int(width / 1.5)
@@ -22,7 +24,7 @@ class VatosaApp(Tk):
 
         self.title("Vatosa")
         self.geometry(f'{width}x{height}')
-        # self.resizable(False, False)
+        self.resizable(True, True)
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
@@ -32,7 +34,8 @@ class VatosaApp(Tk):
         canvas = Canvas(self, width=width, height=height)
         canvas.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-        background_image = ImageTk.PhotoImage(Image.open(Constants.IMG_CONTAINER_URL + "background.png"))
+        bg = Image.open(Constants.IMG_CONTAINER_URL + "background.png").resize((width, height))
+        background_image = ImageTk.PhotoImage(bg)
         canvas.background_image = background_image
         canvas.create_image(0, 0, anchor=NW, image=background_image)
 
@@ -45,7 +48,7 @@ class VatosaApp(Tk):
         self.frames = {}
 
         # iterating through page layouts
-        for Page in (EnrollPage, LoginPage, ResultPage):
+        for Page in (EnrollPage, TrainingPage, LoginPage, ResultPage):
             frame = Page(container, self)
 
             # init frame and store to array
@@ -57,7 +60,7 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user:
-            self.show_frame(LoginPage)
+            self.show_frame(EnrollPage)
         else:
             self.show_frame(EnrollPage)
 

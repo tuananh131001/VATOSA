@@ -2,6 +2,7 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
+from frontend.views.traning_page import TrainingPage
 
 from login_page import LoginPage
 # from page1 import Page1
@@ -65,7 +66,8 @@ class EnrollPage(Frame):
 
     def click_record_button(self, event, activating_img, normal_img, deny_img):
         if not self.click:
-            self.model.record(Constants.SIGNUP_DURATION,
+            self.click = True
+            self.model.record("enroll",
                               event.widget,
                               activating_img,
                               normal_img)
@@ -74,11 +76,17 @@ class EnrollPage(Frame):
     def sign_up(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-
+        allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
+        # special_characters = "!@#$%^&*()-+?_=,.<>/"
         if username == "" or password == "" or not self.model.has_record_enroll:
-            # add validate username here
-            # add validate password here
+            print("Please fill in all the information")
             return
+        elif len(password) < 5 or any((not c.isalnum()) and (c not in allowed) for c in password):
+            print("Password must have more than 5 characters. "
+                  "Valid values for passwords include alphanumeric, !, @, #, $, %, ^, &, or *. "
+                  "No other special characters are allowed.")
+            return
+
 
         # Write date to json file
         user_info_dict = {"username": username, "password": password}
@@ -93,4 +101,4 @@ class EnrollPage(Frame):
         print("Sign up done")
         # move to next page
         print(self.model.current_user)
-        self.controller.show_frame(LoginPage)
+        self.controller.show_frame(TrainingPage(username))

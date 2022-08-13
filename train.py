@@ -15,10 +15,9 @@ import matplotlib.pyplot as plt
 
 def load_dataset(val_ratio):
     # Load training set and validation set
-    
-    
+
     # Split training set into training set and validation set according to "val_ratio"
-    train_DB, valid_DB = split_train_dev(c.TRAIN_FEAT_DIR, val_ratio) 
+    train_DB, valid_DB = split_train_dev(c.TRAIN_FEAT_DIR, val_ratio)
     
     file_loader = read_MFB # numpy array:(n_frames, n_dims)
      

@@ -8,6 +8,9 @@
 # from ..resources import Constants
 import os
 import time
+import pickle
+
+from playsound import playsound
 
 from frontend.resources import Constants
 
@@ -102,6 +105,7 @@ def create_text(root, text, text_color=Constants.main_text_color):
                                   text_font=("Avenir", 25),
                                   wraplength=700)
 
+
 def create_button(root, btn_name, command,
                   fg_color=Constants.button_bck_color,
                   text_color=Constants.button_text_color,
@@ -122,7 +126,7 @@ def create_button_image(image_url, image_size):
 
 def create_record_button(root, record_type="enroll", command=None):
     # initializing the image properties
-    if record_type == "enroll":
+    if record_type == "enroll" or record_type == "train":
         image_size = Constants.signup_record_button_size
         deny_image = None
     else:
@@ -160,6 +164,7 @@ class ControlModel:
 
     def __init__(self):
         self.recording = None
+        self.recording_train = []
         # define file sample rate
         self.freq = 22050
 
@@ -177,12 +182,18 @@ class ControlModel:
         # file duration and file name
         if record_type == "enroll":
             duration = Constants.SIGNUP_DURATION
+        elif record_type == "train":
+            duration = Constants.TRAIN_DURATION
         else:
             duration = Constants.LOGIN_DURATION
 
         # start recording
         print("Start Recording")
-        self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
+        if record_type == "train":
+            playsound('..\\materials\\start-record.wav')
+            self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
+        else:
+            self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
         canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
@@ -197,20 +208,36 @@ class ControlModel:
 
         # write the recorded audio to file
         print("Done Recording")
+        playsound('..\\materials\\end-record.wav')
         self.has_record_enroll = True
 
     def write_record(self, username="", record_type="enroll"):
         if record_type == "login":
             # create directory if not exist
-            pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+            pathlib.Path(f'{Constants.audio_filepath + username}/enroll.wav').mkdir(parents=True, exist_ok=True)
             # write recording file
             write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
-            # add to train here
+        # train: write wav file to feat_logbank_nfilt40/train_wav/{username}
+        elif record_type == "train":
+            try:
+                train_wav_dir = Constants.train_wav_filepath + username
+                os.makedirs(train_wav_dir, exist_ok=True)
+                for i in range(1,2):
+                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i-1])
+
+                train_dir = Constants.train_filepath + username
+                os.makedirs(train_dir, exist_ok=True)
+                for i in range(1,2):
+                    with open(f'{train_dir}/{username}_train{i}.p', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/{username}_train{i}.wav', f)
+            except OSError as error:
+                print("Directory can not be created: ", error)
+
         else:
             try:
                 # write recording file
-                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+                write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
                 # add for authenticate here
             except:
