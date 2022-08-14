@@ -8,6 +8,9 @@
 # from ..resources import Constants
 import os
 import time
+import pickle
+
+from playsound import playsound
 
 from frontend.resources import Constants
 
@@ -24,6 +27,8 @@ from PIL import Image, ImageTk
 
 
 # utility
+def update_label_variable(label, new_value):
+    label.cget("textvariable").set(new_value)
 def get_input_children(input_container):
     for children in input_container.winfo_children():
         # if children is frame -> means is CTkEntry
@@ -31,16 +36,40 @@ def get_input_children(input_container):
             return children
 
 
-# tkinter element
-def create_input_text(root, entry_name, hidden=False):
-    border_width = 2
-    entry_vertical_padding = 8
-    entry_horizontal_padding = border_width + 2
+def get_assist_size_input_text(entry_width, entry_height, default_font_size):
+    # self.entry_radius = 10
+    entry_radius = int(entry_width / 25)
 
-    entry_font_size = 20
+    # border_width = 2
+    border_width = int(entry_width / 125)
+    if border_width < 1:
+        border_width = 1
+
+    # entry_vertical_padding = 8
+    entry_vertical_padding = int(entry_height / 5.17)
+
+    # entry_horizontal_padding = border_width + 2
+    entry_horizontal_padding = border_width * 2
+
+    # entry_font_size = 20
+    entry_font_size = int(default_font_size / 1.25)
+
+    return entry_radius, border_width, entry_vertical_padding, entry_horizontal_padding, entry_font_size
+
+
+# tkinter element
+def create_input_text(root, entry_name, entry_width, entry_height,
+                      default_font_size,
+                      hidden=False):
+    entry_radius, border_width, \
+    entry_vertical_padding, \
+    entry_horizontal_padding, entry_font_size = get_assist_size_input_text(entry_width, entry_height, default_font_size)
+
+    # icon_size = entry_height - 10
+    icon_size = entry_height - int(entry_height / 4.3)
 
     frame = customtkinter.CTkFrame(master=root,
-                                   corner_radius=Constants.entry_radius,
+                                   corner_radius=entry_radius,
                                    bg_color=Constants.main_color,
                                    fg_color=Constants.main_color,
                                    border_color=Constants.main_text_color,
@@ -50,28 +79,27 @@ def create_input_text(root, entry_name, hidden=False):
     frame.config(bg=Constants.main_color)
 
     # for storing the icon
-    canvas = Canvas(frame, background=Constants.main_color, width=50, height=Constants.entry_height)
+    canvas = Canvas(frame, background=Constants.main_color, width=entry_width / 5, height=entry_height)
     canvas.config(highlightthickness=0)
     canvas.pack(side="left", fill="y",
                 pady=entry_vertical_padding,
                 padx=entry_horizontal_padding)
 
+    # for storing input
     entry = customtkinter.CTkEntry(master=frame,
                                    placeholder_text=entry_name.upper(),
-                                   width=250,
-                                   height=Constants.entry_height,
+                                   width=entry_width,
+                                   height=entry_height,
                                    border_width=0,
                                    fg_color=Constants.main_color,
                                    bg_color=Constants.main_color,
                                    text_color=Constants.main_text_color,
-                                   text_font=("Avenir", entry_font_size),
+                                   text_font=("Avenir", entry_font_size-4),
                                    show="*" if hidden else "")
-
-    # for storing input
     entry.image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + entry_name}-icon.png')
-                                     .resize((Constants.entry_height - 10, Constants.entry_height - 10)))
-    canvas.create_image(Constants.entry_height / 2,
-                        Constants.entry_height / 2,
+                                     .resize((icon_size, icon_size)))
+    canvas.create_image(entry_height / 2,
+                        entry_height / 2,
                         image=entry.image)
 
     entry.pack(side="right", fill="both", expand=True,
@@ -86,59 +114,84 @@ def create_label_image(root, image_name, size):
     return Label(root, bg=Constants.main_color, image=image)
 
 
-def create_footer(root):
-    return customtkinter.CTkLabel(master=root,
-                                  text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
-                                  text_color=Constants.footer_text_color,
-                                  bg_color=Constants.main_color,
-                                  text_font=("Heiti SC", 16))
+def create_footer(root, default_font_size):
+    # footer_font_size = 16
+    footer_font_size = int(default_font_size / 1.55)
+    footer = customtkinter.CTkLabel(master=root,
+                                    text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
+                                    text_color=Constants.footer_text_color,
+                                    bg_color=Constants.main_color,
+                                    text_font=("Heiti SC", footer_font_size))
+    footer.place(relx=1.0, rely=1, anchor=SE)
+    return footer
 
-
-def create_text(root, text, text_color=Constants.main_text_color):
+def create_text(root, text,
+                font_size,
+                text_color=Constants.main_text_color):
     return customtkinter.CTkLabel(master=root,
                                   text_color=text_color,
                                   bg_color=Constants.main_color,
                                   text=text,
-                                  text_font=("Avenir", 25),
+                                  text_font=("Avenir", font_size),
                                   wraplength=700)
 
-def create_button(root, btn_name, command,
+
+def create_button(root, btn_name, command, entry_width, entry_height,
+                  font_size,
                   fg_color=Constants.button_bck_color,
-                  text_color=Constants.button_text_color,
-                  underline=False):
+                  text_color=Constants.button_text_color):
+    entry_radius, border_width, \
+                entry_vertical_padding, \
+                entry_horizontal_padding, \
+                font_size = get_assist_size_input_text(entry_width, entry_height, font_size)
+    button_width = entry_width + entry_horizontal_padding * 2 + border_width * 2 + entry_width / 5
+    button_height = entry_height + entry_vertical_padding * 2 + border_width * 2
     return customtkinter.CTkButton(master=root,
                                    text=btn_name,
                                    fg_color=fg_color,
                                    text_color=text_color,
-                                   height=Constants.entry_height + 6,
-                                   text_font=("Avenir", 25, f'{"underline" if underline else ""}'),
-                                   width=316,
+                                   width=button_width,
+                                   height=button_height,
+                                   corner_radius=entry_radius,
+                                   text_font=("Avenir", font_size),
                                    command=command)
 
 
-def create_button_image(image_url, image_size):
+def create_click_text(root, btn_name, command, entry_height,
+                      font_size,
+                      fg_color=Constants.button_bck_color,
+                      text_color=Constants.button_text_color):
+    button_height = entry_height
+    return customtkinter.CTkButton(master=root,
+                                   text=btn_name,
+                                   fg_color=fg_color,
+                                   text_color=text_color,
+                                   height=button_height,
+                                   text_font=("Avenir", font_size, "underline"),
+                                   command=command)
+
+
+def create_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
-def create_record_button(root, record_type="enroll", command=None):
+def create_record_button(root, image_size, record_type="enroll", command=None):
     # initializing the image properties
-    if record_type == "enroll":
-        image_size = Constants.signup_record_button_size
+    if record_type == "enroll" or record_type == "train":
         deny_image = None
     else:
-        image_size = Constants.login_record_button_size
-        root.deny_image = deny_image = create_button_image(f'{Constants.IMG_CONTAINER_URL}login_button_deny.png',
-                                                           image_size)
+        root.deny_image = deny_image = create_image(f'{Constants.IMG_CONTAINER_URL}login_button_deny.png',
+                                                    image_size)
 
     # create the images
-    root.normal_image = playImage = create_button_image(f'{Constants.IMG_CONTAINER_URL + record_type}_button.png',
-                                                        image_size)
-    root.activating_image = activating_image = create_button_image(
+    root.normal_image = playImage = create_image(f'{Constants.IMG_CONTAINER_URL + record_type}_button.png',
+                                                 image_size)
+    root.activating_image = activating_image = create_image(
         f'{Constants.IMG_CONTAINER_URL + record_type}_button_activating.png',
         image_size)
 
     # create container
-    canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color)
+    canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color, cursor="hand2")
     canvas1.configure(highlightthickness=0)
 
     # store image to container
@@ -160,11 +213,14 @@ class ControlModel:
 
     def __init__(self):
         self.recording = None
+        self.recording_train = []
         # define file sample rate
         self.freq = 22050
 
         self.has_record_enroll = False
         self.current_user = {}
+
+        self.remaining_time_record = 0
 
         self.current_identify_result = False
         self.current_login_count = 0
@@ -172,29 +228,38 @@ class ControlModel:
         self.read_file()
 
     # recording
-    def record(self, record_type, canvas=None, activating_image=None, normal_image=None):
+    def record(self, record_type, count_down, canvas=None, activating_image=None, normal_image=None):
         button = canvas.find_withtag("canvas_button")[0]
         # file duration and file name
         if record_type == "enroll":
             duration = Constants.SIGNUP_DURATION
+        elif record_type == "train":
+            duration = Constants.TRAIN_DURATION
         else:
             duration = Constants.LOGIN_DURATION
 
         # start recording
-        print("Start Recording")
-        self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
+        if record_type == "train":
+            playsound('..\\materials\\start-record.wav')
+            print("Start Recording")
+            self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
+        else:
+            print("Start Recording")
+            self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
         canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
-        temp = duration
-        while temp > 0:
+        self.remaining_time_record = duration
+        while self.remaining_time_record >= 0:
+            count_down.configure(text=str(self.remaining_time_record))
             canvas.update()
             time.sleep(1)
-            temp -= 1
-            if temp == 0:
-                canvas.itemconfig(button, image=normal_image)
-        sd.wait()
+            self.remaining_time_record -= 1
+        sd.wait(duration)
 
+        count_down.configure(text="")
+        canvas.itemconfig(button, image=normal_image)
+        playsound('..\\materials\\end-record.wav')
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True
@@ -206,7 +271,22 @@ class ControlModel:
             # write recording file
             write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
-            # add to train here
+        # train: write wav file to feat_logbank_nfilt40/train_wav/{username}
+        elif record_type == "train":
+            try:
+                train_wav_dir = Constants.train_wav_filepath + username
+                os.makedirs(train_wav_dir, exist_ok=True)
+                for i in range(1,2):
+                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i-1])
+
+                train_dir = Constants.train_filepath + username
+                os.makedirs(train_dir, exist_ok=True)
+                for i in range(1,2):
+                    with open(f'{train_dir}/{username}_train{i}.p', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/{username}_train{i}.wav', f)
+            except OSError as error:
+                print("Directory can not be created: ", error)
+
         else:
             try:
                 # write recording file
@@ -219,10 +299,10 @@ class ControlModel:
                 write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
 
     def identify_voice(self,
-                       record_type, event,
+                       record_type, count_down, event,
                        activating_img, normal_img, deny_img):
         self.current_login_count += 1
-        self.record(Constants.LOGIN_DURATION,
+        self.record("login", count_down,
                     event.widget,
                     activating_img,
                     normal_img)
