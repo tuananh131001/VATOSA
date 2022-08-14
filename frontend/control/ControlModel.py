@@ -94,7 +94,7 @@ def create_input_text(root, entry_name, entry_width, entry_height,
                                    fg_color=Constants.main_color,
                                    bg_color=Constants.main_color,
                                    text_color=Constants.main_text_color,
-                                   text_font=("Avenir", entry_font_size),
+                                   text_font=("Avenir", entry_font_size-4),
                                    show="*" if hidden else "")
     entry.image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + entry_name}-icon.png')
                                      .resize((icon_size, icon_size)))
@@ -191,7 +191,7 @@ def create_record_button(root, image_size, record_type="enroll", command=None):
         image_size)
 
     # create container
-    canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color)
+    canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color, cursor="hand2")
     canvas1.configure(highlightthickness=0)
 
     # store image to container
@@ -228,7 +228,7 @@ class ControlModel:
         self.read_file()
 
     # recording
-    def record(self, record_type, canvas=None, activating_image=None, normal_image=None):
+    def record(self, record_type, count_down, canvas=None, activating_image=None, normal_image=None):
         button = canvas.find_withtag("canvas_button")[0]
         # file duration and file name
         if record_type == "enroll":
@@ -239,27 +239,29 @@ class ControlModel:
             duration = Constants.LOGIN_DURATION
 
         # start recording
-        print("Start Recording")
         if record_type == "train":
             playsound('..\\materials\\start-record.wav')
+            print("Start Recording")
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
+            print("Start Recording")
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
         canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
         self.remaining_time_record = duration
-        while self.remaining_time_record > 0:
+        while self.remaining_time_record >= 0:
+            count_down.configure(text=str(self.remaining_time_record))
             canvas.update()
             time.sleep(1)
             self.remaining_time_record -= 1
-            if self.remaining_time_record == 0:
-                canvas.itemconfig(button, image=normal_image)
-        sd.wait()
+        sd.wait(duration)
 
+        count_down.configure(text="")
+        canvas.itemconfig(button, image=normal_image)
+        playsound('..\\materials\\end-record.wav')
         # write the recorded audio to file
         print("Done Recording")
-        playsound('..\\materials\\end-record.wav')
         self.has_record_enroll = True
 
     def write_record(self, username="", record_type="enroll"):
@@ -297,10 +299,10 @@ class ControlModel:
                 write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
 
     def identify_voice(self,
-                       record_type, event,
+                       record_type, count_down, event,
                        activating_img, normal_img, deny_img):
         self.current_login_count += 1
-        self.record(Constants.LOGIN_DURATION,
+        self.record("login", count_down,
                     event.widget,
                     activating_img,
                     normal_img)

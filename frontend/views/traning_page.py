@@ -1,4 +1,6 @@
 from tkinter import *
+
+import customtkinter
 from PIL import ImageTk, Image
 import pickle
 import os
@@ -6,7 +8,8 @@ from playsound import playsound
 import train
 from frontend.control import ControlModel
 from frontend.resources import Constants
-from frontend.views.login_page import LoginPage
+from login_page import LoginPage
+from subprocess import call
 
 
 class TrainingPage(Frame):
@@ -29,6 +32,7 @@ class TrainingPage(Frame):
 
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
 
+        count_down = ControlModel.create_text(self, "", 12)
 
         # Button
         # record
@@ -37,7 +41,7 @@ class TrainingPage(Frame):
                                                        activating_img,
                                                        normal_img,
                                                        deny_img=None:
-                                                       self.click_record_button(event,
+                                                       self.click_record_button(count_down, event,
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
@@ -47,16 +51,19 @@ class TrainingPage(Frame):
                                                 self.controller.entry_height,
                                                 self.controller.default_font_size)
 
+
+
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.42, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.52, anchor=CENTER)
+        count_down.place(relx=0.5, rely=0.7, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
         # footer_label.place(relx=0.68, rely=0.97, anchor=CENTER)
 
-    def click_record_button(self, event, activating_img, normal_img, deny_img):
+    def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if self.count < 10 and not self.click:
             self.click = True
-            self.model.record("train",
+            self.model.record("train", count_down,
                               event.widget,
                               activating_img,
                               normal_img)
@@ -90,10 +97,11 @@ class TrainingPage(Frame):
             # with open(f'../../feat_logfbank_nfilt40/train/{username}/{username}_train1.p', 'rb') as file:
             #     playsound(pickle.load(file))
 
-            train.main()
+            # Popen('python train.py')
+            # train.py
+            # call(["python", "../../train.py"])
             print("Train done")
-
-            # self.controller.show_frame(LoginPage)
+            self.controller.show_frame(LoginPage)
         else:
             playsound('../materials/message.wav')
             return

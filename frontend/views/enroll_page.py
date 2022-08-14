@@ -35,7 +35,7 @@ class EnrollPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
-
+        count_down = ControlModel.create_text(self, "", 12)
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                       self.controller.entry_height,
@@ -55,7 +55,7 @@ class EnrollPage(Frame):
                                                        activating_img,
                                                        normal_img,
                                                        deny_img=None:
-                                                       self.click_record_button(event,
+                                                       self.click_record_button(count_down, event,
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
@@ -67,16 +67,15 @@ class EnrollPage(Frame):
 
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.42, anchor=CENTER)
-        username_box.place(relx=0.5, rely=0.6, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.7, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
-        # footer_label.place(relx=0.68, rely=0.97, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.68, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.76, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.86, anchor=CENTER)
 
-    def click_record_button(self, event, activating_img, normal_img, deny_img):
+    def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
             self.click = True
-            self.model.record("enroll",
+            self.model.record("enroll", count_down,
                               event.widget,
                               activating_img,
                               normal_img)
@@ -86,7 +85,6 @@ class EnrollPage(Frame):
         username = self.username_entry.get()
         password = self.password_entry.get()
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
-        # special_characters = "!@#$%^&*()-+?_=,.<>/"
         if username == "" or password == "" or not self.model.has_record_enroll:
             print("Please fill in all the information")
             return
@@ -109,4 +107,4 @@ class EnrollPage(Frame):
         print("Sign up done")
         # move to next page
         print(self.model.current_user)
-        self.controller.show_frame(TrainingPage(username))
+        self.controller.show_frame(LoginPage)
