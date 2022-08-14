@@ -1,28 +1,50 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
 import customtkinter
-from frontend.resources import Constants
+from PIL import ImageTk, Image
 
+from frontend.resources import Constants
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
+from traning_page import TrainingPage
 from result_page import ResultPage
 from login_page import LoginPage
-from PIL import ImageTk, Image
+
 
 
 class VatosaApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
-
-        width = int(self.winfo_screenwidth() / 1.2)
         height = self.winfo_screenheight()
+        width = self.winfo_screenwidth()
 
-        self.frame_width = int(width / 1.5)
-        self.frame_height = int(height / 1.3)
+        if width <= 700:
+            width = int(self.winfo_screenwidth() / 1.02)
+            self.frame_width = int(width / 1.05)
+            self.frame_height = int(height / 1.1)
+
+            self.login_record_button_size = int(self.frame_width / 5.2)
+            self.signup_record_button_size = int(self.frame_width / 7.8)
+        else:
+            width = int(self.winfo_screenwidth() / 1.1)
+            self.frame_width = int(width / 1.3)
+            self.frame_height = int(height / 1.3)
+
+            self.login_record_button_size = int(self.frame_width / 3.4)
+            self.signup_record_button_size = int(self.frame_width / 5.8)
+
+        self.entry_height = int(self.frame_height / 17.5)
+        self.entry_width = int(self.frame_width / 4.22)
+
+        self.signup_welcome_label_width = int(self.frame_width / 1.85)
+        self.signup_welcome_label_height = int(self.frame_height / 7.15)
+        self.login_welcome_label_width = int(self.frame_width / 2.27)
+        self.login_welcome_label_height = int(self.frame_height / 9.28)
+        self.default_font_size = int(self.frame_width / 42.1)
 
         self.title("Vatosa")
         self.geometry(f'{width}x{height}')
-        # self.resizable(False, False)
+        self.resizable(True, True)
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
@@ -32,9 +54,13 @@ class VatosaApp(Tk):
         canvas = Canvas(self, width=width, height=height)
         canvas.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-        background_image = ImageTk.PhotoImage(Image.open(Constants.IMG_CONTAINER_URL + "background.png"))
-        canvas.background_image = background_image
+        bg = Image.open(Constants.IMG_CONTAINER_URL + "background.png").resize((width, height))
+        background_image = ImageTk.PhotoImage(bg)
+        # label = Label(canvas, image=background_image)
+        # label.place(relx=0.5, rely=0.5, anchor=CENTER)
         canvas.create_image(0, 0, anchor=NW, image=background_image)
+        canvas.background_image = background_image
+        # canvas.create_image(0, 0, anchor=NW, image=background_image)
 
         container = Frame(self, bg="")
         canvas.create_window(width / 2, height / 2, width=self.frame_width, height=self.frame_height, window=container)
@@ -45,7 +71,7 @@ class VatosaApp(Tk):
         self.frames = {}
 
         # iterating through page layouts
-        for Page in (EnrollPage, LoginPage, ResultPage):
+        for Page in (EnrollPage, TrainingPage, LoginPage, ResultPage):
             frame = Page(container, self)
 
             # init frame and store to array

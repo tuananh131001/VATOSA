@@ -2,6 +2,7 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
+from frontend.views.traning_page import TrainingPage
 
 from login_page import LoginPage
 # from page1 import Page1
@@ -30,42 +31,51 @@ class EnrollPage(Frame):
 
     def build_page(self):
         # label
-        label_width = 570
-        label_height = 105
         welcome_label = ControlModel.create_label_image(self, "vatosa_enroll_title",
-                                                        (label_width, label_height))
-        footer_label = ControlModel.create_footer(self)
-
+                                                        (self.controller.signup_welcome_label_width,
+                                                         self.controller.signup_welcome_label_height))
+        footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
+        count_down = ControlModel.create_text(self, "", 12)
         # Entry Input
-        username_box = ControlModel.create_input_text(self, "Username")
-        password_box = ControlModel.create_input_text(self, "Password", True)
+        username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
+                                                      self.controller.entry_height,
+                                                      self.controller.default_font_size)
+        password_box = ControlModel.create_input_text(self, "Password", self.controller.entry_width,
+                                                      self.controller.entry_height,
+                                                      self.controller.default_font_size,
+                                                      True)
 
         self.username_entry = ControlModel.get_input_children(username_box)
         self.password_entry = ControlModel.get_input_children(password_box)
 
         # Button
         # record
-        record_btn = ControlModel.create_record_button(self, "enroll", lambda event,
-                                                                       activating_img,
-                                                                       normal_img,
-                                                                       deny_img=None:
-                                                                       self.click_record_button(event,
-                                                                                                activating_img,
-                                                                                                normal_img,
-                                                                                                deny_img))
-        submit_btn = ControlModel.create_button(self, "Submit", self.sign_up)
+        record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size,
+                                                       "enroll", lambda event,
+                                                       activating_img,
+                                                       normal_img,
+                                                       deny_img=None:
+                                                       self.click_record_button(count_down, event,
+                                                                                activating_img,
+                                                                                normal_img,
+                                                                                deny_img))
+        submit_btn = ControlModel.create_button(self, "Submit".upper(),
+                                                self.sign_up,
+                                                self.controller.entry_width,
+                                                self.controller.entry_height,
+                                                self.controller.default_font_size)
 
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.42, anchor=CENTER)
-        username_box.place(relx=0.5, rely=0.6, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.7, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
-        footer_label.place(relx=0.68, rely=0.97, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.68, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.76, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.86, anchor=CENTER)
 
-    def click_record_button(self, event, activating_img, normal_img, deny_img):
+    def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
-            self.model.record(Constants.SIGNUP_DURATION,
+            self.click = True
+            self.model.record("enroll", count_down,
                               event.widget,
                               activating_img,
                               normal_img)
@@ -74,10 +84,14 @@ class EnrollPage(Frame):
     def sign_up(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-
+        allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if username == "" or password == "" or not self.model.has_record_enroll:
-            # add validate username here
-            # add validate password here
+            print("Please fill in all the information")
+            return
+        elif len(password) < 5 or any((not c.isalnum()) and (c not in allowed) for c in password):
+            print("Password must have more than 5 characters. "
+                  "Valid values for passwords include alphanumeric, !, @, #, $, %, ^, &, or *. "
+                  "No other special characters are allowed.")
             return
 
         # Write date to json file
