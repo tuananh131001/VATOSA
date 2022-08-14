@@ -1,30 +1,64 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
 import customtkinter
-from frontend.resources import Constants
+from PIL import ImageTk, Image
 
+from frontend.resources import Constants
 from frontend.control import ControlModel
 from enroll_page import EnrollPage
 from frontend.views.traning_page import TrainingPage
 from result_page import ResultPage
 from login_page import LoginPage
-from PIL import ImageTk, Image
+
 
 
 class VatosaApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
+        # height = self.winfo_screenheight()
+        width=491
+        height = 241
 
-        width = int(self.winfo_screenwidth() / 1.2)
-        # width = self.winfo_screenwidth()
-        height = self.winfo_screenheight()
+        if width <= 700:
+            width = int(self.winfo_screenwidth() / 1.02)
+            width = 491
+            self.frame_width = int(width / 1.05)
+            self.frame_height = int(height / 1.1)
 
-        self.frame_width = int(width / 1.5)
-        self.frame_height = int(height / 1.3)
+            # self.login_record_button_size = 310
+            self.login_record_button_size = int(self.frame_width / 5.2)
+            # self.signup_record_button_size = 180
+            self.signup_record_button_size = int(self.frame_width / 7.8)
+        else:
+            width = int(self.winfo_screenwidth() / 1.1)
+            self.frame_width = int(width / 1.3)
+            self.frame_height = int(height / 1.3)
+
+            # self.login_record_button_size = 310
+            self.login_record_button_size = int(self.frame_width / 3.4)
+            # self.signup_record_button_size = 180
+            self.signup_record_button_size = int(self.frame_width / 5.8)
+
+        # self.entry_height = 43
+        self.entry_height = int(self.frame_height / 17.5)
+        # self.entry_width = 250
+        self.entry_width = int(self.frame_width / 4.22)
+
+        # self.signup_label_width = 570
+        self.signup_welcome_label_width = int(self.frame_width / 1.85)
+        # self.signup_label_height = 105
+        self.signup_welcome_label_height = int(self.frame_height / 7.15)
+        # self.login_label_width = 465
+        self.login_welcome_label_width = int(self.frame_width / 2.27)
+        # self.login_label_height = 81
+        self.login_welcome_label_height = int(self.frame_height / 9.28)
+        # self.default_font = 25
+        self.default_font_size = int(self.frame_width / 42.1)
+
 
         self.title("Vatosa")
         self.geometry(f'{width}x{height}')
-        self.resizable(True, True)
+        # self.resizable(True, True)
         # Window only
         # self.wm_attributes('-transparentcolor', '#ab23ff')
 
@@ -60,7 +94,7 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user:
-            self.show_frame(EnrollPage)
+            self.show_frame(LoginPage)
         else:
             self.show_frame(EnrollPage)
 

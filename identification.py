@@ -13,12 +13,14 @@ from model.model import background_resnet
 
 
 def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
-    model = background_resnet(embedding_size=embedding_size, num_classes=n_classes)
+    model = background_resnet(
+        embedding_size=embedding_size, num_classes=n_classes)
     if use_cuda:
         model.cuda()
     print('=> loading checkpoint')
     # original saved file with DataParallel
-    checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth', map_location=torch.device('cpu'))
+    checkpoint = torch.load(log_dir + '/checkpoint_' +
+                            str(cp_num) + '.pth', map_location=torch.device('cpu'))
     # create new OrderedDict that does not contain `module.`
     model.load_state_dict(checkpoint['state_dict'])
 
@@ -46,7 +48,8 @@ def load_enroll_embeddings(embedding_dir):
         spk = f.replace('.pth', '')
         # Select the speakers who are in the 'enroll_spk_list'
         embedding_path = os.path.join(embedding_dir, f)
-        tmp_embeddings = torch.load(embedding_path, map_location=torch.device('cpu'))
+        tmp_embeddings = torch.load(
+            embedding_path, map_location=torch.device('cpu'))
         embeddings[spk] = tmp_embeddings
 
     return embeddings
@@ -55,7 +58,8 @@ def load_enroll_embeddings(embedding_dir):
 def get_embeddings(use_cuda, filename, model, test_frames):
     input, label = read_MFB(filename)  # input size:(n_frames, n_dims)
 
-    tot_segments = math.ceil(len(input) / test_frames)  # total number of segments with 'test_frames'
+    # total number of segments with 'test_frames'
+    tot_segments = math.ceil(len(input) / test_frames)
     activation = 0
     with torch.no_grad():
         for i in range(tot_segments):
@@ -76,7 +80,8 @@ def get_embeddings(use_cuda, filename, model, test_frames):
 
 def l2_norm(input, alpha):
     input_size = input.size()  # size:(n_frames, dim)
-    buffer = torch.pow(input, 2)  # 2 denotes a squared operation. size:(n_frames, dim)
+    # 2 denotes a squared operation. size:(n_frames, dim)
+    buffer = torch.pow(input, 2)
     normp = torch.sum(buffer, 1).add_(1e-10)  # size:(n_frames)
     norm = torch.sqrt(normp)  # size:(n_frames)
     _output = torch.div(input, norm.view(-1, 1).expand_as(input))
@@ -87,7 +92,8 @@ def l2_norm(input, alpha):
 
 
 def perform_identification(use_cuda, model, embeddings, test_filename, test_frames, spk_list):
-    test_embedding = get_embeddings(use_cuda, test_filename, model, test_frames)
+    test_embedding = get_embeddings(
+        use_cuda, test_filename, model, test_frames)
     max_score = -10 ** 8
     best_spk = None
     for spk in spk_list:
@@ -100,8 +106,9 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
     print(test_filename)
     true_spk = test_filename.split('/')[-1].split('\\')[0]
     print("\n=== Speaker identification ===")
-    print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" % (true_spk, best_spk, true_spk == best_spk))
-    return best_spk
+    print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" %
+          (true_spk, best_spk, true_spk == best_spk))
+    return true_spk == best_spk
 
 
 def main():
@@ -138,8 +145,10 @@ def main():
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
-    # Perform the test 
-    best_spk = perform_identification(use_cuda, model, embeddings, test_path, test_frames, spk_list)
+    # Perform the test
+    isUser = perform_identification(
+        use_cuda, model, embeddings, test_path, test_frames, spk_list)
+    return isUser
 
 
 if __name__ == '__main__':
