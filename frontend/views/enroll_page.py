@@ -23,9 +23,11 @@ class EnrollPage(Frame):
         self.model = root.model
         self.click = False
 
+
         # tkinter element
         self.username_entry = None
         self.password_entry = None
+        self.enroll_message = None
 
         self.build_page()
 
@@ -37,6 +39,7 @@ class EnrollPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
                                                     f"enroll your voice", Constants.count_down_size)
+        self.enroll_message = ControlModel.create_text(self, '', 10)
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                       self.controller.entry_height,
@@ -73,6 +76,7 @@ class EnrollPage(Frame):
         username_box.place(relx=0.5, rely=0.68, anchor=CENTER)
         password_box.place(relx=0.5, rely=0.76, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.86, anchor=CENTER)
+        self.enroll_message.place(relx=0.5, rely=0.92, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
@@ -88,12 +92,13 @@ class EnrollPage(Frame):
         password = self.password_entry.get()
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if username == "" or password == "" or not self.model.has_record_enroll:
-            print("Please fill in all the information")
+            self.enroll_message.config(text="Please fill in all the information")
             return
-        elif len(password) < 5 or any((not c.isalnum()) and (c not in allowed) for c in password):
-            print("Password must have more than 5 characters. "
-                  "Valid values for passwords include alphanumeric, !, @, #, $, %, ^, &, or *. "
-                  "No other special characters are allowed.")
+        elif len(password) < 5:
+            self.enroll_message.config(text="Password must have at least 5 characters")
+            return
+        elif any((not c.isalnum()) and (c not in allowed) for c in password):
+            self.enroll_message.config(text="Valid values for password only include alphanumeric, !, @, #, $, %, ^, &, *")
             return
 
         # Write date to json file

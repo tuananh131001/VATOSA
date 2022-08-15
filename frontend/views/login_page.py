@@ -25,6 +25,7 @@ class LoginPage(Frame):
         self.change_alternative_label = None
         self.record_btn = None
         self.login_btn = None
+        self.login_message = None
 
         # create and place tkinter elements
         self.build_page()
@@ -39,7 +40,9 @@ class LoginPage(Frame):
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 7)
-
+        count_down = ControlModel.create_text(self, "", Constants.count_down_size)
+        # self.login_message = ControlModel.create_text(self, "dsgjckx", Constants.count_down_size)
+        self.login_message = ControlModel.create_text(self, '', 10)
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                            self.controller.entry_height,
@@ -53,7 +56,6 @@ class LoginPage(Frame):
         self.password_entry = ControlModel.get_input_children(self.password_box)
 
         # Button
-        count_down = ControlModel.create_text(self, "", Constants.count_down_size)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
@@ -82,6 +84,8 @@ class LoginPage(Frame):
         count_down.place(relx=0.5, rely=0.68, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
+
         # self.change_alternative_label.bind('<Button-1>', lambda event: print("clcik"))
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
@@ -114,6 +118,7 @@ class LoginPage(Frame):
         self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)
+        # self.login_message(relx=0.5, rely=0.7, anchor=CENTER)
 
     def login(self):
         username_input = self.username_entry.get()
@@ -123,6 +128,7 @@ class LoginPage(Frame):
         if username_input != self.model.current_user.get("username") \
                 or password_input != self.model.current_user.get("password"):
             print("Invalid login")
+            self.login_message.config(text="Invalid login credentials. Please try again")
             return
 
         # delete old input
