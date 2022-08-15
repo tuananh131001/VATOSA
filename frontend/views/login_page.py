@@ -53,7 +53,6 @@ class LoginPage(Frame):
         self.password_entry = ControlModel.get_input_children(self.password_box)
 
         # Button
-        count_down = ControlModel.create_text(self, "", 12)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
@@ -67,7 +66,7 @@ class LoginPage(Frame):
                                                                    activating_img,
                                                                    normal_img,
                                                                    deny_img:
-                                                            self.click_record_button(count_down, event,
+                                                            self.click_record_button(self.normal_login_label, event,
                                                                                      activating_img,
                                                                                      normal_img,
                                                                                      deny_img))
@@ -79,7 +78,6 @@ class LoginPage(Frame):
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-        count_down.place(relx=0.5, rely=0.68, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
         # self.change_alternative_label.bind('<Button-1>', lambda event: print("clcik"))
@@ -134,3 +132,12 @@ class LoginPage(Frame):
 
     def navigate_next_page(self):
         self.controller.show_frame(ResultPage)
+# root = Tk()
+# a = StringVar()
+# a.set("hello")
+# label = Label(root, textvariable=a)
+# label.pack()
+# print(label["textvariable"])
+# print()
+#
+# root.mainloop()
