@@ -99,7 +99,7 @@ These can be change
 
 ![image](https://user-images.githubusercontent.com/67695658/184615459-2e788a13-2fbf-42f9-847b-360ac395f041.png)
 
-If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 200 folder , if out of range, delete some korean voices folder
+If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 240 folder , if out of range, delete some korean voices folder
 
 
 ## Credit
