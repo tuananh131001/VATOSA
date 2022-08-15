@@ -60,7 +60,10 @@ def split_train_dev(train_feat_dir, valid_ratio):
 
 def main():
     # Set hyperparameters
-    use_cuda = True  # use gpu or cpu
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
     val_ratio = 10  # Percentage of validation set
     embedding_size = 128
     start = 1  # Start epoch
