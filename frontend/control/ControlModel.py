@@ -240,7 +240,7 @@ class ControlModel:
 
         # start recording
         if record_type == "train":
-            playsound('..\\materials\\start-record.wav')
+            playsound('../materials/start-record.wav')
             print("Start Recording")
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
@@ -259,7 +259,7 @@ class ControlModel:
 
         count_down.configure(text="")
         canvas.itemconfig(button, image=normal_image)
-        playsound('..\\materials\\end-record.wav')
+        playsound('../materials/end-record.wav')
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True

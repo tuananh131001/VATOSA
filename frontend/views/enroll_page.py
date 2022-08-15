@@ -2,7 +2,7 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from frontend.views.traning_page import TrainingPage
+from traning_page import TrainingPage
 
 from login_page import LoginPage
 # from page1 import Page1
@@ -35,7 +35,8 @@ class EnrollPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
-        count_down = ControlModel.create_text(self, "", 12)
+        count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
+                                                    f"enroll your voice", Constants.count_down_size)
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                       self.controller.entry_height,
@@ -59,7 +60,7 @@ class EnrollPage(Frame):
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
-        submit_btn = ControlModel.create_button(self, "Submit".upper(),
+        submit_btn = ControlModel.create_button(self, "Next".upper(),
                                                 self.sign_up,
                                                 self.controller.entry_width,
                                                 self.controller.entry_height,
@@ -68,6 +69,7 @@ class EnrollPage(Frame):
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
+        count_down.place(relx=0.5, rely=0.6, anchor=CENTER)
         username_box.place(relx=0.5, rely=0.68, anchor=CENTER)
         password_box.place(relx=0.5, rely=0.76, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.86, anchor=CENTER)
@@ -107,4 +109,4 @@ class EnrollPage(Frame):
         print("Sign up done")
         # move to next page
         print(self.model.current_user)
-        self.controller.show_frame(LoginPage)
+        self.controller.show_frame(TrainingPage)

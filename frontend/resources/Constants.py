@@ -23,3 +23,4 @@ alternative_text_color = "#FEA2A2"
 button_text_color = main_color
 button_bck_color = "white"
 footer_text_color = "white"
+count_down_size = 11

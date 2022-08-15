@@ -53,7 +53,7 @@ class LoginPage(Frame):
         self.password_entry = ControlModel.get_input_children(self.password_box)
 
         # Button
-        count_down = ControlModel.create_text(self, "", 12)
+        count_down = ControlModel.create_text(self, "", Constants.count_down_size)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
