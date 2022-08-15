@@ -83,5 +83,24 @@ These can be change
 ![image](https://user-images.githubusercontent.com/67695658/181885813-f5162ee6-8463-4cde-9ab7-8f2bc1db282c.png)
 
 
+## 2. Voice controller part 
+
+### 1. Install 
+  - Install numpy package from interpreter settings 
+  - Install librosa libray version 0.9.2, numpy library version 1.22.4 , and numba version 0.56.0
+
+### 2. Run order
+  - Run the process_dataset.py
+  - Run the build_model.py
+  - Run the prediction.py
+
+<h1 style="color:yellow; background-color:blue;">FAQ</h1>
+1. Limit
+
+![image](https://user-images.githubusercontent.com/67695658/184615459-2e788a13-2fbf-42f9-847b-360ac395f041.png)
+
+If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 200 folder , if out of range, delete some korean voices folder
+
+
 ## Credit
 Youngmoon Jung (dudans@kaist.ac.kr) at KAIST, South Korea

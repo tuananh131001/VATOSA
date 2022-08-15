@@ -19,8 +19,14 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
         model.cuda()
     print('=> loading checkpoint')
     # original saved file with DataParallel
-    checkpoint = torch.load(log_dir + '/checkpoint_' +
-                            str(cp_num) + '.pth', map_location=torch.device('cpu'))
+    # Settings
+    if torch.cuda.is_available():
+        checkpoint = torch.load(log_dir + '/checkpoint_' +
+                                str(cp_num) + '.pth')
+    else:
+        checkpoint = torch.load(log_dir + '/checkpoint_' +
+                                str(cp_num) + '.pth', map_location=torch.device('cpu'))
+
     # create new OrderedDict that does not contain `module.`
     model.load_state_dict(checkpoint['state_dict'])
 
@@ -117,7 +123,11 @@ def main():
     test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved
 
     # Settings
-    use_cuda = False  # Use cuda or not
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
+
     embedding_size = 128  # Dimension of speaker embeddings
     cp_num = 27  # Which checkpoint to use?
     n_classes = 240  # How many speakers in training data?
