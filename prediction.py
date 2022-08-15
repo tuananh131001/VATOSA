@@ -86,5 +86,16 @@ if __name__ == "__main__":
 
     # make a prediction
     keyword = kss.predict("test/excel10.wav")
-    print(keyword)
+    keyword2 = kss.predict("test/Close-Word-Nhung-1.wav")
+    keyword3 = kss.predict("test/open4.wav")
+
+    print('Expected output: "open excel"')
+    print("Actual output: " + keyword)
+    print("---------------------------------------")
+    print('Expected output: "close word"')
+    print("Actual output 2: " + keyword2)
+    print("---------------------------------------")
+    print('Expected output: "open word"')
+    print("Actual output 3: " + keyword3)
+
 
