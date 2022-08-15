@@ -106,7 +106,10 @@ def enroll_per_spk(use_cuda, test_frames, model, DB, embedding_dir):
 def main():
         
     # Settings
-    use_cuda = True
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
     log_dir = 'model_saved'
     embedding_size = 128
     cp_num = 24 # Which checkpoint to use?
