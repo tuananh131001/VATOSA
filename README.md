@@ -83,5 +83,17 @@ These can be change
 ![image](https://user-images.githubusercontent.com/67695658/181885813-f5162ee6-8463-4cde-9ab7-8f2bc1db282c.png)
 
 
+## 2. Voice controller part 
+
+### 1. Install 
+  - Install numpy package from interpreter settings 
+  - Install librosa libray version 0.9.2, numpy library version 1.22.4 , and numba version 0.56.0
+
+### 2. Run order
+  - Run the process_dataset.py
+  - Run the build_model.py
+  - Run the prediction.py
+
+
 ## Credit
 Youngmoon Jung (dudans@kaist.ac.kr) at KAIST, South Korea
