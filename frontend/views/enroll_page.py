@@ -26,6 +26,7 @@ class EnrollPage(Frame):
         # tkinter element
         self.username_entry = None
         self.password_entry = None
+        self.count_down_label = None
 
         self.build_page()
 
@@ -35,7 +36,9 @@ class EnrollPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
-        count_down = ControlModel.create_text(self, "", 12)
+        self.count_down_label = ControlModel.create_text(
+            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
+            self.controller.default_font_size - 7)
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                       self.controller.entry_height,
@@ -55,7 +58,7 @@ class EnrollPage(Frame):
                                                        activating_img,
                                                        normal_img,
                                                        deny_img=None:
-                                                       self.click_record_button(count_down, event,
+                                                       self.click_record_button(self.count_down_label, event,
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
@@ -68,9 +71,10 @@ class EnrollPage(Frame):
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
-        username_box.place(relx=0.5, rely=0.68, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.76, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.86, anchor=CENTER)
+        self.count_down_label.place(relx=0.5, rely=0.62, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.7, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.78, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.9, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
