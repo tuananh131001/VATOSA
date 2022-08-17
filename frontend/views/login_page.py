@@ -2,8 +2,6 @@ from frontend.resources import Constants
 from frontend.control import ControlModel
 from result_page import ResultPage
 from tkinter import *
-import customtkinter
-from PIL import ImageTk, Image
 
 
 class LoginPage(Frame):
@@ -40,8 +38,7 @@ class LoginPage(Frame):
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 9)
-        count_down = ControlModel.create_text(self, "", Constants.count_down_size)
-        self.login_message = ControlModel.create_text(self, '', 10)
+        self.login_message = ControlModel.create_text(self, '', 11)
 
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
@@ -99,21 +96,11 @@ class LoginPage(Frame):
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
-        # packing
-        # # Khanh
-        # welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        # self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-        # count_down.place(relx=0.5, rely=0.68, anchor=CENTER)
-        # self.normal_login_label.place(relx=0.5, rely=0.77, anchor=CENTER)
-        # self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
-        # self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
-        # # self.register_btn.place(relx=0.5, rely=0.89, anchor=CENTER)
-
-        # Nhung
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -132,6 +119,7 @@ class LoginPage(Frame):
                 print("Invalid voice", self.model.current_login_count)
             else:
                 print("Invalid voice", self.model.current_login_count)
+                self.normal_login_label.configure(text="Invalid voice. Please try again")
 
             self.click = False
 
@@ -141,7 +129,7 @@ class LoginPage(Frame):
         self.change_alternative_label.destroy()
 
         # pack
-        self.normal_login_label.config(text="voice control and authentication to open software applications".upper())
+        self.normal_login_label.configure(text="voice control and authentication to open software applications".upper())
         self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)

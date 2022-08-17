@@ -5,9 +5,7 @@ import torchvision.transforms as transforms
 
 import time
 import os
-import numpy as np
 import configure as c
-import pandas as pd
 from DB_wav_reader import read_feats_structure
 from SR_Dataset import read_MFB, TruncatedInputfromMFB, ToTensorInput, ToTensorDevInput, DvectorDataset, \
     collate_fn_feat_padded

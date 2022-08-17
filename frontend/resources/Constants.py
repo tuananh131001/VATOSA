@@ -2,9 +2,9 @@ IMG_CONTAINER_URL = "../resources/assets/"
 json_filepath = "../resources/"
 json_filename = "data.json"
 
-audio_filepath = "../../extractAudio/wavs/voxceleb1/test/wav/"  # wav format file -> username/username/file.wav
-train_filepath = "../../feat_logfbank_nfilt40/train/"  # wav format file -> username/username/file.wav
-train_wav_filepath = "../../feat_logfbank_nfilt40/train_wav/"
+audio_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/wav/"  # wav format file -> username/username/file.wav
+train_filepath = "../../voice_authentication/feat_logfbank_nfilt40/train/"  # wav format file -> username/username/file.wav
+train_wav_filepath = "../../voice_authentication/feat_logfbank_nfilt40/train_wav/"
 # audio_filepath = "../../extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40"  # wav format file
 
 SIGNUP_DURATION = 10  # in seconds

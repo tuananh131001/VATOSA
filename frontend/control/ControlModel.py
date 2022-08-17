@@ -238,19 +238,18 @@ class ControlModel:
             duration = Constants.LOGIN_DURATION
 
         # start recording
+        print("Start Recording")
         if record_type == "train":
-            playsound('../materials/start-record.wav')
-            print("Start Recording")
+            # playsound('../materials/start-record.wav')
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
-            print("Start Recording")
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
-        canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
+        canvas.itemconfig(button, image=activating_image)
         self.remaining_time_record = duration
         while self.remaining_time_record >= 0:
-            count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
+            count_down.configure(text=f'Speak in {str(self.remaining_time_record)} seconds')
             canvas.update()
             time.sleep(1)
             self.remaining_time_record -= 1

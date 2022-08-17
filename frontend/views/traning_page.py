@@ -27,7 +27,7 @@ class TrainingPage(Frame):
 
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
 
-        count_down = ControlModel.create_text(self, f"Press and Speak in 5 seconds\nRepeat for 10 times\n{10 - self.count} time(s) left", Constants.count_down_size)
+        count_down = ControlModel.create_text(self, f"Press and Speak in 5 seconds\nRepeat for 10 times\n{10 - self.count} time(s) left", Constants.count_down_size + 1)
 
         # Button
         # record
@@ -48,9 +48,9 @@ class TrainingPage(Frame):
 
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.52, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         count_down.place(relx=0.5, rely=0.7, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if self.count < 10 and not self.click:
