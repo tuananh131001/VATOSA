@@ -3,9 +3,7 @@
 # https://www.youtube.com/watch?v=rGOWG7aug58
 # https://maxinterview.com/code/tkinter-get-child-in-frame-D13470A155688BB/
 # https://github.com/petervalberg/Image_as_button-Tkinter/blob/main/ButtonOverImage.py
-# import sys
-# sys.path.append('../resources')
-# from ..resources import Constants
+
 import os
 import time
 import pickle
@@ -29,6 +27,7 @@ from PIL import Image, ImageTk
 # utility
 def update_label_variable(label, new_value):
     label.cget("textvariable").set(new_value)
+
 def get_input_children(input_container):
     for children in input_container.winfo_children():
         # if children is frame -> means is CTkEntry
@@ -94,7 +93,7 @@ def create_input_text(root, entry_name, entry_width, entry_height,
                                    fg_color=Constants.main_color,
                                    bg_color=Constants.main_color,
                                    text_color=Constants.main_text_color,
-                                   text_font=("Avenir", entry_font_size-4),
+                                   text_font=("Avenir", entry_font_size - 4),
                                    show="*" if hidden else "")
     entry.image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + entry_name}-icon.png')
                                      .resize((icon_size, icon_size)))
@@ -141,9 +140,9 @@ def create_button(root, btn_name, command, entry_width, entry_height,
                   fg_color=Constants.button_bck_color,
                   text_color=Constants.button_text_color):
     entry_radius, border_width, \
-                entry_vertical_padding, \
-                entry_horizontal_padding, \
-                font_size = get_assist_size_input_text(entry_width, entry_height, font_size)
+    entry_vertical_padding, \
+    entry_horizontal_padding, \
+    font_size = get_assist_size_input_text(entry_width, entry_height, font_size)
     button_width = entry_width + entry_horizontal_padding * 2 + border_width * 2 + entry_width / 5
     button_height = entry_height + entry_vertical_padding * 2 + border_width * 2
     return customtkinter.CTkButton(master=root,
@@ -251,7 +250,7 @@ class ControlModel:
         # count down recording time
         self.remaining_time_record = duration
         while self.remaining_time_record >= 0:
-            count_down.configure(text=str(self.remaining_time_record))
+            count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
             canvas.update()
             time.sleep(1)
             self.remaining_time_record -= 1
@@ -259,7 +258,7 @@ class ControlModel:
 
         count_down.configure(text="voice recorded ✓")
         canvas.itemconfig(button, image=normal_image)
-        playsound('../materials/end-record.wav')
+        playsound("../materials/end-record.wav")
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True
@@ -276,12 +275,12 @@ class ControlModel:
             try:
                 train_wav_dir = Constants.train_wav_filepath + username
                 os.makedirs(train_wav_dir, exist_ok=True)
-                for i in range(1,2):
-                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i-1])
+                for i in range(1, 2):
+                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i - 1])
 
                 train_dir = Constants.train_filepath + username
                 os.makedirs(train_dir, exist_ok=True)
-                for i in range(1,2):
+                for i in range(1, 2):
                     with open(f'{train_dir}/{username}_train{i}.p', 'wb') as f:
                         pickle.dump(f'{train_wav_dir}/{username}_train{i}.wav', f)
             except OSError as error:
