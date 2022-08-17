@@ -1,8 +1,6 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
-
 from result_page import ResultPage
-
 from tkinter import *
 import customtkinter
 from PIL import ImageTk, Image
@@ -26,6 +24,8 @@ class LoginPage(Frame):
         self.record_btn = None
         self.login_btn = None
         self.login_message = None
+        self.back_btn = None
+        # self.register_btn = None
 
         # create and place tkinter elements
         self.build_page()
@@ -39,10 +39,11 @@ class LoginPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
-            self.controller.default_font_size - 7)
+            self.controller.default_font_size - 9)
         count_down = ControlModel.create_text(self, "", Constants.count_down_size)
         # self.login_message = ControlModel.create_text(self, "dsgjckx", Constants.count_down_size)
         self.login_message = ControlModel.create_text(self, '', 10)
+
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                            self.controller.entry_height,
@@ -59,11 +60,25 @@ class LoginPage(Frame):
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
-                                                                       self.controller.default_font_size - 5,
+                                                                       self.controller.default_font_size - 8,
                                                                        Constants.main_color,
                                                                        Constants.alternative_text_color)
+
+        self.back_btn = ControlModel.create_click_text(self, "<- Back",
+                                                       self.go_back,
+                                                       self.controller.entry_height,
+                                                       self.controller.default_font_size - 8,
+                                                       Constants.main_color,
+                                                       Constants.main_text_color)
+        # self.register_btn = ControlModel.create_click_text(self, "Register here",
+        #                                                    self.go_register,
+        #                                                    self.controller.entry_height,
+        #                                                    self.controller.default_font_size - 8,
+        #                                                    Constants.main_color,
+        #                                                    Constants.alternative_text_color)
+
         # record
-        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 40,
+        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 50,
                                                             "login",
                                                             lambda event,
                                                                    activating_img,
@@ -82,11 +97,10 @@ class LoginPage(Frame):
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         count_down.place(relx=0.5, rely=0.68, anchor=CENTER)
-        self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
-        self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.normal_login_label.place(relx=0.5, rely=0.77, anchor=CENTER)
+        self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
         self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
-
-        # self.change_alternative_label.bind('<Button-1>', lambda event: print("clcik"))
+        # self.register_btn.place(relx=0.5, rely=0.89, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -118,6 +132,8 @@ class LoginPage(Frame):
         self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)
+        self.back_btn.place(relx=0, rely=0.04, anchor=NW)
+        # self.back_btn(relx=0, rely=0, anchor=TOP)
         # self.login_message(relx=0.5, rely=0.7, anchor=CENTER)
 
     def login(self):
@@ -140,3 +156,17 @@ class LoginPage(Frame):
 
     def navigate_next_page(self):
         self.controller.show_frame(ResultPage)
+
+    def go_back(self):
+        self.record_btn.destroy()
+        self.change_alternative_label.destroy()
+        self.username_box.destroy()
+        self.password_box.destroy()
+        self.login_btn.destroy()
+        self.login_message.destroy()
+        self.normal_login_label.destroy()
+        self.back_btn.destroy()
+        self.build_page()
+
+    # def go_register(self):
+    #     self.controller.show_frame(EnrollPage)

@@ -257,7 +257,7 @@ class ControlModel:
             self.remaining_time_record -= 1
         sd.wait(duration)
 
-        count_down.configure(text="")
+        count_down.configure(text="voice recorded ✓")
         canvas.itemconfig(button, image=normal_image)
         playsound('../materials/end-record.wav')
         # write the recorded audio to file

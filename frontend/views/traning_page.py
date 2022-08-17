@@ -1,11 +1,6 @@
 from tkinter import *
 
-import customtkinter
-from PIL import ImageTk, Image
-import pickle
-import os
 from playsound import playsound
-import train
 from frontend.control import ControlModel
 from frontend.resources import Constants
 from login_page import LoginPage
@@ -86,9 +81,7 @@ class TrainingPage(Frame):
             # with open(f'../../feat_logfbank_nfilt40/train/{username}/{username}_train1.p', 'rb') as file:
             #     playsound(pickle.load(file))
 
-            # Popen('python train.py')
-            # train.py
-            # call(["python", "../../train.py"])
+            call(["python", "../../train.py"])
             print("Train done")
             self.controller.show_frame(LoginPage)
         else:
