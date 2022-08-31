@@ -39,7 +39,7 @@ class EnrollPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
                                                     f"enroll your voice", Constants.count_down_size)
-        self.enroll_message = ControlModel.create_text(self, '', 10)
+        self.enroll_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 10

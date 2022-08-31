@@ -38,7 +38,7 @@ class LoginPage(Frame):
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 9)
-        self.login_message = ControlModel.create_text(self, '', 11)
+        self.login_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,

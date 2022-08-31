@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="add back button to login page,&#10;&quot;voice recorded&quot; message after recording">
+    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="merge with master,&#10;frontend improvement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extractAudio/wavs/voxceleb1/test/wav/vatosa123/vatosa123/test.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/control/ControlModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/control/ControlModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/resources/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/enroll_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/enroll_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/login_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/traning_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/traning_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/train_wav/12345/12345_train1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/hakhanhne/hakhanhne/enroll.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/hakhanhne/hakhanhne/test.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/hakhanhne/hakhanhne/enroll.wav" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,65 +42,21 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.train">
-    <configuration name="enroll (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python" />
+  <component name="RunManager" selected="Python.main_page">
+    <configuration name="build_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VATOSA_group" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_authentication" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_controller" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_authentication/enroll.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="extract" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_authentication" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_authentication/extract.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="identification (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_authentication" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_authentication/identification.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_controller/build_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,6 +79,50 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/frontend/views/main_page.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prediction" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VATOSA_group" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_controller" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_controller/prediction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="process_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="VATOSA_group" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/voice_controller" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_controller/process_dataset.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.main_page" />
-        <item itemvalue="Python.extract" />
-        <item itemvalue="Python.identification (1)" />
-        <item itemvalue="Python.enroll (1)" />
+        <item itemvalue="Python.prediction" />
+        <item itemvalue="Python.build_model" />
+        <item itemvalue="Python.process_dataset" />
+        <item itemvalue="Python.train" />
       </list>
     </recent_temporary>
   </component>
@@ -204,22 +205,33 @@
     </ignored-roots>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VATOSA_group$verification.coverage" NAME="verification Coverage Results" MODIFIED="1660603975262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VATOSA$extract.coverage" NAME="extract Coverage Results" MODIFIED="1660647441884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$enroll.coverage" NAME="enroll Coverage Results" MODIFIED="1660811599172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA_group$ControlModel.coverage" NAME="ControlModel Coverage Results" MODIFIED="1660320028109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/control" />
     <SUITE FILE_PATH="coverage/VATOSA_group$enroll_page.coverage" NAME="enroll_page Coverage Results" MODIFIED="1660320124470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$DB_wav_reader.coverage" NAME="DB_wav_reader Coverage Results" MODIFIED="1660727146644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$enroll.coverage" NAME="enroll Coverage Results" MODIFIED="1660627082149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VATOSA_group$identification.coverage" NAME="identification Coverage Results" MODIFIED="1660603241904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VATOSA$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660647027133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
-    <SUITE FILE_PATH="coverage/VATOSA_group$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1660725472693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
-    <SUITE FILE_PATH="coverage/VATOSA_group$traning_page.coverage" NAME="traning_page Coverage Results" MODIFIED="1660356196737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/training_page" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$extract.coverage" NAME="extract Coverage Results" MODIFIED="1660727041963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1660811545991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$identification.coverage" NAME="identification Coverage Results" MODIFIED="1660811663435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$process_dataset.coverage" NAME="process_dataset Coverage Results" MODIFIED="1660490828981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VATOSA_group$train.coverage" NAME="train Coverage Results" MODIFIED="1660725597519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$traning_page.coverage" NAME="traning_page Coverage Results" MODIFIED="1660727890298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$train.coverage" NAME="train Coverage Results" MODIFIED="1660808464968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA_group$traning_page__1_.coverage" NAME="traning_page (1) Coverage Results" MODIFIED="1660412089690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
-    <SUITE FILE_PATH="coverage/VATOSA$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1660646979155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$SR_Dataset.coverage" NAME="SR_Dataset Coverage Results" MODIFIED="1660727106899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$train.coverage" NAME="train Coverage Results" MODIFIED="1660626930367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VATOSA$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1660491973893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VATOSA$identification__1_.coverage" NAME="identification (1) Coverage Results" MODIFIED="1660647118243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$verification.coverage" NAME="verification Coverage Results" MODIFIED="1660727069857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660647027133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1661922615292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1661916765357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1661919094087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660727021732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$configure.coverage" NAME="configure Coverage Results" MODIFIED="1660727344290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1660646979155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1660491973893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$identification__1_.coverage" NAME="identification (1) Coverage Results" MODIFIED="1660727051088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$process_dataset.coverage" NAME="process_dataset Coverage Results" MODIFIED="1661916723100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA$identification.coverage" NAME="identification Coverage Results" MODIFIED="1660626390527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
