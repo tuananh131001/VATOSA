@@ -1,11 +1,7 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
-
 from result_page import ResultPage
-
 from tkinter import *
-import customtkinter
-from PIL import ImageTk, Image
 
 
 class LoginPage(Frame):
@@ -25,6 +21,9 @@ class LoginPage(Frame):
         self.change_alternative_label = None
         self.record_btn = None
         self.login_btn = None
+        self.login_message = None
+        self.back_btn = None
+        # self.register_btn = None
 
         # create and place tkinter elements
         self.build_page()
@@ -38,7 +37,8 @@ class LoginPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
-            self.controller.default_font_size - 7)
+            self.controller.default_font_size - 9)
+        self.login_message = ControlModel.create_text(self, '', 11)
 
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
@@ -53,34 +53,54 @@ class LoginPage(Frame):
         self.password_entry = ControlModel.get_input_children(self.password_box)
 
         # Button
+        count_down = ControlModel.create_text(self, "", 12)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
-                                                                       self.controller.default_font_size - 5,
+                                                                       self.controller.default_font_size - 8,
                                                                        Constants.main_color,
                                                                        Constants.alternative_text_color)
+
+        self.back_btn = ControlModel.create_click_text(self, "<- Back",
+                                                       self.go_back,
+                                                       self.controller.entry_height,
+                                                       self.controller.default_font_size - 8,
+                                                       Constants.main_color,
+                                                       Constants.main_text_color)
+        # self.register_btn = ControlModel.create_click_text(self, "Register here",
+        #                                                    self.go_register,
+        #                                                    self.controller.entry_height,
+        #                                                    self.controller.default_font_size - 8,
+        #                                                    Constants.main_color,
+        #                                                    Constants.alternative_text_color)
+
         # record
-        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 40,
+        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 50,
                                                             "login",
                                                             lambda event,
                                                                    activating_img,
                                                                    normal_img,
                                                                    deny_img:
+                                                            # # Khanh
+                                                            # self.click_record_button(count_down, event,
+                                                            #                          activating_img,
+                                                            #                          normal_img,
+                                                            #                          deny_img))
                                                             self.click_record_button(self.normal_login_label, event,
                                                                                      activating_img,
                                                                                      normal_img,
                                                                                      deny_img))
+
         self.login_btn = ControlModel.create_button(self, "Login", self.login,
                                                     self.controller.entry_width,
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
-        # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
-        # self.change_alternative_label.bind('<Button-1>', lambda event: print("clcik"))
+        self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -99,6 +119,7 @@ class LoginPage(Frame):
                 print("Invalid voice", self.model.current_login_count)
             else:
                 print("Invalid voice", self.model.current_login_count)
+                self.normal_login_label.configure(text="Invalid voice. Please try again")
 
             self.click = False
 
@@ -108,10 +129,11 @@ class LoginPage(Frame):
         self.change_alternative_label.destroy()
 
         # pack
-        self.normal_login_label.config(text="voice control and authentication to open software applications".upper())
+        self.normal_login_label.configure(text="voice control and authentication to open software applications".upper())
         self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)
+        self.back_btn.place(relx=0, rely=0.04, anchor=NW)
 
     def login(self):
         username_input = self.username_entry.get()
@@ -121,6 +143,7 @@ class LoginPage(Frame):
         if username_input != self.model.current_user.get("username") \
                 or password_input != self.model.current_user.get("password"):
             print("Invalid login")
+            self.login_message.config(text="Invalid login credentials. Please try again")
             return
 
         # delete old input
@@ -132,12 +155,17 @@ class LoginPage(Frame):
 
     def navigate_next_page(self):
         self.controller.show_frame(ResultPage)
-# root = Tk()
-# a = StringVar()
-# a.set("hello")
-# label = Label(root, textvariable=a)
-# label.pack()
-# print(label["textvariable"])
-# print()
-#
-# root.mainloop()
+
+    def go_back(self):
+        self.record_btn.destroy()
+        self.change_alternative_label.destroy()
+        self.username_box.destroy()
+        self.password_box.destroy()
+        self.login_btn.destroy()
+        self.login_message.destroy()
+        self.normal_login_label.destroy()
+        self.back_btn.destroy()
+        self.build_page()
+
+    # def go_register(self):
+    #     self.controller.show_frame(EnrollPage)

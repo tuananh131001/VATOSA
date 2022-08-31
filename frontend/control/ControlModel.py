@@ -124,7 +124,6 @@ def create_footer(root, default_font_size):
     footer.place(relx=1.0, rely=1, anchor=SE)
     return footer
 
-
 def create_text(root, text,
                 font_size,
                 text_color=Constants.main_text_color):
@@ -239,26 +238,24 @@ class ControlModel:
             duration = Constants.LOGIN_DURATION
 
         # start recording
+        print("Start Recording")
         if record_type == "train":
-            # playsound('..\\materials\\start-record.wav')
-            playsound('../materials/start-record.wav')
-            print("Start Recording")
+            # playsound('../materials/start-record.wav')
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
-            print("Start Recording")
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
-        canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
+        canvas.itemconfig(button, image=activating_image)
         self.remaining_time_record = duration
         while self.remaining_time_record >= 0:
-            count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
+            count_down.configure(text=f'Speak in {str(self.remaining_time_record)} seconds')
             canvas.update()
             time.sleep(1)
             self.remaining_time_record -= 1
         sd.wait(duration)
-        self.remaining_time_record = duration
-        count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
+
+        count_down.configure(text="voice recorded ✓")
         canvas.itemconfig(button, image=normal_image)
         playsound("../materials/end-record.wav")
         # write the recorded audio to file
@@ -311,7 +308,6 @@ class ControlModel:
 
         # final result
         self.current_identify_result = False
-        # self.current_
 
         # display result via changing record button appearance
         if not self.current_identify_result:

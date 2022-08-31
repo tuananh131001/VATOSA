@@ -83,7 +83,7 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user:
-            self.show_frame(LoginPage)
+            self.show_frame(EnrollPage)
         else:
             self.show_frame(EnrollPage)
 
