@@ -124,7 +124,6 @@ def create_footer(root, default_font_size):
     footer.place(relx=1.0, rely=1, anchor=SE)
     return footer
 
-
 def create_text(root, text,
                 font_size,
                 text_color=Constants.main_text_color):
@@ -239,28 +238,25 @@ class ControlModel:
             duration = Constants.LOGIN_DURATION
 
         # start recording
+        print("Start Recording")
         if record_type == "train":
-            # playsound('..\\materials\\start-record.wav')
-            playsound('../materials/start-record.wav')
-            print("Start Recording")
+            # playsound('../materials/start-record.wav')
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
-            print("Start Recording")
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
-        canvas.itemconfig(button, image=activating_image)
 
         # count down recording time
+        canvas.itemconfig(button, image=activating_image)
         self.remaining_time_record = duration
         while self.remaining_time_record >= 0:
-            count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
+            count_down.configure(text=f'Speak in {str(self.remaining_time_record)} seconds')
             canvas.update()
             time.sleep(1)
             self.remaining_time_record -= 1
         sd.wait(duration)
-        self.remaining_time_record = duration
-        count_down.configure(text=f'Press and Speak in {str(self.remaining_time_record)} seconds to login')
+
+        count_down.configure(text="voice recorded ✓")
         canvas.itemconfig(button, image=normal_image)
-        playsound("../materials/end-record.wav")
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True
@@ -272,19 +268,27 @@ class ControlModel:
             # write recording file
             write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
-        # train: write wav file to feat_logbank_nfilt40/train_wav/{username}
+        # train: write wav file to voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/username/username
         elif record_type == "train":
             try:
-                train_wav_dir = Constants.train_wav_filepath + username
+                train_wav_dir = Constants.train_wav_filepath + f"{username}/{username}"
                 os.makedirs(train_wav_dir, exist_ok=True)
-                for i in range(1, 2):
-                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i - 1])
+                for i in range(Constants.TOTAL_TRAIN_FILE):
+                    write(f'{train_wav_dir}/train{i+1}.wav', self.freq, self.recording_train[i])
+                    # # ignore cuz this is for testing purpose only
+                    # write(f'{Constants.test_filepath}/train{i + 1}.wav', self.freq, self.recording_train[i])
 
-                train_dir = Constants.train_filepath + username
+                train_dir = Constants.train_filepath + f"{username}/{username}"
                 os.makedirs(train_dir, exist_ok=True)
-                for i in range(1, 2):
-                    with open(f'{train_dir}/{username}_train{i}.p', 'wb') as f:
-                        pickle.dump(f'{train_wav_dir}/{username}_train{i}.wav', f)
+                for i in range(Constants.TOTAL_TRAIN_FILE):
+                    with open(f'{train_dir}/train{i+1}.p', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/train{i+1}.wav', f)
+                    with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/train{i+1}.wav', f)
+                    # # ignore cuz this is for testing purpose only
+                    # with open(f'{Constants.test_filepath}/train{i + 1}.pkl', 'wb') as f:
+                    #     pickle.dump(f'{Constants.test_filepath}/train{i+1}.wav', f)
+
             except OSError as error:
                 print("Directory can not be created: ", error)
 
@@ -311,7 +315,6 @@ class ControlModel:
 
         # final result
         self.current_identify_result = False
-        # self.current_
 
         # display result via changing record button appearance
         if not self.current_identify_result:

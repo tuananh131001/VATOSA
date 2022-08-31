@@ -1,15 +1,11 @@
 from tkinter import *
 
-import customtkinter
-from PIL import ImageTk, Image
-import pickle
-import os
 from playsound import playsound
-import train
 from frontend.control import ControlModel
 from frontend.resources import Constants
 from login_page import LoginPage
 from subprocess import call
+import pickle
 
 
 class TrainingPage(Frame):
@@ -21,6 +17,7 @@ class TrainingPage(Frame):
         self.model = root.model
         self.click = False
         self.count = 0
+        self.message = None
 
         self.build_page()
 
@@ -30,9 +27,8 @@ class TrainingPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
 
-        footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
-
-        count_down = ControlModel.create_text(self, "", 12)
+        count_down = ControlModel.create_text(self, f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times", Constants.count_down_size + 1)
+        self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Button
         # record
@@ -45,93 +41,57 @@ class TrainingPage(Frame):
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
-        submit_btn = ControlModel.create_button(self, "Submit".upper(),
+        submit_btn = ControlModel.create_button(self, "Register".upper(),
                                                 self.submit,
                                                 self.controller.entry_width,
                                                 self.controller.entry_height,
                                                 self.controller.default_font_size)
 
-
-
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.52, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         count_down.place(relx=0.5, rely=0.7, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.8, anchor=CENTER)
-        # footer_label.place(relx=0.68, rely=0.97, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.9, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
-        if self.count < 10 and not self.click:
+        if self.count < Constants.TOTAL_TRAIN_FILE and not self.click:
             self.click = True
             self.model.record("train", count_down,
                               event.widget,
                               activating_img,
                               normal_img)
             self.count += 1
-            self.click = False
-        elif self.count >= 10:
-            print("You have finished recording 10 records already. Please submit now.")
+            if self.count < Constants.TOTAL_TRAIN_FILE:
+                count_down.configure(text=f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times\n{Constants.TOTAL_TRAIN_FILE - self.count} time(s) left")
+            else:
+                count_down.configure(text=f"{Constants.TOTAL_TRAIN_FILE} records already. Please submit now.")
 
-    # def record(self):
-    #     self.count += 1
-    #     print("start")
-    #     playsound('..\\materials\\start-record.wav')
-    #     record_voice = sounddevice.rec(int((Constants.TRAIN_DURATION + 1) * Constants.SAMPLE_RATE),
-    #                                    samplerate=Constants.SAMPLE_RATE, channels=2)
-    #     sounddevice.wait(Constants.TRAIN_DURATION + 1)
-    #     playsound('..\\materials\\end-record.wav')
-    #     write(f"user_voice_temp\\temp{self.count}.wav", Constants.SAMPLE_RATE, record_voice)
-    #     print("record finished")
+            self.click = False
 
     def check_submit(self):
-        if self.count != 1:
+        if self.count != Constants.TOTAL_TRAIN_FILE:
             return False
         return True
 
     def submit(self):
-        if self.check_submit():
-            username = self.model.current_user.get("username")
-            self.model.write_record(username, "train")
+        try:
+            if self.check_submit():
+                username = self.model.current_user.get("username")
+                self.model.write_record(username, "train")
 
-            # # test file
-            # with open(f'../../feat_logfbank_nfilt40/train/{username}/{username}_train1.p', 'rb') as file:
+            # # ignore cuz this is for testing purpose only
+            # with open(f'{Constants.test_filepath}/train1.pkl', 'rb') as file:
             #     playsound(pickle.load(file))
 
-            # Popen('python train.py')
-            # train.py
-            # call(["python", "../../train.py"])
-            print("Train done")
-            self.controller.show_frame(LoginPage)
-        else:
-            playsound('../materials/message.wav')
-            return
+                call(["python", Constants.train_py_path])
+                print("Train done")
+                self.controller.show_frame(LoginPage)
 
-# root = Tk()
-# root.title("Register voice")
-#
-# width = root.winfo_screenwidth()
-# height = root.winfo_screenheight()
-#
-# # set screensize as fullscreen and not resizable
-# root.geometry("%dx%d" % (width / 1.2, height))
-# root.resizable(True, True)
-#
-# # put image in a label and place label as background
-# bgTemp = Image.open("../resources/assets/background.png")
-# bg2 = bgTemp.resize((width, height))
-# bg = ImageTk.PhotoImage(bg2)
-#
-# label = Label(root, image=bg)
-# label.place(relx=0.5, rely=0.5, anchor=CENTER)
-#
-# frame = Frame(root, bg='#2B2C33', width=500, height=300)
-# frame.place(relx=0.5, rely=0.5, anchor=CENTER)
-#
-# # Add buttons
-# record_btn = Button(frame, text="Press to record voice", command=record)
-# record_btn.pack(anchor=CENTER)
-#
-# submit_btn = Button(frame, text="Register now", command=submit)
-# submit_btn.pack(anchor=CENTER)
-#
-# root.mainloop()
+
+            else:
+                self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
+                return
+
+        except:
+            print("TRANNING_PAGE.PY : cannot call train.py")
