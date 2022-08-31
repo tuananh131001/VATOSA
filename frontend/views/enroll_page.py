@@ -2,7 +2,7 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from frontend.views.traning_page import TrainingPage
+from traning_page import TrainingPage
 
 from login_page import LoginPage
 # from page1 import Page1
@@ -26,6 +26,7 @@ class EnrollPage(Frame):
         # tkinter element
         self.username_entry = None
         self.password_entry = None
+        self.enroll_message = None
         self.count_down_label = None
 
         self.build_page()
@@ -36,9 +37,13 @@ class EnrollPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
+        count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
+                                                    f"enroll your voice", Constants.count_down_size)
+        self.enroll_message = ControlModel.create_text(self, '', 10)
         self.count_down_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
-            self.controller.default_font_size - 7)
+            self.controller.default_font_size - 10
+        )
         # Entry Input
         username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
                                                       self.controller.entry_height,
@@ -53,7 +58,7 @@ class EnrollPage(Frame):
 
         # Button
         # record
-        record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size,
+        record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size - 10,
                                                        "enroll", lambda event,
                                                        activating_img,
                                                        normal_img,
@@ -62,7 +67,7 @@ class EnrollPage(Frame):
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
-        submit_btn = ControlModel.create_button(self, "Submit".upper(),
+        submit_btn = ControlModel.create_button(self, "Next".upper(),
                                                 self.sign_up,
                                                 self.controller.entry_width,
                                                 self.controller.entry_height,
@@ -71,10 +76,11 @@ class EnrollPage(Frame):
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
-        self.count_down_label.place(relx=0.5, rely=0.62, anchor=CENTER)
-        username_box.place(relx=0.5, rely=0.7, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.78, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.9, anchor=CENTER)
+        self.count_down_label.place(relx=0.5, rely=0.6, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.67, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.75, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.enroll_message.place(relx=0.5, rely=0.92, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
@@ -90,12 +96,13 @@ class EnrollPage(Frame):
         password = self.password_entry.get()
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if username == "" or password == "" or not self.model.has_record_enroll:
-            print("Please fill in all the information")
+            self.enroll_message.configure(text="Please fill in all the information")
             return
-        elif len(password) < 5 or any((not c.isalnum()) and (c not in allowed) for c in password):
-            print("Password must have more than 5 characters. "
-                  "Valid values for passwords include alphanumeric, !, @, #, $, %, ^, &, or *. "
-                  "No other special characters are allowed.")
+        elif len(password) < 5:
+            self.enroll_message.configure(text="Password must have at least 5 characters")
+            return
+        elif any((not c.isalnum()) and (c not in allowed) for c in password):
+            self.enroll_message.configure(text="Password can only include alphanumeric, !, @, #, $, %, ^, &, *")
             return
 
         # Write date to json file
@@ -111,4 +118,4 @@ class EnrollPage(Frame):
         print("Sign up done")
         # move to next page
         print(self.model.current_user)
-        self.controller.show_frame(LoginPage)
+        self.controller.show_frame(TrainingPage)
