@@ -21,6 +21,7 @@ TOTAL_TRAIN_FILE = 10
 # entry_radius = 10
 
 main_color = "#2B2C33"
+nav_color = "#2F3A48"
 main_text_color = "white"
 alternative_text_color = "#FEA2A2"
 button_text_color = main_color
