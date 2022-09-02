@@ -28,6 +28,7 @@ from PIL import Image, ImageTk
 def update_label_variable(label, new_value):
     label.cget("textvariable").set(new_value)
 
+
 def get_input_children(input_container):
     for children in input_container.winfo_children():
         # if children is frame -> means is CTkEntry
@@ -54,6 +55,12 @@ def get_assist_size_input_text(entry_width, entry_height, default_font_size):
     entry_font_size = int(default_font_size / 1.25)
 
     return entry_radius, border_width, entry_vertical_padding, entry_horizontal_padding, entry_font_size
+
+
+def click_nav(controller, nav_button_type):
+    # tag_canvas = "canvas_" + nav_button_type
+    # button = event.widget.find_withtag(tag_canvas)
+    controller.navigate_page(nav_button_type)
 
 
 # tkinter element
@@ -124,6 +131,7 @@ def create_footer(root, default_font_size):
     footer.place(relx=1.0, rely=1, anchor=SE)
     return footer
 
+
 def create_text(root, text,
                 font_size,
                 text_color=Constants.main_text_color):
@@ -174,9 +182,13 @@ def create_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
-def create_record_button(root, image_size, record_type="enroll", command=None):
+def create_record_button(root, image_size, record_type="enroll", command=None, bg="", is_current_page=False, false=None):
     # initializing the image properties
-    if record_type == "enroll" or record_type == "train":
+    if record_type == "enroll" or \
+            record_type == "train" or \
+            record_type == "nav_home" or \
+            record_type == "nav_explore" or \
+            record_type == "nav_logout":
         deny_image = None
     else:
         root.deny_image = deny_image = create_image(f'{Constants.IMG_CONTAINER_URL}login_button_deny.png',
@@ -192,11 +204,22 @@ def create_record_button(root, image_size, record_type="enroll", command=None):
     # create container
     canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color, cursor="hand2")
     canvas1.configure(highlightthickness=0)
+    if bg != "":
+        canvas1.configure(bg=bg)
 
     # store image to container
     button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
-    # add tag for accessing easier
-    canvas1.itemconfig(button, tag="canvas_button")
+
+    if record_type == "enroll" or record_type == "train" or record_type == "login":
+        # add tag for accessing easier
+        canvas1.itemconfig(button, tag="canvas_button")
+    else:
+        # add tag for accessing easier
+        canvas1.itemconfig(button, tag="canvas_" + record_type)
+
+    if is_current_page:
+        canvas1.itemconfig(canvas1.find_withtag("canvas_" + record_type), image=activating_image)
+
     # add event for it acting like a real button
     canvas1.tag_bind(button, "<Button-1>",
                      lambda event,
@@ -207,6 +230,45 @@ def create_record_button(root, image_size, record_type="enroll", command=None):
 
     return canvas1
 
+
+def create_nav(root, controller, current_nav):
+    nav_width = controller.nav_width
+    nav_height = controller.nav_height
+    nav_button_size = controller.nav_button_size
+
+    canvas = Canvas(root, width=nav_width, height=nav_height)
+    canvas.config(highlightthickness=0)
+    canvas.place(relx=0, rely=0.5, anchor=W)
+
+    canvas.create_rectangle(0, 0, nav_width, nav_height, fill=Constants.nav_color, outline="")
+
+    nav_buttons = ["nav_home", "nav_explore", "nav_logout"]
+    nav_check_current = [current_nav == nav_buttons[0], current_nav == nav_buttons[1], current_nav == nav_buttons[2]]
+    home_btn = create_record_button(canvas, nav_button_size, nav_buttons[0],
+                                                 lambda event,
+                                                        activate_img,
+                                                        normal_img,
+                                                        deny_img:
+                                                 click_nav(controller, nav_buttons[0]),
+                                                 Constants.nav_color, nav_check_current[0])
+    explore_btn = create_record_button(canvas, nav_button_size, nav_buttons[1],
+                                                    lambda event,
+                                                           activate_img,
+                                                           normal_img,
+                                                           deny_img:
+                                                    click_nav(controller, nav_buttons[1]),
+                                                    Constants.nav_color, nav_check_current[1])
+    logout_btn = create_record_button(canvas, nav_button_size, nav_buttons[2],
+                                                   lambda event,
+                                                          activate_img,
+                                                          normal_img,
+                                                          deny_img:
+                                                   click_nav(controller, nav_buttons[2]),
+                                                   Constants.nav_color, nav_check_current[2])
+
+    home_btn.place(relx=0.5, rely=0.2, anchor=CENTER)
+    explore_btn.place(relx=0.5, rely=0.35, anchor=CENTER)
+    logout_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 class ControlModel:
 
@@ -274,17 +336,17 @@ class ControlModel:
                 train_wav_dir = Constants.train_wav_filepath + f"{username}/{username}"
                 os.makedirs(train_wav_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
-                    write(f'{train_wav_dir}/train{i+1}.wav', self.freq, self.recording_train[i])
+                    write(f'{train_wav_dir}/train{i + 1}.wav', self.freq, self.recording_train[i])
                     # # ignore cuz this is for testing purpose only
                     # write(f'{Constants.test_filepath}/train{i + 1}.wav', self.freq, self.recording_train[i])
 
                 train_dir = Constants.train_filepath + f"{username}/{username}"
                 os.makedirs(train_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
-                    with open(f'{train_dir}/train{i+1}.p', 'wb') as f:
-                        pickle.dump(f'{train_wav_dir}/train{i+1}.wav', f)
+                    with open(f'{train_dir}/train{i + 1}.p', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
                     with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
-                        pickle.dump(f'{train_wav_dir}/train{i+1}.wav', f)
+                        pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
                     # # ignore cuz this is for testing purpose only
                     # with open(f'{Constants.test_filepath}/train{i + 1}.pkl', 'wb') as f:
                     #     pickle.dump(f'{Constants.test_filepath}/train{i+1}.wav', f)
