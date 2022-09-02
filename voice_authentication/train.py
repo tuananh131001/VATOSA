@@ -15,9 +15,12 @@ import matplotlib.pyplot as plt
 
 def load_dataset(val_ratio):
     # Load training set and validation set
+    train_feat_dir = c.TRAIN_FEAT_DIR
+    if not os.path.isdir(c.TRAIN_FEAT_DIR) and os.path.isdir(c.TRAIN_FEAT_DIR_ANOTHER_PATH):
+        train_feat_dir = c.TRAIN_FEAT_DIR_ANOTHER_PATH
 
     # Split training set into training set and validation set according to "val_ratio"
-    train_DB, valid_DB = split_train_dev(c.TRAIN_FEAT_DIR, val_ratio)
+    train_DB, valid_DB = split_train_dev(train_feat_dir, val_ratio)
 
     file_loader = read_MFB  # numpy array:(n_frames, n_dims)
 
@@ -40,6 +43,8 @@ def load_dataset(val_ratio):
 def split_train_dev(train_feat_dir, valid_ratio):
     train_valid_DB = read_feats_structure(train_feat_dir)
     total_len = len(train_valid_DB)  # 148642
+
+
     valid_len = int(total_len * valid_ratio / 100.)
     train_len = total_len - valid_len
     shuffled_train_valid_DB = train_valid_DB.sample(frac=1).reset_index(drop=True)
@@ -49,9 +54,10 @@ def split_train_dev(train_feat_dir, valid_ratio):
     # Reset the index
     train_DB = train_DB.reset_index(drop=True)
     valid_DB = valid_DB.reset_index(drop=True)
-    print('\nTraining set %d utts (%0.1f%%)' % (train_len, (train_len / total_len) * 100))
-    print('Validation set %d utts (%0.1f%%)' % (valid_len, (valid_len / total_len) * 100))
-    print('Total %d utts' % (total_len))
+    # print('Total %d utts' % (total_len))
+    # print('\nTraining set %d utts (%0.1f%%)' % (train_len, (train_len / total_len) * 100))
+    # print('Validation set %d utts (%0.1f%%)' % (valid_len, (valid_len / total_len) * 100))
+    # print('Total %d utts' % (total_len))
 
     return train_DB, valid_DB
 

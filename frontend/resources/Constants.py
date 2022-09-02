@@ -13,7 +13,7 @@ SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 10  # in seconds
 TRAIN_DURATION = 5
 SAMPLE_RATE = 22050
-TOTAL_TRAIN_FILE = 10
+TOTAL_TRAIN_FILE = 1
 
 # login_record_button_size = 310
 # signup_record_button_size = 180

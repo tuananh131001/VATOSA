@@ -141,8 +141,12 @@ def main():
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
 
-    # Get the dataframe for test DB
-    enroll_DB, test_DB = split_enroll_and_test(c.TEST_FEAT_DIR)
+    test_feat_dir = c.TEST_FEAT_DIR
+    if not os.path.isdir(c.TEST_FEAT_DIR) and os.path.isdir(c.TEST_FEAT_DIR_ANOTHER_PATH):
+        test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
+
+    # Get the dataframe for enroll DB
+    enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
 
     # Load enroll embeddings
     embeddings = load_enroll_embeddings(embedding_dir)
