@@ -1,6 +1,6 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from result_page import ResultPage
+from home_page import HomePage
 from tkinter import *
 
 
@@ -67,12 +67,6 @@ class LoginPage(Frame):
                                                        self.controller.default_font_size - 8,
                                                        Constants.main_color,
                                                        Constants.main_text_color)
-        # self.register_btn = ControlModel.create_click_text(self, "Register here",
-        #                                                    self.go_register,
-        #                                                    self.controller.entry_height,
-        #                                                    self.controller.default_font_size - 8,
-        #                                                    Constants.main_color,
-        #                                                    Constants.alternative_text_color)
 
         # record
         self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 50,
@@ -154,7 +148,7 @@ class LoginPage(Frame):
         print("Login Successfully")
 
     def navigate_next_page(self):
-        self.controller.show_frame(ResultPage)
+        self.controller.show_frame(HomePage)
 
     def go_back(self):
         self.record_btn.destroy()
