@@ -1,4 +1,5 @@
-from extractAudio.configure import save_path
+# from extractAudio.configure import save_path
+from voice_authentication.extractAudio.configure import save_path
 
 # VoxCeleb2 train
 TRAIN_AUDIO_VOX2 = save_path+'/voxceleb2/dev/wav'

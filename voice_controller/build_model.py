@@ -4,9 +4,12 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import librosa
 from sklearn.model_selection import train_test_split
+import os
 
 DATA_PATH = "data.json"
 SAVED_MODEL_PATH = "model.h5"
+DATA_PATH_ANOTHER_PATH = "../../voice_controller/data.json"
+SAVED_MODEL_PATH_ANOTHER_PATH = "../../voice_controller/model.h5"
 EPOCHS = 40
 BATCH_SIZE = 32
 PATIENCE = 5

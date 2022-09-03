@@ -115,5 +115,6 @@ class VatosaApp(Tk):
         elif button_type == "login" or button_type == "nav_logout":
             self.show_frame(LoginPage)
 
+
 app = VatosaApp()
 app.mainloop()

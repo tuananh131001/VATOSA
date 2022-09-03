@@ -106,10 +106,14 @@ def main():
         test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
 
     # Settings
-    use_cuda = True # Use cuda or not
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
+
     embedding_size = 128 # Dimension of speaker embeddings
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 241 # How many speakers in training data?
+    n_classes = 240 # How many speakers in training data?
     test_frames = 100 # Split the test utterance 
 
     # Load model from checkpoint

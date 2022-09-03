@@ -1,9 +1,9 @@
 import os
 import numpy as np
-import extractAudio.feat_extract.constants as c
+from voice_authentication.extractAudio.feat_extract import constants as c
 import pickle  # For python3
 from python_speech_features import *
-from extractAudio.feat_extract.voxceleb_wav_reader import read_voxceleb_structure
+from voice_authentication.extractAudio.feat_extract.voxceleb_wav_reader import read_voxceleb_structure
 
 import scipy.io as sio
 import scipy.io.wavfile

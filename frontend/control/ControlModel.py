@@ -11,6 +11,8 @@ import pickle
 from playsound import playsound
 
 from frontend.resources import Constants
+# from voice_authentication import extract
+# from voice_authentication.extractAudio.feat_extract import constants as c
 
 import json
 import sounddevice as sd
@@ -296,13 +298,14 @@ class ControlModel:
             duration = Constants.SIGNUP_DURATION
         elif record_type == "train":
             duration = Constants.TRAIN_DURATION
+        elif record_type == "command":
+            duration = Constants.COMMAND_DURATION
         else:
             duration = Constants.LOGIN_DURATION
 
         # start recording
         print("Start Recording")
         if record_type == "train":
-            # playsound('../materials/start-record.wav')
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
         else:
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
@@ -330,6 +333,12 @@ class ControlModel:
             # write recording file
             write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
+        elif record_type == "command":
+            # create directory if not exist
+            pathlib.Path(f'{Constants.command_dir + username}').mkdir(parents=True, exist_ok=True)
+            # write recording file
+            write(f'{Constants.command_dir + username}/command.wav', self.freq, self.recording)
+
         # train: write wav file to voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/username/username
         elif record_type == "train":
             try:
@@ -337,19 +346,21 @@ class ControlModel:
                 os.makedirs(train_wav_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     write(f'{train_wav_dir}/train{i + 1}.wav', self.freq, self.recording_train[i])
-                    # # ignore cuz this is for testing purpose only
-                    # write(f'{Constants.test_filepath}/train{i + 1}.wav', self.freq, self.recording_train[i])
 
+                # extract.feat_extraction(dataroot_dir=c.TRAIN_AUDIO_VOX1, mode='train')
+
+                # extract to pickle
                 train_dir = Constants.train_filepath + f"{username}/{username}"
+                another_train_dir = Constants.TRAIN_FEAT_DIR_ANOTHER_PATH + f"{username}"
                 os.makedirs(train_dir, exist_ok=True)
+                os.makedirs(another_train_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
+                    with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
+                        pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
                     with open(f'{train_dir}/train{i + 1}.p', 'wb') as f:
                         pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
                     with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
                         pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
-                    # # ignore cuz this is for testing purpose only
-                    # with open(f'{Constants.test_filepath}/train{i + 1}.pkl', 'wb') as f:
-                    #     pickle.dump(f'{Constants.test_filepath}/train{i+1}.wav', f)
 
             except OSError as error:
                 print("Directory can not be created: ", error)
