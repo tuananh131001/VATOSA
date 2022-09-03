@@ -117,7 +117,9 @@ def create_input_text(root, entry_name, entry_width, entry_height,
 def create_label_image(root, image_name, size):
     root.image = image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + image_name}.png')
                                             .resize(size))
-    return Label(root, bg=Constants.main_color, image=image)
+    label = Label(root, bg=Constants.main_color, image=image)
+    label.img = image
+    return label
 
 
 def create_footer(root, default_font_size):
