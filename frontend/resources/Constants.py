@@ -15,7 +15,7 @@ APPS_PY = "../resources/Apps.py"
 SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 10  # in seconds
 TRAIN_DURATION = 5
-COMMAND_DURATION = 5  # in seconds
+COMMAND_DURATION = 2  # in seconds
 SAMPLE_RATE = 22050
 TOTAL_TRAIN_FILE = 10
 

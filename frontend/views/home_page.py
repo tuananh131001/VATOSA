@@ -45,7 +45,7 @@ class HomePage(Frame):
                                                         (self.controller.login_welcome_label_width,
                                                          self.controller.login_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self, "Press and Speak in 5 seconds to make command",
+        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
                                                    Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
@@ -71,6 +71,8 @@ class HomePage(Frame):
 
     def click_record_button(self, event, activating_img, normal_img, deny_img):
         self.click = True
+        self.message.configure(text="")
+        self.result.configure(text="")
         self.model.record("command", self.count_down,
                           event.widget,
                           activating_img,
@@ -78,12 +80,10 @@ class HomePage(Frame):
         username = self.model.current_user.get("username")
         self.model.write_record(username, "command")
         self.process_command(f"{Constants.command_dir + username}/command.wav")
-        self.count_down.configure(text=f"Press and Speak in 5 seconds to make command")
+        self.count_down.configure(text=f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command")
         self.click = False
 
     def process_command(self, command_wav_file):
-        self.message.configure(text="")
-        self.result.configure(text="")
         try:
             command_text = prediction.speech_to_text(command_wav_file)
             command_split = command_text.split(" ", 1)
@@ -110,7 +110,7 @@ class HomePage(Frame):
 
             elif command == 'close':
                 if os.system(f"taskkill /f /im {close_dict.get(app)}") == 0:
-                    self.message.configure(text=f"RESULT: {app.upper()} is closed")
+                    self.result.configure(text=f"RESULT: {app.upper()} is closed")
                 else:
                     self.result.configure(text=f"RESULT: Cannot close. {app.upper()} isn't running now")
 
