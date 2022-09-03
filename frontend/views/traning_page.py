@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 
 from playsound import playsound
@@ -29,7 +30,7 @@ class TrainingPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self, f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times", Constants.count_down_size + 1)
+        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times", Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Button
@@ -97,3 +98,9 @@ class TrainingPage(Frame):
 
         except:
             print("TRANNING_PAGE.PY : cannot call train.py")
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+import os
+
 from frontend.resources import Constants
 from frontend.control import ControlModel
 from home_page import HomePage
@@ -94,7 +96,7 @@ class LoginPage(Frame):
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
-        self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -140,12 +142,16 @@ class LoginPage(Frame):
             self.login_message.config(text="Invalid login credentials. Please try again")
             return
 
+        self.login_message.config(text="Login successfully. Please wait.")
+        # get apps exe paths
+        get_apps_exe_path()
+
         # delete old input
+        self.login_message.config(text="")
         self.username_entry.delete(0, END)
         self.password_entry.delete(0, END)
         self.model.current_identify_result = True
         self.navigate_next_page()
-        print("Login Successfully")
 
     def navigate_next_page(self):
         self.controller.show_frame(HomePage)
@@ -163,3 +169,42 @@ class LoginPage(Frame):
 
     # def go_register(self):
     #     self.controller.show_frame(EnrollPage)
+
+
+def get_apps_exe_path():
+    apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Code.exe"]
+    paths = []
+    for app in apps:
+        # try path in dir C:
+        path = find_file(app, "C:")
+
+        # if cannot find any path then find in dir D:
+        if path is None:
+            path = find_file(app, "D:\\")
+
+        # if still cannot find in dir D: then print message
+        if path is None:
+            print("cannot find path for ", app)
+
+        paths.append(path)
+
+    with open(Constants.APPS_PY, 'w') as f:
+        f.write(f"EXCEL = \"{paths[0]}\"\n")
+        f.write(f"WORD =  \"{paths[1]} \"\n")
+        f.write(f"POWERPOINT =  \"{paths[2]} \"\n")
+        f.write(f"VSCODE =  \"{paths[3]}\"\n")
+
+
+# ref: https://www.tutorialspoint.com/file-searching-using-python
+def find_file(filename, search_path):
+    """
+    Function to find the first matched file, then returns the path to that file
+    If no matched file is found, returns None
+    """
+    # Walking top-down from the root
+    for root, dir, files in os.walk(search_path):
+        files_temp = list(map(str.lower, files))
+        if filename.lower() in files_temp:
+            result = os.path.join(root, filename)
+            result = result.replace("\\", "\\\\")
+            return result

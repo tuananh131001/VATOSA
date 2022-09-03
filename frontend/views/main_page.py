@@ -93,7 +93,7 @@ class VatosaApp(Tk):
 
         # iterating through page layouts
         for Page in (EnrollPage, TrainingPage, LoginPage, HomePage, ExplorePage):
-        # for Page in (HomePage, ExplorePage):
+            # for Page in (HomePage, ExplorePage):
             frame = Page(container, self)
 
             # init frame and store to array
@@ -105,8 +105,8 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user:
-            # self.show_frame(TrainingPage)
-            self.show_frame(HomePage)
+            self.show_frame(LoginPage)
+
         else:
             self.show_frame(EnrollPage)
 
@@ -121,6 +121,7 @@ class VatosaApp(Tk):
             self.show_frame(ExplorePage)
         elif button_type == "login" or button_type == "nav_logout":
             self.show_frame(LoginPage)
+
 
 app = VatosaApp()
 app.mainloop()
