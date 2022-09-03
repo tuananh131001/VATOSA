@@ -142,6 +142,7 @@ class LoginPage(Frame):
             self.login_message.config(text="Invalid login credentials. Please try again")
             return
 
+        self.login_message.config(text="Login successfully. Please wait.")
         # get apps exe paths
         get_apps_exe_path()
 
@@ -151,7 +152,6 @@ class LoginPage(Frame):
         self.password_entry.delete(0, END)
         self.model.current_identify_result = True
         self.navigate_next_page()
-        print("Login Successfully")
 
     def navigate_next_page(self):
         self.controller.show_frame(HomePage)

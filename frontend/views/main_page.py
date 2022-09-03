@@ -86,7 +86,7 @@ class VatosaApp(Tk):
 
         # iterating through page layouts
         for Page in (EnrollPage, TrainingPage, LoginPage, HomePage, ExplorePage):
-        # for Page in (HomePage, ExplorePage):
+            # for Page in (HomePage, ExplorePage):
             frame = Page(container, self)
 
             # init frame and store to array
