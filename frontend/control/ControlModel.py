@@ -119,7 +119,9 @@ def create_input_text(root, entry_name, entry_width, entry_height,
 def create_label_image(root, image_name, size):
     root.image = image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + image_name}.png')
                                             .resize(size))
-    return Label(root, bg=Constants.main_color, image=image)
+    label = Label(root, bg=Constants.main_color, image=image)
+    label.img = image
+    return label
 
 
 def create_footer(root, default_font_size):
@@ -136,14 +138,20 @@ def create_footer(root, default_font_size):
 
 def create_text(root, text,
                 font_size,
-                text_color=Constants.main_text_color):
+                text_color=Constants.main_text_color, page_type="none"):
+    if page_type == "nav_explore":
+        return customtkinter.CTkLabel(master=root,
+                                      text_color=text_color,
+                                      bg_color=Constants.main_color,
+                                      text=text,
+                                      text_font=("Avenir", font_size),
+                                      wraplength=700, anchor='w', justify='left')
     return customtkinter.CTkLabel(master=root,
                                   text_color=text_color,
                                   bg_color=Constants.main_color,
                                   text=text,
                                   text_font=("Avenir", font_size),
                                   wraplength=700)
-
 
 def create_button(root, btn_name, command, entry_width, entry_height,
                   font_size,
