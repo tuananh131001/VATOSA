@@ -46,11 +46,18 @@ class VatosaApp(Tk):
         # sign up
         self.signup_welcome_label_width = int(self.frame_width / 1.85)
         self.signup_welcome_label_height = int(self.frame_height / 7.15)
-        # login
+        # loginR
         self.login_welcome_label_width = int(self.frame_width / 2.27)
         self.login_welcome_label_height = int(self.frame_height / 9.28)
         # font size
         self.default_font_size = int(self.frame_width / 42.1)
+
+        # explore
+        self.explore_title_font_size = 30
+        self.explore_list_font_size = 25
+        self.explore_image_size = 75
+        self.explore_app_font_size = 18
+        self.explore_app_open_font_size = 18
 
         # nav bar
         self.nav_width = int(self.frame_width / 10.5)  # 100
@@ -99,7 +106,7 @@ class VatosaApp(Tk):
         # check if open sign up page first or login page first
         if self.model.current_user:
             self.show_frame(LoginPage)
-            # self.show_frame(EnrollPage)
+
         else:
             self.show_frame(EnrollPage)
 
