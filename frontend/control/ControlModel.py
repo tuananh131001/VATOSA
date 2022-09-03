@@ -134,14 +134,20 @@ def create_footer(root, default_font_size):
 
 def create_text(root, text,
                 font_size,
-                text_color=Constants.main_text_color):
+                text_color=Constants.main_text_color, page_type="none"):
+    if page_type == "nav_explore":
+        return customtkinter.CTkLabel(master=root,
+                                      text_color=text_color,
+                                      bg_color=Constants.main_color,
+                                      text=text,
+                                      text_font=("Avenir", font_size),
+                                      wraplength=700, anchor='w', justify='left')
     return customtkinter.CTkLabel(master=root,
                                   text_color=text_color,
                                   bg_color=Constants.main_color,
                                   text=text,
                                   text_font=("Avenir", font_size),
                                   wraplength=700)
-
 
 def create_button(root, btn_name, command, entry_width, entry_height,
                   font_size,

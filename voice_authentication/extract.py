@@ -91,7 +91,7 @@ def normalize_frames(m, Scale=False):
 
 class mode_error(Exception):
     def __str__(self):
-        return "Wrong mode (type 'train' or 'test')"
+        return "Wrong mode (page_type 'train' or 'test')"
 
 
 def feat_extraction(dataroot_dir, mode):
