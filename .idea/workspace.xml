@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="Homepage - user speaks to open/close apps">
+    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="Adjust bits per sample = 16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/control/ControlModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/control/ControlModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/home_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/home_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/main_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/voice_controller/user_command/hakhanhne/command.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/user_command/hakhanhne/command.wav" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +188,8 @@
       <workItem from="1662173211088" duration="5046000" />
       <workItem from="1662178443250" duration="9292000" />
       <workItem from="1662188966811" duration="8901000" />
-      <workItem from="1662213078798" duration="4929000" />
+      <workItem from="1662213078798" duration="5857000" />
+      <workItem from="1662302403380" duration="2128000" />
     </task>
     <task id="LOCAL-00001" summary="merge with demo_ver&#10;update directory to store 10 training files&#10;still cannot run train.py on my lap">
       <created>1661922897714</created>
@@ -220,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662197569434</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adjust bits per sample = 16">
+      <created>1662218833396</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662218833396</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +242,21 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -244,7 +265,8 @@
     <MESSAGE value="merge with demo_ver&#10;update directory to store 10 training files&#10;still cannot run train.py on my lap" />
     <MESSAGE value="test cai nay ik" />
     <MESSAGE value="Homepage - user speaks to open/close apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Homepage - user speaks to open/close apps" />
+    <MESSAGE value="Adjust bits per sample = 16" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjust bits per sample = 16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,7 +278,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/frontend/control/ControlModel.py</url>
-          <line>299</line>
+          <line>307</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -281,7 +303,7 @@
     <SUITE FILE_PATH="coverage/VATOSA$identification__1_.coverage" NAME="identification (1) Coverage Results" MODIFIED="1660647118243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA_group$verification.coverage" NAME="verification Coverage Results" MODIFIED="1662106561225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660647027133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
-    <SUITE FILE_PATH="coverage/VATOSA_group$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662218601482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA_group$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662305198684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
     <SUITE FILE_PATH="coverage/VATOSA_group$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1662117073117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1662218583298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660727021732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />

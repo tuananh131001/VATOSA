@@ -99,7 +99,7 @@ class HomePage(Frame):
                 self.message.configure(text="Unsupported command. Please try again.")
                 return
 
-            self.message.configure(text=f"COMMAND: {command_text.upper()}")
+            self.message.configure(text=f"RECEIVE COMMAND: {command_text.upper()}")
             if command == 'open':
                 path = open_dict.get(app)
                 if path is None:
