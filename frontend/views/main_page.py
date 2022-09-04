@@ -53,11 +53,11 @@ class VatosaApp(Tk):
         self.default_font_size = int(self.frame_width / 42.1)
 
         # explore
-        self.explore_title_font_size = 30
-        self.explore_list_font_size = 25
-        self.explore_image_size = 75
-        self.explore_app_font_size = 18
-        self.explore_app_open_font_size = 18
+        self.explore_title_font_size = int(self.frame_width / 33)  # 32
+        self.explore_list_font_size = int(self.frame_width / 40)  # 26
+        self.explore_image_size = int(self.frame_width / 14)  # 75
+        self.explore_app_font_size = int(self.frame_width / 54)  # 19
+        self.explore_app_open_font_size = int(self.frame_width / 60)  # 17
 
         # nav bar
         self.nav_width = int(self.frame_width / 10.5)  # 100

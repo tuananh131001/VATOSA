@@ -36,8 +36,13 @@ class ExplorePage(Frame):
 
         title_label = ControlModel.create_text(self, "Dashboard".upper(), self.controller.explore_title_font_size,
                                                'white', "nav_explore")
+
+        # for defining position based on sizes
         divider_app_size = self.controller.explore_image_size / 1000
         divider_app_title_size = self.controller.explore_app_font_size / 1000
+        divider_app_open_size = self.controller.explore_app_open_font_size / 1000
+
+        # display apps
         for list_name in self.app_list.keys():
             list_y = list_y + (divider_app_size + divider_app_title_size + 0.2) * current_list_idx
             list_title = ControlModel.create_text(self, f'{list_name} Apps', self.controller.explore_list_font_size,
@@ -50,18 +55,28 @@ class ExplorePage(Frame):
             app_y = list_y + 0.1
 
             for app in self.app_list.get(list_name):
+                # x position of app when place
                 x_position = app_x + current_app_idx * (divider_app_title_size + 0.2)
+                y_position = app_y + divider_app_size + 0.02
 
+                # app title when displaying
                 if list_name == "IDE":
                     text = "Visual Studio"
                 else:
-                    text = f'Microsoft {app.capitalize()}'
+                    text = f'Microsoft {app[0].capitalize()}'
 
-                app_image = ControlModel.create_label_image(self, f'app_list/{app}.svg', image_size)
+                # create elements
+                app_image = ControlModel.create_label_image(self, f'app_list/{app[0]}.svg', image_size)
                 app_title = ControlModel.create_text(self, text, self.controller.explore_app_font_size)
+                app_command = ControlModel.create_text(self, f'🗣Open {app[1].capitalize()}',
+                                                       self.controller.explore_app_open_font_size)
 
+                # place elements
                 app_image.place(relx=x_position, rely=app_y, anchor=CENTER)
-                app_title.place(relx=x_position, rely=app_y + (divider_app_size + 0.02), anchor=CENTER)
+                app_title.place(relx=x_position, rely=y_position, anchor=CENTER)
+                app_command.place(relx=x_position, rely=y_position + divider_app_open_size + 0.02, anchor=CENTER)
+
+                current_app_idx += 1
 
                 current_app_idx += 1
 
@@ -69,3 +84,4 @@ class ExplorePage(Frame):
             current_list_idx += 1
 
         title_label.place(relx=dashboard_x, rely=0.1, anchor=W)
+        ControlModel.create_footer(self, self.controller.default_font_size)
