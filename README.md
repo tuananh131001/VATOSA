@@ -136,6 +136,8 @@ Otherwise train and enroll will not work
 go to finder press COMMAND+ SHIFT + G   
 ![image](https://user-images.githubusercontent.com/67695658/188459643-516c91b5-8620-4e69-9119-bf7ac6fc8c6b.png)
 type ```~/.zshrc ``` press Enter   
+![image](https://user-images.githubusercontent.com/67695658/188461413-20118e3f-2ab7-4bf5-8ccf-c5f2cc036c04.png)
+
 add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
 ![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
 save the file and reopen Pycharm
