@@ -126,7 +126,8 @@ pip install tensorflow-macos
 pip install python_speech_features
 pip3 install torch torchvision torchaudio
 ```
-
+If any error with tensorflow try this command   
+```pip install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl```   
 ## 👑 Credit
 Nguyen Tuan Anh – s3864077  
 Tran Nguyen Ha Khanh – s3877707   
