@@ -156,6 +156,7 @@ def create_text(root, text,
                                   text_font=("Avenir", font_size),
                                   wraplength=700)
 
+
 def create_button(root, btn_name, command, entry_width, entry_height,
                   font_size,
                   fg_color=Constants.button_bck_color,
@@ -195,7 +196,8 @@ def create_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
-def create_record_button(root, image_size, record_type="enroll", command=None, bg="", is_current_page=False, false=None):
+def create_record_button(root, image_size, record_type="enroll", command=None, bg="", is_current_page=False,
+                         false=None):
     # initializing the image properties
     if record_type == "enroll" or \
             record_type == "train" or \
@@ -258,30 +260,31 @@ def create_nav(root, controller, current_nav):
     nav_buttons = ["nav_home", "nav_explore", "nav_logout"]
     nav_check_current = [current_nav == nav_buttons[0], current_nav == nav_buttons[1], current_nav == nav_buttons[2]]
     home_btn = create_record_button(canvas, nav_button_size, nav_buttons[0],
-                                                 lambda event,
-                                                        activate_img,
-                                                        normal_img,
-                                                        deny_img:
-                                                 click_nav(controller, nav_buttons[0]),
-                                                 Constants.nav_color, nav_check_current[0])
+                                    lambda event,
+                                           activate_img,
+                                           normal_img,
+                                           deny_img:
+                                    click_nav(controller, nav_buttons[0]),
+                                    Constants.nav_color, nav_check_current[0])
     explore_btn = create_record_button(canvas, nav_button_size, nav_buttons[1],
-                                                    lambda event,
-                                                           activate_img,
-                                                           normal_img,
-                                                           deny_img:
-                                                    click_nav(controller, nav_buttons[1]),
-                                                    Constants.nav_color, nav_check_current[1])
+                                       lambda event,
+                                              activate_img,
+                                              normal_img,
+                                              deny_img:
+                                       click_nav(controller, nav_buttons[1]),
+                                       Constants.nav_color, nav_check_current[1])
     logout_btn = create_record_button(canvas, nav_button_size, nav_buttons[2],
-                                                   lambda event,
-                                                          activate_img,
-                                                          normal_img,
-                                                          deny_img:
-                                                   click_nav(controller, nav_buttons[2]),
-                                                   Constants.nav_color, nav_check_current[2])
+                                      lambda event,
+                                             activate_img,
+                                             normal_img,
+                                             deny_img:
+                                      click_nav(controller, nav_buttons[2]),
+                                      Constants.nav_color, nav_check_current[2])
 
     home_btn.place(relx=0.5, rely=0.2, anchor=CENTER)
     explore_btn.place(relx=0.5, rely=0.35, anchor=CENTER)
     logout_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
+
 
 class ControlModel:
 
@@ -452,7 +455,6 @@ class ControlModel:
                 # Reading from json file
                 jsonobj = json.load(openfile)
         self.current_user = jsonobj
-
 
 
 def extract_MFB(filename, output_foldername, output_filename):
