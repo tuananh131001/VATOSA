@@ -338,7 +338,6 @@ class ControlModel:
         self.has_record_enroll = True
 
     def write_record(self, username="", record_type="enroll"):
-        print(record_type)
         if record_type == "login":
             # create directory if not exist
             pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
