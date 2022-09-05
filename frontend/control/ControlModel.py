@@ -127,15 +127,23 @@ def create_label_image(root, image_name, size):
     return label
 
 
-def create_footer(root, default_font_size):
+def create_footer(root, default_font_size, title_type="footer", username=""):
     # footer_font_size = 16
     footer_font_size = int(default_font_size / 1.55)
-    footer = customtkinter.CTkLabel(master=root,
-                                    text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
-                                    text_color=Constants.footer_text_color,
-                                    bg_color=Constants.main_color,
-                                    text_font=("Heiti SC", footer_font_size))
-    footer.place(relx=1.0, rely=1, anchor=SE)
+    if title_type != "footer":
+        footer = customtkinter.CTkLabel(master=root, text=f'Hello {username}',
+                                        text_color=Constants.footer_text_color,
+                                        bg_color=Constants.main_color,
+                                        text_font=("Heiti SC", footer_font_size),
+                                        anchor='center', justify='right')
+        footer.place(relx=1.0, rely=0.03, anchor=E)
+    else:
+        footer = customtkinter.CTkLabel(master=root,
+                                        text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
+                                        text_color=Constants.footer_text_color,
+                                        bg_color=Constants.main_color,
+                                        text_font=("Heiti SC", footer_font_size))
+        footer.place(relx=1.0, rely=1, anchor=SE)
     return footer
 
 

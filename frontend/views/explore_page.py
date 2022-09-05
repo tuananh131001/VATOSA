@@ -37,7 +37,6 @@ class ExplorePage(Frame):
         # explore elements
         title_label = ControlModel.create_text(self, "Dashboard".upper(), self.controller.explore_title_font_size,
                                                'white', "nav_explore")
-        self.bck_img = bck_img = ControlModel.create_label_image(self, "explore_bck", (500, 500))
 
         divider_app_size = self.controller.explore_image_size / 1000
         divider_app_title_size = self.controller.explore_app_font_size / 1000
@@ -83,6 +82,7 @@ class ExplorePage(Frame):
             current_app_idx = 0
             current_list_idx += 1
 
-        bck_img.place(relx=0.5, rely=0.5, anchor=CENTER)
+        ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                   self.model.current_user["username"])
         title_label.place(relx=dashboard_x, rely=0.1, anchor=W)
         ControlModel.create_footer(self, self.controller.default_font_size)
