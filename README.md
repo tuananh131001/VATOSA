@@ -101,9 +101,9 @@ These can be change
 
 If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 240 folder , if out of range, delete some korean voices folder
 Otherwise train and enroll will not work
+## sndfile error
+![image](https://user-images.githubusercontent.com/67695658/188459892-b34a63e7-da7c-4480-af35-1539cce7bea1.png)
 
-# How to install on Mac OS M1
-## IMPORTANT
 go to finder press COMMAND+ SHIFT + G   
 ![image](https://user-images.githubusercontent.com/67695658/188459643-516c91b5-8620-4e69-9119-bf7ac6fc8c6b.png)
 type ```~/.zshrc ``` press Enter   
@@ -113,6 +113,7 @@ add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
 
 
 
+# How to install on Mac OS M1
 
 install this python: https://www.python.org/ftp/python/3.10.6/python-3.10.6-macos11.pkg  
 
