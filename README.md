@@ -123,6 +123,7 @@ pip install playsound
 pip install sounddevice
 pip install tensorflow-metal
 pip install tensorflow-macos
+pip install python_speech_features
 ```
 
 ## Credit
