@@ -104,12 +104,12 @@ Otherwise train and enroll will not work
 
 # How to install on Mac OS M1
 
-install this python: https://www.python.org/ftp/python/3.10.6/python-3.10.6-macos11.pkg
-Use this pycharm : https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1
-install all in requirements.txt in voice_authetication :
-![image](https://user-images.githubusercontent.com/67695658/188408656-ed4c41b8-8364-43b6-a2c8-6107d97165e8.png)
+install this python: https://www.python.org/ftp/python/3.10.6/python-3.10.6-macos11.pkg  
+Use this pycharm : https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1  
+install all in requirements.txt in voice_authetication :  
+![image](https://user-images.githubusercontent.com/67695658/188408656-ed4c41b8-8364-43b6-a2c8-6107d97165e8.png). 
 
-Run these command inside terminal of pycharm :
+Run these command inside terminal of pycharm :  
 ```
 pip3 install customtkinter
 pip install playsound
