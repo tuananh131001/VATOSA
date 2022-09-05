@@ -124,6 +124,7 @@ pip install sounddevice
 pip install tensorflow-metal
 pip install tensorflow-macos
 pip install python_speech_features
+pip3 install torch torchvision torchaudio
 ```
 
 ## Credit
