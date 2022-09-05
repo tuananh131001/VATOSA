@@ -82,7 +82,7 @@ class HomePage(Frame):
                           normal_img)
         username = self.model.current_user.get("username")
         self.model.write_record(username, "command")
-        self.process_command(f"{Constants.command_dir + username}/command1.wav")
+        self.process_command(f"{Constants.command_dir + username}/command.wav")
         self.count_down.configure(text=f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command")
         self.click = False
 
