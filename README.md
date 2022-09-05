@@ -138,7 +138,7 @@ go to finder press COMMAND+ SHIFT + G
 type ```~/.zshrc ``` press Enter   
 add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
 ![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
-
+save the file and reopen Pycharm
 
 
 ## 👑 Credit
