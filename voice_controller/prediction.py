@@ -19,6 +19,7 @@ class _Keyword_Spotting_Service:
         "close word",
         "open excel",
         "open word",
+        "close excel",
         "null"
     ]
     _instance = None
@@ -110,7 +111,8 @@ if __name__ == "__main__":
     # make a prediction
     keyword = kss.predict("test/excel10.wav")
     keyword2 = kss.predict("test/Close-Word-Nhung-1.wav")
-    keyword3 = kss.predict("test/open4.wav")
+    keyword3 = kss.predict("user_command/hakhanhne/command1.wav")
+    keyword4 = kss.predict("test/close excel nhung 1.wav")
 
     print('Expected output: "open excel"')
     print("Actual output: " + keyword)
@@ -120,3 +122,5 @@ if __name__ == "__main__":
     print("---------------------------------------")
     print('Expected output: "open word"')
     print("Actual output 3: " + keyword3)
+    print('Expected output: "close excel"')
+    print("Actual output 3: " + keyword4)

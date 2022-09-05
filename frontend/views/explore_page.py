@@ -66,7 +66,7 @@ class ExplorePage(Frame):
                     text = f'Microsoft {app[0].capitalize()}'
 
                 # create elements
-                app_image = ControlModel.create_label_image(self, f'app_list/{app[0]}.svg', image_size)
+                app_image = ControlModel.create_label_image(self, f'app_list/word.svg', image_size)
                 app_title = ControlModel.create_text(self, text, self.controller.explore_app_font_size)
                 app_command = ControlModel.create_text(self, f'🗣Open {app[1].capitalize()}',
                                                        self.controller.explore_app_open_font_size)

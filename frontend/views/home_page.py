@@ -45,7 +45,7 @@ class HomePage(Frame):
                                                         (self.controller.login_welcome_label_width,
                                                          self.controller.login_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self, "Press and Speak in 5 seconds to make command",
+        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
                                                    Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
@@ -77,8 +77,8 @@ class HomePage(Frame):
                           normal_img)
         username = self.model.current_user.get("username")
         self.model.write_record(username, "command")
-        self.process_command(f"{Constants.command_dir + username}/command.wav")
-        self.count_down.configure(text=f"Press and Speak in 5 seconds to make command")
+        self.process_command(f"{Constants.command_dir + username}/command1.wav")
+        self.count_down.configure(text=f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command")
         self.click = False
 
     def process_command(self, command_wav_file):

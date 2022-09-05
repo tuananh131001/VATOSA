@@ -1,13 +1,10 @@
 import os
 from tkinter import *
 
-from playsound import playsound
 from frontend.control import ControlModel
 from frontend.resources import Constants
 from login_page import LoginPage
 from subprocess import call
-import time
-import pickle
 
 
 class TrainingPage(Frame):
@@ -96,8 +93,8 @@ class TrainingPage(Frame):
                 self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
                 return
 
-        except:
-            print("TRANNING_PAGE.PY : cannot call train.py")
+        except IOError as err:
+            print("TRANNING_PAGE.PY : cannot call train.py", err)
 
 
 

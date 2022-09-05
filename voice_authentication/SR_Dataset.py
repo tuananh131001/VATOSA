@@ -8,10 +8,11 @@ import numpy as np
 import configure as c
 from DB_wav_reader import read_DB_structure
 
+
 def read_MFB(filename):
     with open(filename, 'rb') as f:
         feat_and_label = pickle.load(f)
-    feature = feat_and_label['feat'] # size : (n_frames, dim=40)
+    feature = feat_and_label['feat']  # size : (n_frames, dim=40)
     label = feat_and_label['label']
     if label == 'HUY':
         print(label)

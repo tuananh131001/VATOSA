@@ -2,11 +2,12 @@ import os
 import numpy as np
 from voice_authentication.extractAudio.feat_extract import constants as c
 import pickle  # For python3
-from python_speech_features import *
 from voice_authentication.extractAudio.feat_extract.voxceleb_wav_reader import read_voxceleb_structure
 
 import scipy.io as sio
 import scipy.io.wavfile
+from python_speech_features import *
+
 
 
 def convert_wav_to_MFB_name(filename, mode):
@@ -69,6 +70,8 @@ def extract_MFB(filename, mode):
 
     speaker_folder = filename.split('/')[-3]
     output_foldername, output_filename = convert_wav_to_MFB_name(filename, mode=mode)
+    print(output_foldername)
+    print(output_filename)
     speaker_label = speaker_folder  # set label as a folder name (recommended). Convert this to speaker index when training
     feat_and_label = {'feat': total_features, 'label': speaker_label}
 
