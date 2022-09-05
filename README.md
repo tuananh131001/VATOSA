@@ -128,8 +128,8 @@ pip3 install torch torchvision torchaudio
 ```
 
 ## 👑 Credit
-Nguyen Tuan Anh – s3864077
-Tran Nguyen Ha Khanh – s3877707
-Tran Mai Nhung – s3879954
-Vo Quoc Huy – s3823236
+Nguyen Tuan Anh – s3864077  
+Tran Nguyen Ha Khanh – s3877707   
+Tran Mai Nhung – s3879954   
+Vo Quoc Huy – s3823236   
 Youngmoon Jung (dudans@kaist.ac.kr) at KAIST, South Korea
