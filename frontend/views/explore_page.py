@@ -13,8 +13,8 @@ class ExplorePage(Frame):
         self.model = root.model
 
         self.app_list = {
-            "Office": ["word", "powerpoint", "excel"],
-            "IDE": ["vs"]
+            "Office": [["word", "word"], ["powerpoint", "pp"], ["excel", "excel"]],
+            "IDE": [["vs", "vs"]]
         }
 
         dashboard_x = 0.13

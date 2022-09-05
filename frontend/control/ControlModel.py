@@ -320,6 +320,7 @@ class ControlModel:
 
         # count down recording time
         canvas.itemconfig(button, image=activating_image)
+
         self.remaining_time_record = duration
         while self.remaining_time_record >= 0:
             count_down.configure(text=f'Speak in {str(self.remaining_time_record)} seconds')
@@ -336,10 +337,20 @@ class ControlModel:
 
     def write_record(self, username="", record_type="enroll"):
         if record_type == "login":
-            # create directory if not exist
-            pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
-            # write recording file
-            write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
+            try:
+                write("./login.wav", self.freq, self.recording)
+
+                enroll_dir = Constants.identify_filepath + f'{username}'
+
+                os.makedirs(enroll_dir, exist_ok=True)
+                with open(f'{enroll_dir}/test.p', 'wb') as f:
+                    pickle.dump("./login.wav", f)
+            except OSError as error:
+                print("Directory can not be created: ", error)
+            # # create directory if not exist
+            # pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+            # # write recording file
+            # write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
 
         elif record_type == "command":
             # create directory if not exist
@@ -375,14 +386,25 @@ class ControlModel:
 
         else:
             try:
-                # write recording file
-                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+                write("./enroll.wav", self.freq, self.recording)
 
-                # add for authenticate here
-            except:
-                # tam thoi
-                pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
-                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+                enroll_dir = Constants.enroll_filepath + f'{username}'
+
+                os.makedirs(enroll_dir, exist_ok=True)
+                with open(f'{enroll_dir}/enroll.p', 'wb') as f:
+                    pickle.dump("./enroll.wav", f)
+            except OSError as error:
+                print("Directory can not be created: ", error)
+
+            # try:
+            #     # write recording file
+            #     write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+            #
+            #     # add for authenticate here
+            # except:
+            #     # tam thoi
+            #     pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+            #     write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
 
     def identify_voice(self,
                        record_type, count_down, event,
