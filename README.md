@@ -103,6 +103,16 @@ If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 240 folder , 
 Otherwise train and enroll will not work
 
 # How to install on Mac OS M1
+## IMPORTANT
+go to finder press COMMAND+ SHIFT + G   
+![image](https://user-images.githubusercontent.com/67695658/188459643-516c91b5-8620-4e69-9119-bf7ac6fc8c6b.png)
+type ```~/.zshrc ``` press Enter   
+add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
+![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
+
+
+
+
 
 install this python: https://www.python.org/ftp/python/3.10.6/python-3.10.6-macos11.pkg  
 
