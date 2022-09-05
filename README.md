@@ -124,7 +124,7 @@ pip3 install torch torchvision torchaudio
 If any error with tensorflow try this command   
 ```pip install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl```   
 <h1 style="color:yellow; background-color:blue;">FAQ</h1>
-1. Limit
+## Limit
 
 ![image](https://user-images.githubusercontent.com/67695658/184615459-2e788a13-2fbf-42f9-847b-360ac395f041.png)
 
@@ -133,14 +133,14 @@ Otherwise train and enroll will not work
 ## sndfile error
 ![image](https://user-images.githubusercontent.com/67695658/188459892-b34a63e7-da7c-4480-af35-1539cce7bea1.png)
 
-go to finder press COMMAND+ SHIFT + G   
+1. go to finder press COMMAND+ SHIFT + G   
 ![image](https://user-images.githubusercontent.com/67695658/188459643-516c91b5-8620-4e69-9119-bf7ac6fc8c6b.png)
-type ```~/.zshrc ``` press Enter   
+2. type ```~/.zshrc ``` press Enter   
 ![image](https://user-images.githubusercontent.com/67695658/188461413-20118e3f-2ab7-4bf5-8ccf-c5f2cc036c04.png)
 
-add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
+3. add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
 ![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
-save the file and reopen Pycharm
+4. save the file and reopen Pycharm
 
 
 ## 👑 Credit
