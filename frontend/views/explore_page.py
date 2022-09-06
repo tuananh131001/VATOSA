@@ -13,8 +13,9 @@ class ExplorePage(Frame):
         self.model = root.model
 
         self.app_list = {
-            "Office": [["word", "word"], ["powerpoint", "pp"], ["excel", "excel"]],
-            "IDE": [["vs", "vs"]]
+            "Office": [["word", "word"], ["teams", "teams"], ["excel", "excel"]],
+            "IDE": [["vs", "vs"]],
+            "Other": [["zalo", "zalo"]]
         }
 
         dashboard_x = 0.13
@@ -67,7 +68,11 @@ class ExplorePage(Frame):
                     text = f'Microsoft {app[0].capitalize()}'
 
                 # create elements
-                app_image = ControlModel.create_label_image(self, f'app_list/{app[0]}.svg', image_size)
+                if app[0] != "zalo":
+                    app_image = ControlModel.create_label_image(self, f'app_list/{app[0]}.svg', image_size)
+                else:
+                    app_image = ControlModel.create_label_image(self, f'app_list/{app[0]}', image_size)
+
                 app_title = ControlModel.create_text(self, text, self.controller.explore_app_font_size)
                 app_command = ControlModel.create_text(self, f'🗣Open {app[1].capitalize()}',
                                                        self.controller.explore_app_open_font_size)
@@ -75,7 +80,7 @@ class ExplorePage(Frame):
                 # place elements
                 app_image.place(relx=x_position, rely=app_y, anchor=CENTER)
                 app_title.place(relx=x_position, rely=y_position, anchor=CENTER)
-                app_command.place(relx=x_position, rely=y_position + divider_app_open_size + 0.02, anchor=CENTER)
+                app_command.place(relx=x_position, rely=y_position + divider_app_open_size + 0.1, anchor=CENTER)
 
                 current_app_idx += 1
 
