@@ -7,22 +7,6 @@ from voice_controller import prediction
 import subprocess
 from frontend.resources import Apps
 
-apps = ["vs", "excel", "word", "powerpoint"]
-
-open_dict = {
-    "vs": Apps.VSCODE,
-    "excel": Apps.EXCEL,
-    "word": Apps.WORD,
-    "powerpoint": Apps.POWERPOINT
-}
-
-close_dict = {
-    "vs": "Code.exe",
-    "excel": "EXCEL.EXE",
-    "word": "WINWORD.EXE",
-    "powerpoint": "POWERPNT.EXE"
-}
-
 
 class HomePage(Frame):
     def __init__(self, parent, root):
@@ -100,13 +84,14 @@ class HomePage(Frame):
             command = command_split[0]
             app = command_split[1].lower()
 
-            if (command != 'open' and command != 'close') or (app not in apps):
+            if (command != 'open' and command != 'close') or (app not in Constants.apps_dict.keys()):
                 self.message.configure(text="Unsupported command. Please try again.")
                 return
 
             self.message.configure(text=f"RECEIVE COMMAND: {command_text.upper()}")
             if command == 'open':
-                path = open_dict.get(app)
+                path = Apps.app_paths.get(app)
+                print(path)
                 if path is None:
                     self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
                 else:
@@ -114,7 +99,7 @@ class HomePage(Frame):
                     self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
             elif command == 'close':
-                if os.system(f"taskkill /f /im {close_dict.get(app)}") == 0:
+                if os.system(f"taskkill /f /im {Constants.apps_dict.get(app)}") == 0:
                     self.result.configure(text=f"RESULT: {app.upper()} is closed")
                 else:
                     self.result.configure(text=f"RESULT: Cannot close. {app.upper()} isn't running now")

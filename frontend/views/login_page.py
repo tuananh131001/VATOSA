@@ -172,27 +172,32 @@ class LoginPage(Frame):
 
 
 def get_apps_exe_path():
-    apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Code.exe"]
+    app_paths = {}
     paths = []
-    for app in apps:
+    for k, v in Constants.apps_dict.items():
         # try path in dir C:
-        path = find_file(app, "C:")
+        path = find_file(v, "C:")
 
         # if cannot find any path then find in dir D:
         if path is None:
-            path = find_file(app, "D:\\")
+            path = find_file(v, "D:\\")
 
         # if still cannot find in dir D: then print message
         if path is None:
-            print("cannot find path for ", app)
+            print("cannot find path for ", v)
 
         paths.append(path)
+        app_paths[f'{k}'] = path
 
     with open(Constants.APPS_PY, 'w') as f:
-        f.write(f"EXCEL = \"{paths[0]}\"\n")
-        f.write(f"WORD =  \"{paths[1]} \"\n")
-        f.write(f"POWERPOINT =  \"{paths[2]} \"\n")
-        f.write(f"VSCODE =  \"{paths[3]}\"\n")
+        f.write(f"app_paths = {{\n")
+        f.write(f"\"excel\" : \"{paths[0]}\",\n")
+        f.write(f"\"word\" :  \"{paths[1]}\",\n")
+        f.write(f"\"pp\" :  \"{paths[2]}\",\n")
+        f.write(f"\"teams\" :  \"{paths[3]}\",\n")
+        f.write(f"\"chrome\" :  \"{paths[4]}\",\n")
+        f.write(f"\"zalo\" :  \"{paths[5]}\"\n")
+        f.write(f"}}")
 
 
 # ref: https://www.tutorialspoint.com/file-searching-using-python
