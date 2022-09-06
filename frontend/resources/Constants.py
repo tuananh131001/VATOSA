@@ -12,6 +12,17 @@ enroll_py_path = "../../voice_authentication/enroll.py"
 prediction_py_path = "../../voice_controller/prediction.py"
 APPS_PY = "../resources/Apps.py"
 
+# apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Teams.exe", "chrome.exe", "Zalo.exe"]
+apps_dict = {
+    "excel": "EXCEL.EXE",
+    "word": "WINWORD.EXE",
+    "pp": "POWERPNT.EXE",
+    "teams": "Teams.exe",
+    "chrome": "chrome.exe",
+    "zalo": "Zalo.exe"
+}
+
+
 SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 10  # in seconds
 TRAIN_DURATION = 5
