@@ -110,11 +110,16 @@ def main():
         use_cuda = True  # use gpu or cpu
     else:
         use_cuda = False  # use gpu or cpu
-    log_dir = 'model_saved'
+    log_dir1 = 'model_saved'
+    log_dir2 = '../../voice_authentication/model_saved'
+    log_dir = log_dir1
     embedding_size = 128
     cp_num = 24 # Which checkpoint to use?
     n_classes = 240
     test_frames = 200
+
+    if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):
+         log_dir = log_dir2
     
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
@@ -136,7 +141,9 @@ def main():
     """ Test speaker list
     '103F3021', '207F2088', '213F5100', '217F3038', '225M4062', 
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
-    """ 
+    """
+
 
 if __name__ == '__main__':
     main()
+    print("Enroll page called")

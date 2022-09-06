@@ -13,8 +13,8 @@ class ExplorePage(Frame):
         self.model = root.model
 
         self.app_list = {
-            "Office": ["word", "powerpoint", "excel"],
-            "IDE": ["vs"]
+            "Office": [["word", "word"], ["powerpoint", "pp"], ["excel", "excel"]],
+            "IDE": [["vs", "vs"]]
         }
 
         dashboard_x = 0.13
@@ -34,19 +34,19 @@ class ExplorePage(Frame):
         # nav bar
         ControlModel.create_nav(self, self.controller, "nav_explore")
 
+        # explore elements
         title_label = ControlModel.create_text(self, "Dashboard".upper(), self.controller.explore_title_font_size,
                                                'white', "nav_explore")
 
-        # for defining position based on sizes
         divider_app_size = self.controller.explore_image_size / 1000
         divider_app_title_size = self.controller.explore_app_font_size / 1000
         divider_app_open_size = self.controller.explore_app_open_font_size / 1000
 
-        # display apps
         for list_name in self.app_list.keys():
             list_y = list_y + (divider_app_size + divider_app_title_size + 0.2) * current_list_idx
             list_title = ControlModel.create_text(self, f'{list_name} Apps', self.controller.explore_list_font_size,
                                                   'white', "nav_explore")
+
             list_title.place(relx=list_x, rely=list_y, anchor=W)
 
             # make sure create multiple elements inside for loop
@@ -54,6 +54,7 @@ class ExplorePage(Frame):
             app_x = list_x + 0.1
             app_y = list_y + 0.1
 
+            # display apps
             for app in self.app_list.get(list_name):
                 # x position of app when place
                 x_position = app_x + current_app_idx * (divider_app_title_size + 0.2)
@@ -78,10 +79,10 @@ class ExplorePage(Frame):
 
                 current_app_idx += 1
 
-                current_app_idx += 1
-
             current_app_idx = 0
             current_list_idx += 1
 
+        ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                   self.model.current_user["username"])
         title_label.place(relx=dashboard_x, rely=0.1, anchor=W)
         ControlModel.create_footer(self, self.controller.default_font_size)

@@ -6,7 +6,7 @@ import numpy as np
 
 SAVED_MODEL_PATH = "model.h5"
 SAVED_MODEL_PATH_ANOTHER_PATH = "../../voice_controller/model.h5"
-SAMPLES_TO_CONSIDER = 22050
+SAMPLES_TO_CONSIDER = 44100
 
 
 class _Keyword_Spotting_Service:
@@ -16,10 +16,10 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "close word",
         "open excel",
-        "open word",
-        "null"
+        "close word",
+        "close excel",
+        "open word"
     ]
     _instance = None
 
@@ -108,15 +108,30 @@ if __name__ == "__main__":
     assert kss is kss1
 
     # make a prediction
-    keyword = kss.predict("test/excel10.wav")
-    keyword2 = kss.predict("test/Close-Word-Nhung-1.wav")
-    keyword3 = kss.predict("test/open4.wav")
+    # keyword = kss.predict("test/close excel nhung 9.wav")
+    # keyword2 = kss.predict("test/close pp nhung 10.wav")
+    keyword3 = kss.predict("test/close excel nhung 2s 15.wav")
+    keyword4 = kss.predict("test/close word nhung 2s 10.wav")
+    # keyword5 = kss.predict("test/open Excel nhung 2s 2.wav")
+    keyword6 = kss.predict("test/open word nhung 2s 15.wav")
+    # keyword8 = kss.predict("test/openWordTA9.wav")
 
-    print('Expected output: "open excel"')
-    print("Actual output: " + keyword)
-    print("---------------------------------------")
-    print('Expected output: "close word"')
-    print("Actual output 2: " + keyword2)
-    print("---------------------------------------")
-    print('Expected output: "open word"')
+    # print('Expected output: "close excel"')
+    # print("Actual output: " + keyword)
+    # print("---------------------------------------")
+    # print('Expected output: "close pp"')
+    # print("Actual output 2: " + keyword2)
+    print('Expected output3: "close excel"')
     print("Actual output 3: " + keyword3)
+    print('Expected output4: "close word"')
+    print("Actual output 4: " + keyword4)
+
+    # print('Expected output: "open excel"')
+    # print("Actual output:5 " + keyword5)
+    # print("---------------------------------------")
+    print('Expected output6: "open word"')
+    print("Actual output 6: " + keyword6)
+    # print('Expected output: "open vs"')
+    # print("Actual output 7: " + keyword7)
+    # print('Expected output: "open word"')
+    # print("Actual output 8: " + keyword8)

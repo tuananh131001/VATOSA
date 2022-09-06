@@ -3,6 +3,7 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
 from traning_page import TrainingPage
+from subprocess import call
 
 from tkinter import *
 
@@ -91,7 +92,7 @@ class EnrollPage(Frame):
         password = self.password_entry.get()
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if username == "" or password == "" or not self.model.has_record_enroll:
-            self.enroll_message.configure(text="Please fill in all the information")
+            self.enroll_message.configure(text="Please record and fill in all the information")
             return
         elif len(password) < 5:
             self.enroll_message.configure(text="Password must have at least 5 characters")
@@ -104,6 +105,8 @@ class EnrollPage(Frame):
         user_info_dict = {"username": username, "password": password}
         self.model.write_file(user_info_dict)
         self.model.write_record(username)
+
+        # self.current_identify_result = identify.main()
 
         # get_apps_exe_path()
 

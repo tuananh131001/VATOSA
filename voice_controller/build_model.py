@@ -10,7 +10,7 @@ DATA_PATH = "data.json"
 SAVED_MODEL_PATH = "model.h5"
 DATA_PATH_ANOTHER_PATH = "../../voice_controller/data.json"
 SAVED_MODEL_PATH_ANOTHER_PATH = "../../voice_controller/model.h5"
-EPOCHS = 40
+EPOCHS = 100
 BATCH_SIZE = 32
 PATIENCE = 5
 LEARNING_RATE = 0.0001
@@ -124,7 +124,7 @@ def train(model, epochs, batch_size, patience, X_train, y_train, X_validation, y
     :return history: Training history
     """
 
-    earlystop_callback = tf.keras.callbacks.EarlyStopping(monitor="accuracy", min_delta=0.001, patience=patience)
+    # earlystop_callback = tf.keras.callbacks.EarlyStopping(monitor="accuracy", min_delta=0.001, patience=patience)
 
     # train model
     history = model.fit(X_train,
@@ -132,7 +132,8 @@ def train(model, epochs, batch_size, patience, X_train, y_train, X_validation, y
                         epochs=epochs,
                         batch_size=batch_size,
                         validation_data=(X_validation, y_validation),
-                        callbacks=[earlystop_callback])
+                        # callbacks=[earlystop_callback]
+                        )
     return history
 
 

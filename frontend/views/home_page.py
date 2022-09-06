@@ -50,6 +50,11 @@ class HomePage(Frame):
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
 
+        # footer or header
+        ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                   self.model.current_user["username"])
+        ControlModel.create_footer(self, self.controller.default_font_size)
+
         # Button
         # record
         record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size,

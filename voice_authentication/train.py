@@ -301,3 +301,4 @@ def visualize_the_losses(train_loss, valid_loss):
 
 if __name__ == '__main__':
     main()
+    print("Train page called")
