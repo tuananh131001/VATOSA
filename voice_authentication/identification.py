@@ -123,6 +123,7 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
 
 
 def main():
+    print("Identification page main")
     log_dir = 'model_saved'  # Where the checkpoints are saved
     embedding_dir = 'enroll_embeddings'  # Where embeddings are saved
     test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved
@@ -172,3 +173,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print("Identification page called")

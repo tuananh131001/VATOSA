@@ -106,8 +106,6 @@ class EnrollPage(Frame):
         self.model.write_file(user_info_dict)
         self.model.write_record(username)
 
-        call(["python", Constants.enroll_py_path])
-
         # self.current_identify_result = identify.main()
 
         # get_apps_exe_path()

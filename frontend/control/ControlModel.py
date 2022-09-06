@@ -350,7 +350,6 @@ class ControlModel:
         print("Done Recording")
         self.has_record_enroll = True
 
-
     def write_record(self, username="", record_type="enroll"):
         if record_type == "login":
             # create directory if not exist
@@ -437,6 +436,7 @@ class ControlModel:
         # final result
         # self.current_identify_result = identify.main()
 
+
         # display result via changing record button appearance
         if not self.current_identify_result:
             canvas = event.widget
@@ -461,6 +461,7 @@ class ControlModel:
         with open(filepath, 'r') as openfile:
             if filesize < 2:
                 print("Empty")
+                self.current_user = {"username": "", "password": ""}
                 return
             else:
                 # Reading from json file
