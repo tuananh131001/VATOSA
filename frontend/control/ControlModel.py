@@ -329,6 +329,8 @@ class ControlModel:
         print("Start Recording")
         if record_type == "train":
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
+        elif record_type == "command":
+            self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1, dtype='int16')
         else:
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
 
@@ -347,6 +349,7 @@ class ControlModel:
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True
+
 
     def write_record(self, username="", record_type="enroll"):
         if record_type == "login":
