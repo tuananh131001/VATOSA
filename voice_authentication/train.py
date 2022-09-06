@@ -5,11 +5,11 @@ import torchvision.transforms as transforms
 
 import time
 import os
-import configure as c
-from DB_wav_reader import read_feats_structure
-from SR_Dataset import read_MFB, TruncatedInputfromMFB, ToTensorInput, ToTensorDevInput, DvectorDataset, \
+import voice_authentication.configure as c
+from voice_authentication.DB_wav_reader import read_feats_structure
+from voice_authentication.SR_Dataset import read_MFB, TruncatedInputfromMFB, ToTensorInput, ToTensorDevInput, DvectorDataset, \
     collate_fn_feat_padded
-from model.model import background_resnet
+from voice_authentication.model.model import background_resnet
 import matplotlib.pyplot as plt
 
 

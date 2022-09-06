@@ -9,6 +9,7 @@ import time
 import pickle
 import shutil
 from voice_authentication.extract import feat_extraction
+import voice_authentication.train
 
 # import voice_authentication.identification as identify
 import numpy as np
@@ -392,12 +393,14 @@ class ControlModel:
                 another_train_dir = Constants.FEAT_LOGBANK_DIR + f"train/{username}"
                 os.makedirs(train_dir, exist_ok=True)
                 os.makedirs(another_train_dir, exist_ok=True)
+                feat_extraction(dataroot_dir=c.TRAIN_AUDIO_VOX1, mode='train')
+                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p', test_dir)  # test file
+                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p', test_dir)  # enroll file
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     print(i)
                     wav_file = f'{train_wav_dir}/train{i + 1}.wav'
-                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.p')
-                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.pkl')
-                    extract_MFB(wav_file, another_train_dir, f'{another_train_dir}/train{i + 1}.p')
+                    shutil.copy2(wav_file, f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
+                voice_authentication.train.main()
 
                     # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
                     #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
