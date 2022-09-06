@@ -361,13 +361,13 @@ class ControlModel:
             # write recording file
             wav_file = f'{Constants.audio_filepath + username}/{username}/test.wav'
             enroll_wav_file = f'{Constants.audio_filepath + username}/{username}/enroll.wav'
-            # write(wav_file, self.freq, self.recording)
+            write(wav_file, self.freq, self.recording)
             write(enroll_wav_file, self.freq, self.recording)
             feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
             test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
             os.makedirs(test_dir, exist_ok=True)
             shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir) # test file
-            # shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir) # enroll file
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir) # enroll file
 
 
 

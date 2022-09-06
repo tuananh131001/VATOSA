@@ -164,7 +164,7 @@ def main():
                 '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy','tatestauth']
 
     # Set the test speaker
-    test_speaker = 'huy'
+    test_speaker = 'testphone'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
