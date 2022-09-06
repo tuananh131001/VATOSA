@@ -366,8 +366,8 @@ class ControlModel:
             feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
             test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
             os.makedirs(test_dir, exist_ok=True)
-            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir)
-            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir)
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir) # test file
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir) # enroll file
 
 
 
@@ -444,7 +444,7 @@ class ControlModel:
                     activating_img,
                     normal_img)
         self.write_record(self.current_user.get("username"), record_type)
-        # voice_authentication.enroll.main()
+        voice_authentication.enroll.main()
         voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
         # self.current_identify_result = identify.main()
