@@ -7,10 +7,19 @@
 import os
 import time
 import pickle
+import shutil
+from voice_authentication.extract import feat_extraction
 
-from playsound import playsound
+# import voice_authentication.identification as identify
+import numpy as np
 
 from frontend.resources import Constants
+from voice_authentication.extractAudio.feat_extract import constants as c
+import voice_authentication.enroll
+import voice_authentication.identification
+import scipy.io as sio
+import scipy.io.wavfile
+from python_speech_features import *
 
 import json
 import sounddevice as sd
@@ -27,6 +36,7 @@ from PIL import Image, ImageTk
 # utility
 def update_label_variable(label, new_value):
     label.cget("textvariable").set(new_value)
+
 
 def get_input_children(input_container):
     for children in input_container.winfo_children():
@@ -54,6 +64,12 @@ def get_assist_size_input_text(entry_width, entry_height, default_font_size):
     entry_font_size = int(default_font_size / 1.25)
 
     return entry_radius, border_width, entry_vertical_padding, entry_horizontal_padding, entry_font_size
+
+
+def click_nav(controller, nav_button_type):
+    # tag_canvas = "canvas_" + nav_button_type
+    # button = event.widget.find_withtag(tag_canvas)
+    controller.navigate_page(nav_button_type)
 
 
 # tkinter element
@@ -110,23 +126,41 @@ def create_input_text(root, entry_name, entry_width, entry_height,
 def create_label_image(root, image_name, size):
     root.image = image = ImageTk.PhotoImage(Image.open(f'{Constants.IMG_CONTAINER_URL + image_name}.png')
                                             .resize(size))
-    return Label(root, bg=Constants.main_color, image=image)
+    label = Label(root, bg=Constants.main_color, image=image)
+    label.img = image
+    return label
 
 
-def create_footer(root, default_font_size):
+def create_footer(root, default_font_size, title_type="footer", username=""):
     # footer_font_size = 16
     footer_font_size = int(default_font_size / 1.55)
-    footer = customtkinter.CTkLabel(master=root,
-                                    text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
-                                    text_color=Constants.footer_text_color,
-                                    bg_color=Constants.main_color,
-                                    text_font=("Heiti SC", footer_font_size))
-    footer.place(relx=1.0, rely=1, anchor=SE)
+    if title_type != "footer":
+        footer = customtkinter.CTkLabel(master=root, text=f'Hello {username}',
+                                        text_color=Constants.footer_text_color,
+                                        bg_color=Constants.main_color,
+                                        text_font=("Heiti SC", footer_font_size),
+                                        anchor='center', justify='right')
+        footer.place(relx=1.0, rely=0.03, anchor=E)
+    else:
+        footer = customtkinter.CTkLabel(master=root,
+                                        text="Produced by Anh Nguyen, Huy Vo, Khanh Tran, Nhung Tran".upper(),
+                                        text_color=Constants.footer_text_color,
+                                        bg_color=Constants.main_color,
+                                        text_font=("Heiti SC", footer_font_size))
+        footer.place(relx=1.0, rely=1, anchor=SE)
     return footer
+
 
 def create_text(root, text,
                 font_size,
-                text_color=Constants.main_text_color):
+                text_color=Constants.main_text_color, page_type="none"):
+    if page_type == "nav_explore":
+        return customtkinter.CTkLabel(master=root,
+                                      text_color=text_color,
+                                      bg_color=Constants.main_color,
+                                      text=text,
+                                      text_font=("Avenir", font_size),
+                                      wraplength=700, anchor='w', justify='left')
     return customtkinter.CTkLabel(master=root,
                                   text_color=text_color,
                                   bg_color=Constants.main_color,
@@ -174,9 +208,14 @@ def create_image(image_url, image_size):
     return ImageTk.PhotoImage(Image.open(image_url).resize((image_size, image_size)))
 
 
-def create_record_button(root, image_size, record_type="enroll", command=None):
+def create_record_button(root, image_size, record_type="enroll", command=None, bg="", is_current_page=False,
+                         false=None):
     # initializing the image properties
-    if record_type == "enroll" or record_type == "train":
+    if record_type == "enroll" or \
+            record_type == "train" or \
+            record_type == "nav_home" or \
+            record_type == "nav_explore" or \
+            record_type == "nav_logout":
         deny_image = None
     else:
         root.deny_image = deny_image = create_image(f'{Constants.IMG_CONTAINER_URL}login_button_deny.png',
@@ -192,11 +231,22 @@ def create_record_button(root, image_size, record_type="enroll", command=None):
     # create container
     canvas1 = Canvas(root, width=image_size, height=image_size, bg=Constants.main_color, cursor="hand2")
     canvas1.configure(highlightthickness=0)
+    if bg != "":
+        canvas1.configure(bg=bg)
 
     # store image to container
     button = canvas1.create_image(0, 0, anchor=NW, image=playImage)
-    # add tag for accessing easier
-    canvas1.itemconfig(button, tag="canvas_button")
+
+    if record_type == "enroll" or record_type == "train" or record_type == "login":
+        # add tag for accessing easier
+        canvas1.itemconfig(button, tag="canvas_button")
+    else:
+        # add tag for accessing easier
+        canvas1.itemconfig(button, tag="canvas_" + record_type)
+
+    if is_current_page:
+        canvas1.itemconfig(canvas1.find_withtag("canvas_" + record_type), image=activating_image)
+
     # add event for it acting like a real button
     canvas1.tag_bind(button, "<Button-1>",
                      lambda event,
@@ -206,6 +256,46 @@ def create_record_button(root, image_size, record_type="enroll", command=None):
                      command(event, activate_img, normal_img, deny_img))
 
     return canvas1
+
+
+def create_nav(root, controller, current_nav):
+    nav_width = controller.nav_width
+    nav_height = controller.nav_height
+    nav_button_size = controller.nav_button_size
+
+    canvas = Canvas(root, width=nav_width, height=nav_height)
+    canvas.config(highlightthickness=0)
+    canvas.place(relx=0, rely=0.5, anchor=W)
+
+    canvas.create_rectangle(0, 0, nav_width, nav_height, fill=Constants.nav_color, outline="")
+
+    nav_buttons = ["nav_home", "nav_explore", "nav_logout"]
+    nav_check_current = [current_nav == nav_buttons[0], current_nav == nav_buttons[1], current_nav == nav_buttons[2]]
+    home_btn = create_record_button(canvas, nav_button_size, nav_buttons[0],
+                                    lambda event,
+                                           activate_img,
+                                           normal_img,
+                                           deny_img:
+                                    click_nav(controller, nav_buttons[0]),
+                                    Constants.nav_color, nav_check_current[0])
+    explore_btn = create_record_button(canvas, nav_button_size, nav_buttons[1],
+                                       lambda event,
+                                              activate_img,
+                                              normal_img,
+                                              deny_img:
+                                       click_nav(controller, nav_buttons[1]),
+                                       Constants.nav_color, nav_check_current[1])
+    logout_btn = create_record_button(canvas, nav_button_size, nav_buttons[2],
+                                      lambda event,
+                                             activate_img,
+                                             normal_img,
+                                             deny_img:
+                                      click_nav(controller, nav_buttons[2]),
+                                      Constants.nav_color, nav_check_current[2])
+
+    home_btn.place(relx=0.5, rely=0.2, anchor=CENTER)
+    explore_btn.place(relx=0.5, rely=0.35, anchor=CENTER)
+    logout_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 
 class ControlModel:
@@ -234,14 +324,17 @@ class ControlModel:
             duration = Constants.SIGNUP_DURATION
         elif record_type == "train":
             duration = Constants.TRAIN_DURATION
+        elif record_type == "command":
+            duration = Constants.COMMAND_DURATION
         else:
             duration = Constants.LOGIN_DURATION
 
         # start recording
         print("Start Recording")
         if record_type == "train":
-            # playsound('../materials/start-record.wav')
             self.recording_train.append(sd.rec(duration * self.freq, samplerate=self.freq, channels=1))
+        elif record_type == "command":
+            self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1, dtype='int16')
         else:
             self.recording = sd.rec(duration * self.freq, samplerate=self.freq, channels=1)
 
@@ -257,7 +350,6 @@ class ControlModel:
 
         count_down.configure(text="voice recorded ✓")
         canvas.itemconfig(button, image=normal_image)
-        playsound("../materials/end-record.wav")
         # write the recorded audio to file
         print("Done Recording")
         self.has_record_enroll = True
@@ -267,28 +359,75 @@ class ControlModel:
             # create directory if not exist
             pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
             # write recording file
-            write(f'{Constants.audio_filepath + username}/{username}/enroll.wav', self.freq, self.recording)
+            wav_file = f'{Constants.audio_filepath + username}/{username}/test.wav'
+            enroll_wav_file = f'{Constants.audio_filepath + username}/{username}/enroll.wav'
+            write(wav_file, self.freq, self.recording)
+            write(enroll_wav_file, self.freq, self.recording)
+            feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
+            test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
+            os.makedirs(test_dir, exist_ok=True)
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir)
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir)
 
-        # train: write wav file to feat_logbank_nfilt40/train_wav/{username}
+
+
+            # extract_MFB(wav_file, test_dir, f'{test_dir}/test.p')
+
+        elif record_type == "command":
+            # create directory if not exist
+            pathlib.Path(f'{Constants.command_dir + username}').mkdir(parents=True, exist_ok=True)
+            # write recording file
+            write(f'{Constants.command_dir + username}/command.wav', self.freq, self.recording)
+
+        # train: write wav file to voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/username/username
         elif record_type == "train":
             try:
-                train_wav_dir = Constants.train_wav_filepath + username
+                train_wav_dir = Constants.train_wav_filepath + f"{username}/{username}"
                 os.makedirs(train_wav_dir, exist_ok=True)
-                for i in range(1, 2):
-                    write(f'{train_wav_dir}/{username}_train{i}.wav', self.freq, self.recording_train[i - 1])
+                for i in range(Constants.TOTAL_TRAIN_FILE):
+                    write(f'{train_wav_dir}/train{i + 1}.wav', self.freq, self.recording_train[i])
 
-                train_dir = Constants.train_filepath + username
+                # extract to pickle
+                train_dir = Constants.train_filepath + f"{username}/{username}"
+                another_train_dir = Constants.FEAT_LOGBANK_DIR + f"train/{username}"
                 os.makedirs(train_dir, exist_ok=True)
-                for i in range(1, 2):
-                    with open(f'{train_dir}/{username}_train{i}.p', 'wb') as f:
-                        pickle.dump(f'{train_wav_dir}/{username}_train{i}.wav', f)
+                os.makedirs(another_train_dir, exist_ok=True)
+                for i in range(Constants.TOTAL_TRAIN_FILE):
+                    print(i)
+                    wav_file = f'{train_wav_dir}/train{i + 1}.wav'
+                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.p')
+                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.pkl')
+                    extract_MFB(wav_file, another_train_dir, f'{another_train_dir}/train{i + 1}.p')
+
+                    # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
+                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+                    # with open(f'{train_dir}/train{i + 1}.p', 'wb') as f:
+                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+                    # with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
+                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+
             except OSError as error:
                 print("Directory can not be created: ", error)
 
-        else:
+        elif record_type == "enroll":
             try:
                 # write recording file
-                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+                wav_dir = f'{Constants.audio_filepath + username}/{username}'
+                os.makedirs(wav_dir, exist_ok=True)
+                wav_file = f'{wav_dir}/enroll.wav'
+
+                test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
+                os.makedirs(test_dir, exist_ok=True)
+
+                write(wav_file, self.freq, self.recording)
+                extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
+
+                # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
+                # os.makedirs(test_dir, exist_ok=True)
+                # with open(f'{test_dir}/enroll.p', 'wb') as f:
+                #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
+                # with open(f'{test_dir}/test.p', 'wb') as f:
+                #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
 
                 # add for authenticate here
             except:
@@ -305,9 +444,11 @@ class ControlModel:
                     activating_img,
                     normal_img)
         self.write_record(self.current_user.get("username"), record_type)
-
+        # voice_authentication.enroll.main()
+        voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
-        self.current_identify_result = False
+        # self.current_identify_result = identify.main()
+
 
         # display result via changing record button appearance
         if not self.current_identify_result:
@@ -333,8 +474,53 @@ class ControlModel:
         with open(filepath, 'r') as openfile:
             if filesize < 2:
                 print("Empty")
+                self.current_user = {"username": "", "password": ""}
                 return
             else:
                 # Reading from json file
                 jsonobj = json.load(openfile)
         self.current_user = jsonobj
+
+
+# def extract_MFB(filename, output_foldername, output_filename):
+#     sr, audio = sio.wavfile.read(filename)
+#     features, energies = fbank(audio, samplerate=c.SAMPLE_RATE, nfilt=c.FILTER_BANK, winlen=0.025, winfunc=np.hamming)
+#
+#     if c.USE_LOGSCALE:
+#         features = 20 * np.log10(np.maximum(features, 1e-5))
+#
+#     if c.USE_DELTA:
+#         delta_1 = delta(features, N=1)
+#         delta_2 = delta(delta_1, N=1)
+#
+#         features = normalize_frames(features, Scale=c.USE_SCALE)
+#         delta_1 = normalize_frames(delta_1, Scale=c.USE_SCALE)
+#         delta_2 = normalize_frames(delta_2, Scale=c.USE_SCALE)
+#         features = np.hstack([features, delta_1, delta_2])
+#
+#     if c.USE_NORM:
+#         features = normalize_frames(features, Scale=c.USE_SCALE)
+#         total_features = features
+#
+#     else:
+#         total_features = features
+#
+#     speaker_folder = filename.split('/')[-3]
+#     speaker_label = speaker_folder  # set label as a folder name (recommended). Convert this to speaker index when training
+#     feat_and_label = {'feat': total_features, 'label': speaker_label}
+#
+#     if not os.path.exists(output_foldername):
+#         os.makedirs(output_foldername)
+#
+#     if os.path.isfile(output_filename) == 1:
+#         print("\"" + '/'.join(output_filename.split('/')[-3:]) + "\"" + " file already extracted!")
+#     else:
+#         with open(output_filename, 'wb') as fp:
+#             pickle.dump(feat_and_label, fp)
+
+
+def normalize_frames(m, Scale=False):
+    if Scale:
+        return (m - np.mean(m, axis=0)) / (np.std(m, axis=0) + 2e-12)
+    else:
+        return (m - np.mean(m, axis=0))

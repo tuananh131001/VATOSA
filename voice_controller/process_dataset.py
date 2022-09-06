@@ -4,7 +4,7 @@ import json
 
 DATASET_PATH = "dataset"
 JSON_PATH = "data.json"
-SAMPLES_TO_CONSIDER = 22050 # 1 sec. of audio
+SAMPLES_TO_CONSIDER = 44100 # 1 sec. of audio
 
 
 def preprocess_dataset(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512):
@@ -23,6 +23,7 @@ def preprocess_dataset(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_len
 
             # save label (i.e., sub-folder name) in the mapping
             label = dirpath.split("/")[-1]
+            print(label)
             data["mapping"].append(label)
             print("\nProcessing: '{}'".format(label))
 
