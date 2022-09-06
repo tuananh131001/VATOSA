@@ -130,7 +130,7 @@ If any error with tensorflow try this command
 
 ![image](https://user-images.githubusercontent.com/67695658/184615459-2e788a13-2fbf-42f9-847b-360ac395f041.png)
 
-If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 240 folder , if out of range, delete some korean voices folder
+If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 200 folder , if out of range, delete some korean voices folder
 Otherwise train and enroll will not work
 ## sndfile error
 ![image](https://user-images.githubusercontent.com/67695658/188459892-b34a63e7-da7c-4480-af35-1539cce7bea1.png)
