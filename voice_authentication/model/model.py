@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Function
-import model.resnet as resnet
+import voice_authentication.model.resnet as resnet
 
 
 class background_resnet(nn.Module):

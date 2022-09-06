@@ -5,11 +5,11 @@ from torch.autograd import Variable
 import pandas as pd
 import math
 import os
-import configure as c
+import voice_authentication.configure as c
 
-from DB_wav_reader import read_feats_structure
-from SR_Dataset import read_MFB, ToTensorTestInput
-from model.model import background_resnet
+from voice_authentication.DB_wav_reader import read_feats_structure
+from voice_authentication.SR_Dataset import read_MFB, ToTensorTestInput
+from voice_authentication.model.model import background_resnet
 
 
 def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
@@ -158,10 +158,10 @@ def main():
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy']
+                '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy','tatestauth']
 
     # Set the test speaker
-    test_speaker = 'huy'
+    test_speaker = 'tatestauth'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
@@ -169,6 +169,59 @@ def main():
     isUser = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
     return isUser
+def identify_with_name(loginName):
+    print("Identification page main")
+    print("name " + loginName )
+    # os.chdir('C:\\Users\\TA\\Documents\\VATOSA\\voice_authentication')
+
+    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
+
+    path = os.getcwd()
+    print(path)
+    log_dir = 'model_saved'  # Where the checkpoints are saved
+    embedding_dir = 'enroll_embeddings'  # Where embeddings are saved
+    test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved
+
+    # Settings
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
+
+    embedding_size = 128  # Dimension of speaker embeddings
+    cp_num = 25  # Which checkpoint to use?
+    n_classes = 240  # How many speakers in training data?
+    test_frames = 100  # Split the test utterance
+
+    # Load model from checkpoint
+    model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
+
+    test_feat_dir = c.TEST_FEAT_DIR
+    if not os.path.isdir(c.TEST_FEAT_DIR) and os.path.isdir(c.TEST_FEAT_DIR_ANOTHER_PATH):
+        test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
+
+    # Get the dataframe for enroll DB
+    enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
+
+    # Load enroll embeddings
+    embeddings = load_enroll_embeddings(embedding_dir)
+
+    """ Test speaker list
+    '103F3021', '207F2088', '213F5100', '217F3038', '225M4062', 
+    '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
+    """
+
+    spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
+                '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy']
+
+    # Set the test speaker
+    test_speaker = loginName
+
+    test_path = os.path.join(test_dir, test_speaker, 'test.p')
+
+    # Perform the test
+    perform_identification(
+        use_cuda, model, embeddings, test_path, test_frames, spk_list)
 
 
 if __name__ == '__main__':

@@ -5,11 +5,11 @@ from torch.autograd import Variable
 import pandas as pd
 import math
 import os
-import configure as c
+import voice_authentication.configure as co
 
-from DB_wav_reader import read_feats_structure
-from SR_Dataset import read_MFB, ToTensorTestInput
-from model.model import background_resnet
+from voice_authentication.DB_wav_reader import read_feats_structure
+from voice_authentication.SR_Dataset import read_MFB, ToTensorTestInput
+from voice_authentication.model.model import background_resnet
 
 def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
     model = background_resnet(embedding_size=embedding_size, num_classes=n_classes)
@@ -124,9 +124,9 @@ def main():
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
 
-    test_feat_dir = c.TEST_FEAT_DIR
-    if not os.path.isdir(c.TEST_FEAT_DIR) and os.path.isdir(c.TEST_FEAT_DIR_ANOTHER_PATH):
-        test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
+    test_feat_dir = co.TEST_FEAT_DIR
+    if not os.path.isdir(co.TEST_FEAT_DIR) and os.path.isdir(co.TEST_FEAT_DIR_ANOTHER_PATH):
+        test_feat_dir = co.TEST_FEAT_DIR_ANOTHER_PATH
 
     # Get the dataframe for enroll DB
     enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
@@ -142,6 +142,7 @@ def main():
     '103F3021', '207F2088', '213F5100', '217F3038', '225M4062', 
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
     """
+
 
 
 if __name__ == '__main__':
