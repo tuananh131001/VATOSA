@@ -77,6 +77,7 @@ class HomePage(Frame):
             command_text = prediction.speech_to_text(command_wav_file)
             command_split_dataset = command_text.split("\\")
             command_split = command_split_dataset[1].split(" ", 1)
+
         except IndexError:
             command_split = []
 

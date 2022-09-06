@@ -16,10 +16,11 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "dataset\\close excel",
-        "dataset\\close word",
+        "dataset\\open zalo",
+        "dataset\\open teams",
         "dataset\\open excel",
-        "dataset\\open word"
+        "dataset\\open word",
+
     ]
     _instance = None
 
