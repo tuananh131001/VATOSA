@@ -71,7 +71,7 @@
       <recent name="D:\RMIT - courses\Sem 6 - 2022B\ED3\VATOSA_group\voice_controller\user_command\hakhanhne" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main_page">
+  <component name="RunManager" selected="Python.identification">
     <configuration name="ControlModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VATOSA_group" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,8 +191,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main_page" />
         <item itemvalue="Python.identification" />
+        <item itemvalue="Python.main_page" />
         <item itemvalue="Python.ControlModel" />
         <item itemvalue="Python.enroll" />
         <item itemvalue="Python.extract" />
