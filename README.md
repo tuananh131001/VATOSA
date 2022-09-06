@@ -41,8 +41,8 @@ IF this , mean you sucess. Congratulation!
 ### 2.2 For the test
   you only need 2 file wav name it "enroll" and "test" .The path will be above
   
- example path : extractAudio\wavs\voxceleb1\test\wav\TA 
- 
+ example path for 2 file enrole PREPARE for extract : ```extractAudio\wavs\voxceleb1\test\wav\TA ```
+example path for 2 file enroll AFTER extarct :``` extractAudio\wavs\voxceleb1\test\feat\test_logfbank_nfilt40```
 # Run Authentication (RUN ONLY ON WINDOWS)
 
 ## 1. Setup Enviroment
