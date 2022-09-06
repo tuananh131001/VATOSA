@@ -47,6 +47,8 @@ class TrainingPage(Frame):
                                                 self.controller.default_font_size)
 
         # packing
+        ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                   self.model.current_user["username"])
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.count_down.place(relx=0.5, rely=0.7, anchor=CENTER)
