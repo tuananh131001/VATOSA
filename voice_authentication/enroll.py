@@ -5,11 +5,11 @@ from torch.autograd import Variable
 import pandas as pd
 import math
 import os
-import configure as c
+import voice_authentication.configure as co
 
-from DB_wav_reader import read_feats_structure
-from SR_Dataset import read_MFB, ToTensorTestInput
-from model.model import background_resnet
+from voice_authentication.DB_wav_reader import read_feats_structure
+from voice_authentication.SR_Dataset import read_MFB, ToTensorTestInput
+from voice_authentication.model.model import background_resnet
 
 def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
     model = background_resnet(embedding_size=embedding_size, num_classes=n_classes)
@@ -17,7 +17,11 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
         model.cuda()
     print('=> loading checkpoint')
     # original saved file with DataParallel
-    checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth')
+    if torch.cuda.is_available():
+        checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth')
+    else:
+        checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth', map_location=torch.device('cpu'))
+
     # create new OrderedDict that does not contain `module.`
     model.load_state_dict(checkpoint['state_dict'])
     model.eval()
@@ -114,8 +118,8 @@ def main():
     log_dir2 = '../../voice_authentication/model_saved'
     log_dir = log_dir1
     embedding_size = 128
-    cp_num = 24 # Which checkpoint to use?
-    n_classes = 240
+    cp_num = 27 # Which checkpoint to use?
+    n_classes = 200
     test_frames = 200
 
     if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):
@@ -124,9 +128,9 @@ def main():
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
 
-    test_feat_dir = c.TEST_FEAT_DIR
-    if not os.path.isdir(c.TEST_FEAT_DIR) and os.path.isdir(c.TEST_FEAT_DIR_ANOTHER_PATH):
-        test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
+    test_feat_dir = co.TEST_FEAT_DIR
+    if not os.path.isdir(co.TEST_FEAT_DIR) and os.path.isdir(co.TEST_FEAT_DIR_ANOTHER_PATH):
+        test_feat_dir = co.TEST_FEAT_DIR_ANOTHER_PATH
 
     # Get the dataframe for enroll DB
     enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
@@ -144,5 +148,7 @@ def main():
     """
 
 
+
 if __name__ == '__main__':
     main()
+    print("Enroll page called")

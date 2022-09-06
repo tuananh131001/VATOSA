@@ -3,6 +3,8 @@ json_filepath = "../resources/"
 json_filename = "data.json"
 
 audio_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/wav/"  # wav format file -> username/username/file.wav
+test_p_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/"  # wav format file -> username/username/file.wav
+
 train_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/"  # .p format file -> username/username/file.p
 train_wav_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/" # wav format file -> username/username/file.wav
 FEAT_LOGBANK_DIR = '../../voice_authentication/feat_logfbank_nfilt40/'
@@ -11,6 +13,17 @@ train_py_path = "../../voice_authentication/train.py"
 enroll_py_path = "../../voice_authentication/enroll.py"
 prediction_py_path = "../../voice_controller/prediction.py"
 APPS_PY = "../resources/Apps.py"
+
+# apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Teams.exe", "chrome.exe", "Zalo.exe"]
+apps_dict = {
+    "excel": "EXCEL.EXE",
+    "word": "WINWORD.EXE",
+    "pp": "POWERPNT.EXE",
+    "teams": "Teams.exe",
+    "chrome": "chrome.exe",
+    "zalo": "Zalo.exe"
+}
+
 
 SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 10  # in seconds

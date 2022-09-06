@@ -104,7 +104,7 @@ class VatosaApp(Tk):
             frame.configure(bg=Constants.main_color)
 
         # check if open sign up page first or login page first
-        if self.model.current_user:
+        if self.model.current_user != {"username": "", "password": ""}:
             self.show_frame(HomePage)
         else:
             self.show_frame(EnrollPage)

@@ -1,4 +1,3 @@
-import os
 from tkinter import *
 
 from frontend.control import ControlModel
@@ -86,6 +85,7 @@ class TrainingPage(Frame):
                 self.model.write_record(username, "train")
 
                 call(["python", Constants.train_py_path])
+                call(["python", Constants.enroll_py_path])
                 print("Train done")
                 self.controller.show_frame(LoginPage)
 

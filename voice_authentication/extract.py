@@ -13,7 +13,7 @@ from python_speech_features import *
 def convert_wav_to_MFB_name(filename, mode):
 
     data_type = filename.split('/')[-6]
-    filename_only = filename.split('/')[-1].replace('.wav', '.pkl')  # ex) 00001.pkl (pickle format)
+    filename_only = filename.split('/')[-1].replace('.wav', '.p')  # ex) 00001.pkl (pickle format)
     uri_folder = filename.split('/')[-2]  # ex) oT62hV9eoHo
     speaker_folder = filename.split('/')[-3]  # ex) id10918
 
