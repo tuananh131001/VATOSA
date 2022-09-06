@@ -5,7 +5,7 @@
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 # save_path = "C:/Users/TA/Documents/VATOSA/voice_authentication/extractAudio/wavs"
-save_path = dir_path + "\\wavs"
+save_path = dir_path + "/wavs"
 TRAIN_FEAT_DIR_1 = save_path + '/voxceleb1/dev/feat/train_logfbank_nfilt40' # train_Vox1
 TEST_FEAT_DIR = save_path + '/voxceleb1/test/feat/test_logfbank_nfilt40'    # test_Vox1
 

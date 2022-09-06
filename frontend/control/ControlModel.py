@@ -7,12 +7,17 @@
 import os
 import time
 import pickle
+import shutil
+from voice_authentication.extract import feat_extraction
+import voice_authentication.train
 
 # import voice_authentication.identification as identify
 import numpy as np
 
 from frontend.resources import Constants
 from voice_authentication.extractAudio.feat_extract import constants as c
+import voice_authentication.enroll
+import voice_authentication.identification
 import scipy.io as sio
 import scipy.io.wavfile
 from python_speech_features import *
@@ -356,10 +361,18 @@ class ControlModel:
             pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
             # write recording file
             wav_file = f'{Constants.audio_filepath + username}/{username}/test.wav'
+            enroll_wav_file = f'{Constants.audio_filepath + username}/{username}/enroll.wav'
             write(wav_file, self.freq, self.recording)
+            write(enroll_wav_file, self.freq, self.recording)
+            feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
             test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
             os.makedirs(test_dir, exist_ok=True)
-            extract_MFB(wav_file, test_dir, f'{test_dir}/test.p')
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir) # test file
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir) # enroll file
+
+
+
+            # extract_MFB(wav_file, test_dir, f'{test_dir}/test.p')
 
         elif record_type == "command":
             # create directory if not exist
@@ -380,12 +393,14 @@ class ControlModel:
                 another_train_dir = Constants.FEAT_LOGBANK_DIR + f"train/{username}"
                 os.makedirs(train_dir, exist_ok=True)
                 os.makedirs(another_train_dir, exist_ok=True)
+                feat_extraction(dataroot_dir=c.TRAIN_AUDIO_VOX1, mode='train')
+                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p', test_dir)  # test file
+                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p', test_dir)  # enroll file
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     print(i)
                     wav_file = f'{train_wav_dir}/train{i + 1}.wav'
-                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.p')
-                    extract_MFB(wav_file, train_dir, f'{train_dir}/train{i + 1}.pkl')
-                    extract_MFB(wav_file, another_train_dir, f'{another_train_dir}/train{i + 1}.p')
+                    shutil.copy2(wav_file, f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
+                voice_authentication.train.main()
 
                     # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
                     #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
@@ -432,7 +447,8 @@ class ControlModel:
                     activating_img,
                     normal_img)
         self.write_record(self.current_user.get("username"), record_type)
-
+        voice_authentication.enroll.main()
+        voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
         # self.current_identify_result = identify.main()
 
@@ -469,41 +485,41 @@ class ControlModel:
         self.current_user = jsonobj
 
 
-def extract_MFB(filename, output_foldername, output_filename):
-    sr, audio = sio.wavfile.read(filename)
-    features, energies = fbank(audio, samplerate=c.SAMPLE_RATE, nfilt=c.FILTER_BANK, winlen=0.025, winfunc=np.hamming)
-
-    if c.USE_LOGSCALE:
-        features = 20 * np.log10(np.maximum(features, 1e-5))
-
-    if c.USE_DELTA:
-        delta_1 = delta(features, N=1)
-        delta_2 = delta(delta_1, N=1)
-
-        features = normalize_frames(features, Scale=c.USE_SCALE)
-        delta_1 = normalize_frames(delta_1, Scale=c.USE_SCALE)
-        delta_2 = normalize_frames(delta_2, Scale=c.USE_SCALE)
-        features = np.hstack([features, delta_1, delta_2])
-
-    if c.USE_NORM:
-        features = normalize_frames(features, Scale=c.USE_SCALE)
-        total_features = features
-
-    else:
-        total_features = features
-
-    speaker_folder = filename.split('/')[-3]
-    speaker_label = speaker_folder  # set label as a folder name (recommended). Convert this to speaker index when training
-    feat_and_label = {'feat': total_features, 'label': speaker_label}
-
-    if not os.path.exists(output_foldername):
-        os.makedirs(output_foldername)
-
-    if os.path.isfile(output_filename) == 1:
-        print("\"" + '/'.join(output_filename.split('/')[-3:]) + "\"" + " file already extracted!")
-    else:
-        with open(output_filename, 'wb') as fp:
-            pickle.dump(feat_and_label, fp)
+# def extract_MFB(filename, output_foldername, output_filename):
+#     sr, audio = sio.wavfile.read(filename)
+#     features, energies = fbank(audio, samplerate=c.SAMPLE_RATE, nfilt=c.FILTER_BANK, winlen=0.025, winfunc=np.hamming)
+#
+#     if c.USE_LOGSCALE:
+#         features = 20 * np.log10(np.maximum(features, 1e-5))
+#
+#     if c.USE_DELTA:
+#         delta_1 = delta(features, N=1)
+#         delta_2 = delta(delta_1, N=1)
+#
+#         features = normalize_frames(features, Scale=c.USE_SCALE)
+#         delta_1 = normalize_frames(delta_1, Scale=c.USE_SCALE)
+#         delta_2 = normalize_frames(delta_2, Scale=c.USE_SCALE)
+#         features = np.hstack([features, delta_1, delta_2])
+#
+#     if c.USE_NORM:
+#         features = normalize_frames(features, Scale=c.USE_SCALE)
+#         total_features = features
+#
+#     else:
+#         total_features = features
+#
+#     speaker_folder = filename.split('/')[-3]
+#     speaker_label = speaker_folder  # set label as a folder name (recommended). Convert this to speaker index when training
+#     feat_and_label = {'feat': total_features, 'label': speaker_label}
+#
+#     if not os.path.exists(output_foldername):
+#         os.makedirs(output_foldername)
+#
+#     if os.path.isfile(output_filename) == 1:
+#         print("\"" + '/'.join(output_filename.split('/')[-3:]) + "\"" + " file already extracted!")
+#     else:
+#         with open(output_filename, 'wb') as fp:
+#             pickle.dump(feat_and_label, fp)
 
 
 def normalize_frames(m, Scale=False):

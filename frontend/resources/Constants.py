@@ -3,6 +3,8 @@ json_filepath = "../resources/"
 json_filename = "data.json"
 
 audio_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/wav/"  # wav format file -> username/username/file.wav
+test_p_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/"  # wav format file -> username/username/file.wav
+
 train_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/"  # .p format file -> username/username/file.p
 train_wav_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/" # wav format file -> username/username/file.wav
 FEAT_LOGBANK_DIR = '../../voice_authentication/feat_logfbank_nfilt40/'

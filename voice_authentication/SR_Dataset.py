@@ -5,8 +5,8 @@ import random
 import os
 import pickle # For python3 
 import numpy as np
-import configure as c
-from DB_wav_reader import read_DB_structure
+import voice_authentication.configure as c
+from voice_authentication.DB_wav_reader import read_DB_structure
 
 
 def read_MFB(filename):
