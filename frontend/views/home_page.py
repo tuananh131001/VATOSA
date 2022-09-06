@@ -75,7 +75,8 @@ class HomePage(Frame):
     def process_command(self, command_wav_file):
         try:
             command_text = prediction.speech_to_text(command_wav_file)
-            command_split = command_text.split(" ", 1)
+            command_split_dataset = command_text.split("\\")
+            command_split = command_split_dataset[1].split(" ", 1)
         except IndexError:
             command_split = []
 
@@ -88,7 +89,7 @@ class HomePage(Frame):
                 self.message.configure(text="Unsupported command. Please try again.")
                 return
 
-            self.message.configure(text=f"RECEIVE COMMAND: {command_text.upper()}")
+            self.message.configure(text=f"RECEIVE COMMAND: {command_split_dataset[1].upper()}")
             if command == 'open':
                 path = Apps.app_paths.get(app)
                 print(path)
