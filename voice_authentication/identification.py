@@ -115,7 +115,10 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
             best_spk = spk
     # print("Speaker identification result : %s" %best_spk)
     print(test_filename)
-    true_spk = test_filename.split('/')[-1].split('\\')[0]
+    if "\\" in test_filename :
+        true_spk = test_filename.split('/')[-1].split('\\')[0]
+    else:
+        true_spk = test_filename.split('/')[-2]
     print("\n=== Speaker identification ===")
     print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" %
           (true_spk, best_spk, true_spk == best_spk))
@@ -161,7 +164,7 @@ def main():
                 '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy','tatestauth']
 
     # Set the test speaker
-    test_speaker = 'tatestauth'
+    test_speaker = 'huy'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
