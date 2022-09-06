@@ -100,20 +100,27 @@ def main():
     
     log_dir = 'model_saved' # Where the checkpoints are saved
     embedding_dir = 'enroll_embeddings' # Where embeddings are saved
-    test_dir = 'feat_logfbank_nfilt40/test/' # Where test features are saved
-    
+
+    test_feat_dir = c.TEST_FEAT_DIR
+    if not os.path.isdir(c.TEST_FEAT_DIR) and os.path.isdir(c.TEST_FEAT_DIR_ANOTHER_PATH):
+        test_feat_dir = c.TEST_FEAT_DIR_ANOTHER_PATH
+
     # Settings
-    use_cuda = True # Use cuda or not
+    if torch.cuda.is_available():
+        use_cuda = True  # use gpu or cpu
+    else:
+        use_cuda = False  # use gpu or cpu
+
     embedding_size = 128 # Dimension of speaker embeddings
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 241 # How many speakers in training data?
+    n_classes = 240 # How many speakers in training data?
     test_frames = 100 # Split the test utterance 
 
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
-    
+
     # Get the dataframe for test DB
-    enroll_DB, test_DB = split_enroll_and_test(c.TEST_FEAT_DIR)
+    enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
     
     # Load enroll embeddings
     embeddings = load_enroll_embeddings(embedding_dir)
@@ -132,7 +139,7 @@ def main():
     # Threshold
     thres = 0.95
     
-    test_path = os.path.join(test_dir, test_speaker, 'test.p')
+    test_path = os.path.join(test_feat_dir, test_speaker, 'test.p')
     
     # Perform the test 
     perform_verification(use_cuda, model, embeddings, enroll_speaker, test_path, test_frames, thres)

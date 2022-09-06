@@ -3,13 +3,9 @@
 from frontend.resources import Constants
 from frontend.control import ControlModel
 from traning_page import TrainingPage
-
-from login_page import LoginPage
-# from page1 import Page1
+from subprocess import call
 
 from tkinter import *
-import customtkinter
-
 
 # input username + voice -> store username + voice to json(username, voice file in json + real voice file in 1
 # specific path)
@@ -39,7 +35,7 @@ class EnrollPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
                                                     f"enroll your voice", Constants.count_down_size)
-        self.enroll_message = ControlModel.create_text(self, '', 10)
+        self.enroll_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 10
@@ -96,7 +92,7 @@ class EnrollPage(Frame):
         password = self.password_entry.get()
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if username == "" or password == "" or not self.model.has_record_enroll:
-            self.enroll_message.configure(text="Please fill in all the information")
+            self.enroll_message.configure(text="Please record and fill in all the information")
             return
         elif len(password) < 5:
             self.enroll_message.configure(text="Password must have at least 5 characters")
@@ -108,9 +104,9 @@ class EnrollPage(Frame):
         # Write date to json file
         user_info_dict = {"username": username, "password": password}
         self.model.write_file(user_info_dict)
+        self.model.write_record(username)
 
-        if username != "":
-            self.model.write_record(username)
+        # get_apps_exe_path()
 
         # delete old input
         self.username_entry.delete(0, END)
@@ -119,3 +115,41 @@ class EnrollPage(Frame):
         # move to next page
         print(self.model.current_user)
         self.controller.show_frame(TrainingPage)
+
+
+# def get_apps_exe_path():
+#     apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Code.exe"]
+#     paths = []
+#     for app in apps:
+#         # try path in dir C:
+#         path = find_file(app, "C:")
+#
+#         # if cannot find any path then find in dir D:
+#         if path is None:
+#             path = find_file(app, "D:\\")
+#
+#         # if still cannot find in dir D: then print message
+#         if path is None:
+#             print("cannot find path for ", app)
+#
+#         paths.append(path)
+#
+#     with open(Constants.APPS_PY, 'w') as f:
+#         f.write(f"EXCEL = \"{paths[0]}\"\n")
+#         f.write(f"WORD =  \"{paths[1]} \"\n")
+#         f.write(f"POWERPOINT =  \"{paths[2]} \"\n")
+#         f.write(f"VSCODE =  \"{paths[3]}\"\n")
+#
+#
+# # ref: https://www.tutorialspoint.com/file-searching-using-python
+# def find_file(filename, search_path):
+#     """
+#     Function to find the first matched file, then returns the path to that file
+#     If no matched file is found, returns None
+#     """
+#     # Walking top-down from the root
+#     for root, dir, files in os.walk(search_path):
+#         files_temp = list(map(str.lower, files))
+#         if filename.lower() in files_temp:
+#             result = os.path.join(root, filename)
+#             return result

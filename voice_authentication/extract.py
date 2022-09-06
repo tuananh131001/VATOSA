@@ -1,12 +1,13 @@
 import os
 import numpy as np
-import extractAudio.feat_extract.constants as c
+from voice_authentication.extractAudio.feat_extract import constants as c
 import pickle  # For python3
-from python_speech_features import *
-from extractAudio.feat_extract.voxceleb_wav_reader import read_voxceleb_structure
+from voice_authentication.extractAudio.feat_extract.voxceleb_wav_reader import read_voxceleb_structure
 
 import scipy.io as sio
 import scipy.io.wavfile
+from python_speech_features import *
+
 
 
 def convert_wav_to_MFB_name(filename, mode):
@@ -69,6 +70,8 @@ def extract_MFB(filename, mode):
 
     speaker_folder = filename.split('/')[-3]
     output_foldername, output_filename = convert_wav_to_MFB_name(filename, mode=mode)
+    print(output_foldername)
+    print(output_filename)
     speaker_label = speaker_folder  # set label as a folder name (recommended). Convert this to speaker index when training
     feat_and_label = {'feat': total_features, 'label': speaker_label}
 
@@ -91,7 +94,7 @@ def normalize_frames(m, Scale=False):
 
 class mode_error(Exception):
     def __str__(self):
-        return "Wrong mode (type 'train' or 'test')"
+        return "Wrong mode (page_type 'train' or 'test')"
 
 
 def feat_extraction(dataroot_dir, mode):

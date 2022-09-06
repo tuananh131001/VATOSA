@@ -6,6 +6,8 @@ TEST_WAV_DIR = 'test_wavs'
 # Feature path
 TRAIN_FEAT_DIR = 'feat_logfbank_nfilt40/train'
 TEST_FEAT_DIR = 'feat_logfbank_nfilt40/test'
+TRAIN_FEAT_DIR_ANOTHER_PATH = '../../voice_authentication/feat_logfbank_nfilt40/train'
+TEST_FEAT_DIR_ANOTHER_PATH = '../../voice_authentication/feat_logfbank_nfilt40/test'
 
 # Context window size
 NUM_WIN_SIZE = 100 #10

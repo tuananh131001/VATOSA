@@ -1,6 +1,8 @@
+import os
+
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from result_page import ResultPage
+from home_page import HomePage
 from tkinter import *
 
 
@@ -38,7 +40,7 @@ class LoginPage(Frame):
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
             self.controller.default_font_size - 9)
-        self.login_message = ControlModel.create_text(self, '', 11)
+        self.login_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
         self.username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
@@ -67,12 +69,6 @@ class LoginPage(Frame):
                                                        self.controller.default_font_size - 8,
                                                        Constants.main_color,
                                                        Constants.main_text_color)
-        # self.register_btn = ControlModel.create_click_text(self, "Register here",
-        #                                                    self.go_register,
-        #                                                    self.controller.entry_height,
-        #                                                    self.controller.default_font_size - 8,
-        #                                                    Constants.main_color,
-        #                                                    Constants.alternative_text_color)
 
         # record
         self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 50,
@@ -100,7 +96,7 @@ class LoginPage(Frame):
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
-        self.login_message.place(relx=0.5, rely=0.70, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -146,15 +142,19 @@ class LoginPage(Frame):
             self.login_message.config(text="Invalid login credentials. Please try again")
             return
 
+        self.login_message.config(text="Login successfully. Please wait.")
+        # get apps exe paths
+        get_apps_exe_path()
+
         # delete old input
+        self.login_message.config(text="")
         self.username_entry.delete(0, END)
         self.password_entry.delete(0, END)
         self.model.current_identify_result = True
         self.navigate_next_page()
-        print("Login Successfully")
 
     def navigate_next_page(self):
-        self.controller.show_frame(ResultPage)
+        self.controller.show_frame(HomePage)
 
     def go_back(self):
         self.record_btn.destroy()
@@ -169,3 +169,47 @@ class LoginPage(Frame):
 
     # def go_register(self):
     #     self.controller.show_frame(EnrollPage)
+
+
+def get_apps_exe_path():
+    app_paths = {}
+    paths = []
+    for k, v in Constants.apps_dict.items():
+        # try path in dir C:
+        path = find_file(v, "C:")
+
+        # if cannot find any path then find in dir D:
+        if path is None:
+            path = find_file(v, "D:\\")
+
+        # if still cannot find in dir D: then print message
+        if path is None:
+            print("cannot find path for ", v)
+
+        paths.append(path)
+        app_paths[f'{k}'] = path
+
+    with open(Constants.APPS_PY, 'w') as f:
+        f.write(f"app_paths = {{\n")
+        f.write(f"\"excel\" : \"{paths[0]}\",\n")
+        f.write(f"\"word\" :  \"{paths[1]}\",\n")
+        f.write(f"\"pp\" :  \"{paths[2]}\",\n")
+        f.write(f"\"teams\" :  \"{paths[3]}\",\n")
+        f.write(f"\"chrome\" :  \"{paths[4]}\",\n")
+        f.write(f"\"zalo\" :  \"{paths[5]}\"\n")
+        f.write(f"}}")
+
+
+# ref: https://www.tutorialspoint.com/file-searching-using-python
+def find_file(filename, search_path):
+    """
+    Function to find the first matched file, then returns the path to that file
+    If no matched file is found, returns None
+    """
+    # Walking top-down from the root
+    for root, dir, files in os.walk(search_path):
+        files_temp = list(map(str.lower, files))
+        if filename.lower() in files_temp:
+            result = os.path.join(root, filename)
+            result = result.replace("\\", "\\\\")
+            return result
