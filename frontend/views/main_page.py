@@ -119,7 +119,7 @@ class VatosaApp(Tk):
         elif button_type == "nav_explore":
             self.show_frame(ExplorePage)
         elif button_type == "login" or button_type == "nav_logout":
-            self.show_frame(TrainingPage)
+            self.show_frame(LoginPage)
 
 
 app = VatosaApp()

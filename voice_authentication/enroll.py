@@ -17,7 +17,11 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
         model.cuda()
     print('=> loading checkpoint')
     # original saved file with DataParallel
-    checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth')
+    if torch.cuda.is_available():
+        checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth')
+    else:
+        checkpoint = torch.load(log_dir + '/checkpoint_' + str(cp_num) + '.pth', map_location=torch.device('cpu'))
+
     # create new OrderedDict that does not contain `module.`
     model.load_state_dict(checkpoint['state_dict'])
     model.eval()
@@ -114,7 +118,7 @@ def main():
     log_dir2 = '../../voice_authentication/model_saved'
     log_dir = log_dir1
     embedding_size = 128
-    cp_num = 24 # Which checkpoint to use?
+    cp_num = 27 # Which checkpoint to use?
     n_classes = 200
     test_frames = 200
 
