@@ -55,9 +55,9 @@ class VatosaApp(Tk):
         # explore
         self.explore_title_font_size = int(self.frame_width / 33)  # 32
         self.explore_list_font_size = int(self.frame_width / 40)  # 26
-        self.explore_image_size = int(self.frame_width / 14)  # 75
-        self.explore_app_font_size = int(self.frame_width / 54)  # 19
-        self.explore_app_open_font_size = int(self.frame_width / 60)  # 17
+        self.explore_image_size = int(self.frame_width / 17)  # 75
+        self.explore_app_font_size = int(self.frame_width / 57)  # 19
+        self.explore_app_open_font_size = int(self.frame_width / 62)  # 17
 
         # nav bar
         self.nav_width = int(self.frame_width / 10.5)  # 100
@@ -105,8 +105,8 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user != {"username": "", "password": ""}:
-            # self.show_frame(HomePage)
-            self.show_frame(LoginPage)
+            self.show_frame(HomePage)
+            # self.show_frame(LoginPage)
         else:
             self.show_frame(EnrollPage)
 
