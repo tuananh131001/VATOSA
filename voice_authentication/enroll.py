@@ -115,7 +115,7 @@ def main():
     log_dir = log_dir1
     embedding_size = 128
     cp_num = 24 # Which checkpoint to use?
-    n_classes = 240
+    n_classes = 200
     test_frames = 200
 
     if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):

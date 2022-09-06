@@ -139,7 +139,7 @@ def main():
 
     embedding_size = 128  # Dimension of speaker embeddings
     cp_num = 27  # Which checkpoint to use?
-    n_classes = 240  # How many speakers in training data?
+    n_classes = 200  # How many speakers in training data?
     test_frames = 100  # Split the test utterance
 
     # Load model from checkpoint
@@ -161,10 +161,10 @@ def main():
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 's3864077', 'huy','tatestauth']
+                '229M2031', '230M4087', '233F4013', '236M3043', 'huy','tatestauth','pls']
 
     # Set the test speaker
-    test_speaker = 'testphone'
+    test_speaker = 'tareal'
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
@@ -193,7 +193,7 @@ def identify_with_name(loginName):
 
     embedding_size = 128  # Dimension of speaker embeddings
     cp_num = 25  # Which checkpoint to use?
-    n_classes = 240  # How many speakers in training data?
+    n_classes = 200  # How many speakers in training data?
     test_frames = 100  # Split the test utterance
 
     # Load model from checkpoint
