@@ -40,7 +40,9 @@ IF this , mean you sucess. Congratulation!
 
 ### 2.2 For the test
   you only need 2 file wav name it "enroll" and "test" .The path will be above
-
+  
+ example path : extractAudio\wavs\voxceleb1\test\wav\TA 
+ 
 # Run Authentication (RUN ONLY ON WINDOWS)
 
 ## 1. Setup Enviroment
