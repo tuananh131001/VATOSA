@@ -219,7 +219,7 @@ def identify_with_name(loginName):
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 'khanhchimte',  'tuananh1', 'nhung']
+                '229M2031', '230M4087', '233F4013', '236M3043', 'khanhchimte','daredevil',  'tuananh1', 'matsuri01anya']
 
     # Set the test speaker
     test_speaker = loginName
