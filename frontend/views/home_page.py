@@ -86,25 +86,26 @@ class HomePage(Frame):
             command = command_split[0]
             app = command_split[1].lower()
 
-            if (command != 'open' and command != 'close') or (app not in Constants.apps_dict.keys()):
+            if (command != 'open') or (app not in Constants.apps_dict.keys()):
+            # if (command != 'open' and command != 'close') or (app not in Constants.apps_dict.keys()):
                 self.message.configure(text="Unsupported command. Please try again.")
                 return
 
             self.message.configure(text=f"RECEIVE COMMAND: {command_split_dataset[1].upper()}")
-            if command == 'open':
-                path = Apps.app_paths.get(app)
-                print(path)
-                if path is None:
-                    self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
-                else:
-                    subprocess.Popen([path, '-new-tab'])
-                    self.result.configure(text=f"RESULT: {app.upper()} is opened")
+            # if command == 'open':
+            path = Apps.app_paths.get(app)
+            print(path)
+            if path is None:
+                self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
+            else:
+                subprocess.Popen([path, '-new-tab'])
+                self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
-            elif command == 'close':
-                if os.system(f"taskkill /f /im {Constants.apps_dict.get(app)}") == 0:
-                    self.result.configure(text=f"RESULT: {app.upper()} is closed")
-                else:
-                    self.result.configure(text=f"RESULT: Cannot close. {app.upper()} isn't running now")
+            # elif command == 'close':
+            #     if os.system(f"taskkill /f /im {Constants.apps_dict.get(app)}") == 0:
+            #         self.result.configure(text=f"RESULT: {app.upper()} is closed")
+            #     else:
+            #         self.result.configure(text=f"RESULT: Cannot close. {app.upper()} isn't running now")
 
         else:
             self.message.configure(text="Cannot recognize command. Please try again.")
