@@ -5,7 +5,7 @@ from frontend.control import ControlModel
 from subprocess import call
 # from home_page import HomePage
 from tkinter import *
-
+import voice_authentication.enroll
 # input username + voice -> store username + voice to json(username, voice file in json + real voice file in 1
 # specific path)
 
@@ -84,7 +84,8 @@ class EnrollPage(Frame):
             print("Sign up done")
             # move to next page
             print(self.model.current_user)
-            self.controller.navigate_page("login")
+            voice_authentication.enroll.main()
+            # self.controller.navigate_page("login")
         else:
             self.message.configure(text="Please record before click submit")
 

@@ -423,7 +423,12 @@ class ControlModel:
             os.makedirs(test_dir, exist_ok=True)
 
             write(wav_file, self.freq, self.recording)
+
             feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
+            shutil.copy2(c.TEST_FEAT_VOX1 + f'/test_logfbank_nfilt40/{username}/{username}/enroll.p',
+                         test_dir)
+
+
             # extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
 
             # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
