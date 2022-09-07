@@ -20,6 +20,8 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
     print('=> loading checkpoint')
     # original saved file with DataParallel
     # Settings
+    path = os.getcwd()
+    print(path)
     if torch.cuda.is_available():
         checkpoint = torch.load(log_dir + '/checkpoint_' +
                                 str(cp_num) + '.pth')
@@ -177,7 +179,7 @@ def identify_with_name(loginName):
     print("name " + loginName )
     # os.chdir('C:\\Users\\TA\\Documents\\VATOSA\\voice_authentication')
 
-    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
+    os.chdir(os.path.dirname(os.getcwd()) + '/voice_authentication')
 
     path = os.getcwd()
     print(path)
