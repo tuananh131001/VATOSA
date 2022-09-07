@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="merge with huyne, add apps to apps list">
-      <change afterPath="$PROJECT_DIR$/frontend/resources/assets/app_list/zalo.png" afterDir="false" />
+    <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="Fix explore page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/control/ControlModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/control/ControlModel.py" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/resources/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/enroll_embeddings/nhung.pth" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/enroll_embeddings/nhung.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/login_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/main_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/daredevil/daredevil/enroll.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/daredevil/daredevil/enroll.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/daredevil/daredevil/test.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/daredevil/daredevil/test.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/khanhchimte/khanhchimte/enroll.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/khanhchimte/khanhchimte/enroll.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/khanhchimte/khanhchimte/test.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/khanhchimte/khanhchimte/test.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tuananh1/tuananh1/enroll.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tuananh1/tuananh1/enroll.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tuananh1/tuananh1/test.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tuananh1/tuananh1/test.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/test/nhung/enroll.p" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/test/nhung/enroll.p" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/test/nhung/test.p" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/test/nhung/test.p" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/identification.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/identification.py" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/frontend/views/explore_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/explore_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/main_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/user_command/sir/command.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/user_command/sir/command.wav" afterDir="false" />
->>>>>>> NhungNew
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,13 +234,7 @@
       <workItem from="1662392811160" duration="944000" />
       <workItem from="1662393795551" duration="5466000" />
       <workItem from="1662470416821" duration="497000" />
-<<<<<<< HEAD
-      <workItem from="1662548105133" duration="973000" />
-      <workItem from="1662553118115" duration="4049000" />
-      <workItem from="1662561092913" duration="877000" />
-=======
-      <workItem from="1662541513642" duration="8053000" />
->>>>>>> NhungNew
+      <workItem from="1662541513642" duration="9028000" />
     </task>
     <task id="LOCAL-00001" summary="merge with demo_ver&#10;update directory to store 10 training files&#10;still cannot run train.py on my lap">
       <created>1661922897714</created>
@@ -292,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662451439952</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix explore page">
+      <created>1662557563298</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662557563298</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +296,8 @@
     <MESSAGE value="test cai nay ik" />
     <MESSAGE value="Homepage - user speaks to open/close apps" />
     <MESSAGE value="merge with huyne, add apps to apps list" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge with huyne, add apps to apps list" />
+    <MESSAGE value="Fix explore page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix explore page" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
 <<<<<<< HEAD
