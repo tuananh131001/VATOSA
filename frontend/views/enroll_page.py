@@ -60,13 +60,14 @@ class EnrollPage(Frame):
 
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
-        self.count_down_label.place(relx=0.5, rely=0.6, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.85, anchor=CENTER)
-        self.message.place(relx=0.5, rely=0.92, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.53, anchor=CENTER)
+        self.count_down_label.place(relx=0.5, rely=0.7, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.9, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
+            self.message.configure(text="")
             self.click = True
             self.model.record("enroll", count_down,
                               event.widget,
@@ -77,7 +78,7 @@ class EnrollPage(Frame):
 
     def sign_up(self):
         if self.count_record != 0:
-            self.model.write_record(self.model.current_user)
+            self.model.write_record(self.model.current_user.get("username"))
             call(["python", Constants.enroll_py_path])
 
             print("Sign up done")

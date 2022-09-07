@@ -415,7 +415,7 @@ class ControlModel:
         elif record_type == "enroll":
             # try:
             # write recording file
-            wav_dir = Constants.audio_filepath + f'{ username}/{username}'
+            wav_dir = Constants.audio_filepath + f'{username}/{username}'
             os.makedirs(wav_dir, exist_ok=True)
             wav_file = f'{wav_dir}/enroll.wav'
 

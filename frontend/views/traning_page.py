@@ -3,7 +3,7 @@ from tkinter import *
 from frontend.control import ControlModel
 from frontend.resources import Constants
 from enroll_page import EnrollPage
-from subprocess import call
+# from subprocess import call
 
 
 class TrainingPage(Frame):
@@ -26,9 +26,7 @@ class TrainingPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self,
-                                                   f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times",
-                                                   Constants.count_down_size + 1)
+        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.TRAIN_DURATION} seconds", Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
@@ -61,43 +59,39 @@ class TrainingPage(Frame):
                                                 self.controller.default_font_size)
 
         # packing
-        ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.41, anchor=CENTER)
-        self.count_down.place(relx=0.5, rely=0.58, anchor=CENTER)
-        self.message.place(relx=0.5, rely=0.93, anchor=CENTER)
-
-        username_box.place(relx=0.5, rely=0.67, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.75, anchor=CENTER)
-
-        submit_btn.place(relx=0.5, rely=0.85, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.46, anchor=CENTER)
+        self.count_down.place(relx=0.5, rely=0.63, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.72, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.805, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.9, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.97, anchor=CENTER)
 
     def click_record_button(self, event, activating_img, normal_img, deny_img):
-        if self.count < Constants.TOTAL_TRAIN_FILE and not self.click:
+        if not self.click:
             self.message.configure(text='')
             self.click = True
             self.model.record("train", self.count_down,
                               event.widget,
                               activating_img,
                               normal_img)
-            self.count += 1
+            if self.count == 0:
+                self.count += 1
             if self.count < Constants.TOTAL_TRAIN_FILE:
-                self.count_down.configure(
-                    text=f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times\n{Constants.TOTAL_TRAIN_FILE - self.count} times left")
+                self.count_down.configure(text=f"Press and Speak in {Constants.TRAIN_DURATION} seconds")
             else:
-                self.count_down.configure(text=f"{Constants.TOTAL_TRAIN_FILE} records already. Please click next now.")
+                self.count_down.configure(text=f"{Constants.TOTAL_TRAIN_FILE} record already. Please click next now.")
 
             self.click = False
-        elif self.count == Constants.TOTAL_TRAIN_FILE and not self.click:
-            self.message.configure(text=f"Please submit")
+        # elif self.count == Constants.TOTAL_TRAIN_FILE and not self.click:
+        #     self.message.configure(text=f"Please submit")
 
     def check_submit(self, username, password):
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
-        if self.count != Constants.TOTAL_TRAIN_FILE:
-            self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
-            return False
-        if username == "" or password == "" or not self.model.has_record_enroll:
+        # if self.count != Constants.TOTAL_TRAIN_FILE:
+        #     self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
+        #     return False
+        if username == "" or password == "" or self.count == 0:
             self.message.configure(text="Please record and fill in all the information")
             return False
         elif len(password) < 5:

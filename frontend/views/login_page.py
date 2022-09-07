@@ -99,8 +99,6 @@ class LoginPage(Frame):
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
-        ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
