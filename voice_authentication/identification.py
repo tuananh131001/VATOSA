@@ -124,7 +124,7 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
     print("\n=== Speaker identification ===")
     print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" %
           (username_input, best_spk, username_input == best_spk))
-    return true_spk == best_spk
+    return username_input == best_spk
 
 
 def main():
