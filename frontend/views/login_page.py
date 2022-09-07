@@ -116,7 +116,7 @@ class LoginPage(Frame):
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
         print(sub_folders)
         print(self.login_name_entry.get())
-        if self.login_name_entry.get() in sub_folders:
+        if self.login_name_entry.get() not in sub_folders:
             if not self.click:
                 self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
                 self.click = True
