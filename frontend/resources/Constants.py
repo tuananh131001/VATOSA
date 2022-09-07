@@ -1,3 +1,4 @@
+import os
 IMG_CONTAINER_URL = "../resources/assets/"
 json_filepath = "../resources/"
 json_filename = "data.json"
@@ -5,9 +6,14 @@ json_filename = "data.json"
 audio_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/wav/"  # wav format file -> username/username/file.wav
 test_p_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/"  # wav format file -> username/username/file.wav
 
-train_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/"  # .p format file -> username/username/file.p
-train_wav_filepath = "../../voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/" # wav format file -> username/username/file.wav
-FEAT_LOGBANK_DIR = '../../voice_authentication/feat_logfbank_nfilt40/'
+train_filepath = os.path.dirname(os.path.dirname(os.getcwd())) + "/voice_authentication" \
+                                                                                            "/extractAudio/wavs" \
+                                                                                            "/voxceleb1/dev/feat" \
+                                                                                            "/train_logfbank_nfilt40/"  # .p format file -> username/username/file.p
+train_wav_filepath = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication/' + "extractAudio/wavs" \
+                                                                                                "/voxceleb1/dev/wav/"
+# wav format file -> username/username/file.wav
+FEAT_LOGBANK_DIR = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication/' + 'feat_logfbank_nfilt40/'
 command_dir = '../../voice_controller/user_command/'
 train_py_path = "../../voice_authentication/train.py"
 enroll_py_path = "../../voice_authentication/enroll.py"
@@ -27,7 +33,7 @@ apps_dict = {
 
 SIGNUP_DURATION = 10  # in seconds
 LOGIN_DURATION = 5  # in seconds
-TRAIN_DURATION = 5
+TRAIN_DURATION = 10
 COMMAND_DURATION = 1  # in seconds
 SAMPLE_RATE = 22050
 TOTAL_TRAIN_FILE = 10

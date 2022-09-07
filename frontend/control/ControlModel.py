@@ -376,6 +376,8 @@ class ControlModel:
         elif record_type == "train":
             try:
                 train_wav_dir = Constants.train_wav_filepath + f"{username}/{username}"
+                train_p_dir = Constants.train_filepath + f"{username}/{username}"
+
                 os.makedirs(train_wav_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     write(f'{train_wav_dir}/train{i + 1}.wav', self.freq, self.recording_train[i])
@@ -389,9 +391,10 @@ class ControlModel:
                 # enroll file
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     print(i)
-                    wav_file = f'{train_wav_dir}/train{i + 1}.wav'
+                    wav_file = f'{train_p_dir}/train{i + 1}.p'
+                    print(wav_file)
                     shutil.copy2(wav_file,
-                                 f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
+                                 another_train_dir + f"/{username}")  # copy all .p to train folder
                 # voice_authentication.enroll.main()
                 # voice_authentication.train.main()
 
@@ -421,7 +424,6 @@ class ControlModel:
             shutil.copy2(c.TEST_FEAT_VOX1 + f'/test_logfbank_nfilt40/{username}/{username}/enroll.p',
                          test_dir)
 
-
             # extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
 
             # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
@@ -448,8 +450,6 @@ class ControlModel:
         self.write_record("temp", record_type)
         # voice_authentication.enroll.main()
         return voice_authentication.identification.identify_with_name((self.current_user.get("username")))
-
-
 
         # final result
         # self.current_identify_result = identify.main()
