@@ -31,10 +31,10 @@ def split_enroll_and_test(dataroot_dir):
     DB_all = read_feats_structure(dataroot_dir)
     enroll_DB = pd.DataFrame()
     test_DB = pd.DataFrame()
-    
+
     enroll_DB = DB_all[DB_all['filename'].str.contains('enroll.p')]
     test_DB = DB_all[DB_all['filename'].str.contains('test.p')]
-    
+
     # Reset the index
     enroll_DB = enroll_DB.reset_index(drop=True)
     test_DB = test_DB.reset_index(drop=True)
@@ -42,23 +42,23 @@ def split_enroll_and_test(dataroot_dir):
 
 def get_embeddings(use_cuda, filename, model, test_frames):
     input, label = read_MFB(filename) # input size:(n_frames, n_dims)
-    
-    tot_segments = math.ceil(len(input)/test_frames) # total number of segments with 'test_frames' 
+
+    tot_segments = math.ceil(len(input)/test_frames) # total number of segments with 'test_frames'
     activation = 0
     with torch.no_grad():
         for i in range(tot_segments):
             temp_input = input[i*test_frames:i*test_frames+test_frames]
-            
+
             TT = ToTensorTestInput()
             temp_input = TT(temp_input) # size:(1, 1, n_dims, n_frames)
-    
+
             if use_cuda:
                 temp_input = temp_input.cuda()
             temp_activation,_ = model(temp_input)
             activation += torch.sum(temp_activation, dim=0, keepdim=True)
-    
+
     activation = l2_norm(activation, 1)
-                
+
     return activation
 
 def l2_norm(input, alpha):
@@ -79,36 +79,39 @@ def enroll_per_spk(use_cuda, test_frames, model, DB, embedding_dir):
     """
     n_files = len(DB) # 10
     enroll_speaker_list = sorted(set(DB['speaker_id']))
-    
+
     embeddings = {}
-    
+
     # Aggregates all the activations
     print("Start to aggregate all the d-vectors per enroll speaker")
-    
+
     for i in range(n_files):
         filename = DB['filename'][i]
         spk = DB['speaker_id'][i]
-        
+
         activation = get_embeddings(use_cuda, filename, model, test_frames)
         if spk in embeddings:
             embeddings[spk] += activation
         else:
             embeddings[spk] = activation
-            
+
         print("Aggregates the activation (spk : %s)" % (spk))
-        
+
     if not os.path.exists(embedding_dir):
         os.makedirs(embedding_dir)
-        
+
     # Save the embeddings
     for spk_index in enroll_speaker_list:
         embedding_path = os.path.join(embedding_dir, spk_index+'.pth')
         torch.save(embeddings[spk_index], embedding_path)
         print("Save the embeddings for %s" % (spk_index))
     return embeddings
-    
+
 def main():
-        
+    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
+
+    path = os.getcwd()
+    print(path)
     # Settings
     if torch.cuda.is_available():
         use_cuda = True  # use gpu or cpu
@@ -124,7 +127,7 @@ def main():
 
     if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):
          log_dir = log_dir2
-    
+
     # Load model from checkpoint
     model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
 
@@ -135,13 +138,13 @@ def main():
     # Get the dataframe for enroll DB
     enroll_DB, test_DB = split_enroll_and_test(test_feat_dir)
     print(enroll_DB)
-    
+
     # Where to save embeddings
     embedding_dir = 'enroll_embeddings'
-    
+
     # Perform the enrollment and save the results
     enroll_per_spk(use_cuda, test_frames, model, enroll_DB, embedding_dir)
-    
+
     """ Test speaker list
     '103F3021', '207F2088', '213F5100', '217F3038', '225M4062', 
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
