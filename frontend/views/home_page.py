@@ -102,6 +102,7 @@ class HomePage(Frame):
         if path is None:
             self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
         else:
+            os.system("open -a TextEdit")
             subprocess.Popen([path, '-new-tab'])
             self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
