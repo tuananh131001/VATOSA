@@ -109,7 +109,7 @@ def enroll_per_spk(use_cuda, test_frames, model, DB, embedding_dir):
 
 def main():
     c_path = os.path.dirname(os.path.dirname(os.path.dirname(os.getcwd()))) + '/VATOSA/voice_authentication/'
-
+    # c_path =''
     path = os.getcwd()
     print(path)
     # Settings
