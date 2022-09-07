@@ -124,7 +124,7 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
     print("\n=== Speaker identification ===")
     print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" %
           (username_input, best_spk, username_input == best_spk))
-    return username_input == best_spk
+    return username_input == best_spk, best_spk
 
 
 def main():
@@ -171,7 +171,7 @@ def main():
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    isUser = perform_identification(
+    isUser , predict_spk = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
     return isUser
 
@@ -228,8 +228,9 @@ def identify_with_name(loginName):
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    return perform_identification(
+    isUser , predict_spk = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list, loginName)
+    return isUser, predict_spk
 
 
 if __name__ == '__main__':
