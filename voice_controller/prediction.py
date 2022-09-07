@@ -6,7 +6,7 @@ import numpy as np
 
 SAVED_MODEL_PATH = "model.h5"
 SAVED_MODEL_PATH_ANOTHER_PATH = "../../voice_controller/model.h5"
-SAMPLES_TO_CONSIDER = 44100
+SAMPLES_TO_CONSIDER = 22050
 
 
 class _Keyword_Spotting_Service:
@@ -16,10 +16,10 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "dataset\\close excel",
-        "dataset\\close word",
-        "dataset\\open excel",
-        "dataset\\open word"
+        "dataset\\zalo",
+        "dataset\\excel",
+        "dataset\\team",
+        "dataset\\word"
     ]
     _instance = None
 

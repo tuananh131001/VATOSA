@@ -3,418 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="merge with huyne, add apps to apps list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 1 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 10 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 11 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 12 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 13 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 14 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 15 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 2 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 3 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 4 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 5 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 6 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 7 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 8 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Huy 9 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 41 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 42 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 43 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 44 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 45 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 46 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 47 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 48 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 49 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 50 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 51 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 52 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 53 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 54 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 55 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 56 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 57 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 58 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 59 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 60 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 61 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 62 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 63 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 64 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/Close Excel Nhung 65 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel huy 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 11.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 12.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 13.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 14.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close excel/close excel nhung 2s 9.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 1 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 10 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 11 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 12 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 13 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 14 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 15 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 2 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 3 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 4 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 5 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 6 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 7 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 8 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Huy 9 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 41 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 42 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 43 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 44 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 45 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 46 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 47 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 48 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 49 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 50 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 51 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 52 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 53 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 54 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 55 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 56 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 57 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 58 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 59 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 60 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 61 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 62 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 63 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 64 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/Close Word Nhung 65 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word huy 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 11.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 12.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 13.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 14.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/close word/close word nhung 2s 9.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 1 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 10 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 11 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 12 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 13 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 14 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 15 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 2 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 3 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 4 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 5 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 6 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 7 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 8 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Huy 9 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 2s 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 2s 2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 2s 3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 41 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 42 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 43 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 44 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 45 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 46 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 47 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 48 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 49 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 50 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 51 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 52 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 53 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 54 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 55 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 56 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 57 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 58 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 59 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 60 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 61 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 62 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 63 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 64 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open Excel Nhung 65 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open excel Nhung 2s 4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/Open excel Nhung 2s 5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel Nhung 2s 6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel huy 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 11.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 12.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 13.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 14.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open excel/open excel nhung 2s 9.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 1 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 10 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 11 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 12 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 13 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 14 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 15 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 2 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 3 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 4 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 5 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 6 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 7 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 8 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Huy 9 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 16 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 17 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 18 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 19 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 20 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 41 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 42 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 43 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 44 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 45 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 46 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 47 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 48 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 49 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 50 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 51 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 52 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 53 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 54 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 55 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 56 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 57 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 58 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 59 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 60 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 61 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 62 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 63 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 64 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/Open Word Nhung 65 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 21 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 22 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 23 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 24 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 25 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 26 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 27 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 28 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 29 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 30 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 31 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 32 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 33 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 34 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 35 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 36 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 37 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 38 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 39 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word huy 40 22050 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 11.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 12.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 13.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 14.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 3.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 4.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 5.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 6.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 7.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 8.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_controller/dataset/open word/open word nhung 2s 9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/main_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_controller/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_controller/model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_controller/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/prediction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_controller/process_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_controller/process_dataset.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -464,7 +58,7 @@
       <recent name="D:\RMIT - courses\Sem 6 - 2022B\ED3\VATOSA_group\voice_controller\user_command\hakhanhne" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.process_dataset">
+  <component name="RunManager" selected="Python.main_page">
     <configuration name="build_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="VATOSA_group" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -584,10 +178,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.process_dataset" />
-        <item itemvalue="Python.build_model" />
-        <item itemvalue="Python.prediction" />
         <item itemvalue="Python.main_page" />
+        <item itemvalue="Python.build_model" />
+        <item itemvalue="Python.process_dataset" />
+        <item itemvalue="Python.prediction" />
         <item itemvalue="Python.identification" />
       </list>
     </recent_temporary>
@@ -680,8 +274,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="merge with huyne, add apps to apps list" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662530818223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
-    <SUITE FILE_PATH="coverage/VATOSA$process_dataset.coverage" NAME="process_dataset Coverage Results" MODIFIED="1662531978742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
+    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662533330752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA$process_dataset.coverage" NAME="process_dataset Coverage Results" MODIFIED="1662533251440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1660811545991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660647027133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$train.coverage" NAME="train Coverage Results" MODIFIED="1662466601628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
@@ -710,9 +304,9 @@
     <SUITE FILE_PATH="coverage/VATOSA$identification__1_.coverage" NAME="identification (1) Coverage Results" MODIFIED="1660647118243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$ControlModel.coverage" NAME="ControlModel Coverage Results" MODIFIED="1662461275968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/control" />
     <SUITE FILE_PATH="coverage/VATOSA_group$traning_page.coverage" NAME="traning_page Coverage Results" MODIFIED="1662094743779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
-    <SUITE FILE_PATH="coverage/VATOSA$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1662531658496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
+    <SUITE FILE_PATH="coverage/VATOSA$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1662532655558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$login_page.coverage" NAME="login_page Coverage Results" MODIFIED="1662191443842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
-    <SUITE FILE_PATH="coverage/VATOSA$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1662531888518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
+    <SUITE FILE_PATH="coverage/VATOSA$build_model.coverage" NAME="build_model Coverage Results" MODIFIED="1662533281895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1662377415065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
   </component>
 </project>
