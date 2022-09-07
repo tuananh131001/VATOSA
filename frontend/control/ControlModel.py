@@ -445,7 +445,7 @@ class ControlModel:
                     event.widget,
                     activating_img,
                     normal_img)
-        self.write_record(self.current_user.get("username"), record_type)
+        self.write_record("temp", record_type)
         # voice_authentication.enroll.main()
         return voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
