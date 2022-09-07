@@ -122,6 +122,11 @@ class LoginPage(Frame):
             # display actions based on the identify result
             if self.model.current_identify_result:
                 print("Valid Voice", self.model.current_login_count)
+
+                self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
+                self.model.write_file(self.model.current_user)
+                ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                           self.model.current_user["username"])
                 self.navigate_next_page()
             elif not self.model.current_identify_result \
                     and self.model.current_login_count == 3:
