@@ -26,9 +26,9 @@ apps_dict = {
 
 
 SIGNUP_DURATION = 10  # in seconds
-LOGIN_DURATION = 10  # in seconds
+LOGIN_DURATION = 3  # in seconds
 TRAIN_DURATION = 5
-COMMAND_DURATION = 10  # in seconds
+COMMAND_DURATION = 1  # in seconds
 SAMPLE_RATE = 22050
 TOTAL_TRAIN_FILE = 10
 

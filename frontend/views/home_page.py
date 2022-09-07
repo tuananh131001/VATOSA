@@ -74,12 +74,13 @@ class HomePage(Frame):
 
     def process_command(self, command_wav_file):
         try:
+
             command_text = prediction.speech_to_text(command_wav_file)
             command_split = command_text.split("\\")
             app = command_split[1]
         except IndexError:
             app = ""
-
+        print(command_wav_file)
         print("command: ", app)
         if app != "":
             self.message.configure(text=f"RECEIVE COMMAND: OPEN {app.upper()}")
@@ -88,7 +89,16 @@ class HomePage(Frame):
             print(path)
             if path is None:
                 self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
+
             else:
+                if app == "excel":
+                    os.system('open -a /Applications/Microsoft\ Excel.app')
+                elif app == "team":
+                    os.system('open -a /Applications/Microsoft\ Teams.app')
+                elif app == "word":
+                    os.system('open -a /Applications/Microsoft\ Word.app')
+                else:
+                    os.system(f'open -a {app}')
                 subprocess.Popen([path, '-new-tab'])
                 self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
