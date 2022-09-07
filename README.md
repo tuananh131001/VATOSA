@@ -40,7 +40,9 @@ IF this , mean you sucess. Congratulation!
 
 ### 2.2 For the test
   you only need 2 file wav name it "enroll" and "test" .The path will be above
-
+  
+ example path for 2 file enrole PREPARE for extract : ```extractAudio\wavs\voxceleb1\test\wav\TA ```
+example path for 2 file enroll AFTER extarct :``` extractAudio\wavs\voxceleb1\test\feat\test_logfbank_nfilt40```
 # Run Authentication (RUN ONLY ON WINDOWS)
 
 ## 1. Setup Enviroment
@@ -94,14 +96,58 @@ These can be change
   - Run the build_model.py
   - Run the prediction.py
 
+
+
+
+# How to install on Mac OS M1
+
+install this python: https://www.python.org/ftp/python/3.10.6/python-3.10.6-macos11.pkg  
+
+Use this pycharm : https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=macM1   
+
+Choose interepter like this :    
+![image](https://user-images.githubusercontent.com/67695658/188409083-d163986b-ffd2-4607-be14-7b89709df576.png)
+
+
+install all in requirements.txt in voice_authetication :  
+![image](https://user-images.githubusercontent.com/67695658/188408656-ed4c41b8-8364-43b6-a2c8-6107d97165e8.png). 
+
+Run these command inside terminal of pycharm :  
+
+```
+pip3 install customtkinter
+pip install playsound
+pip install sounddevice
+pip install tensorflow-metal
+pip install tensorflow-macos
+pip install python_speech_features
+pip3 install torch torchvision torchaudio
+```
+If any error with tensorflow try this command   
+```pip install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl```   
 <h1 style="color:yellow; background-color:blue;">FAQ</h1>
-1. Limit
+## Limit
 
 ![image](https://user-images.githubusercontent.com/67695658/184615459-2e788a13-2fbf-42f9-847b-360ac395f041.png)
 
-If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 240 folder , if out of range, delete some korean voices folder
+If see this, make sure the "VATOSA\feat_logfbank_nfilt40\train" is 200 folder , if out of range, delete some korean voices folder
 Otherwise train and enroll will not work
+## sndfile error
+![image](https://user-images.githubusercontent.com/67695658/188459892-b34a63e7-da7c-4480-af35-1539cce7bea1.png)
+
+1. go to finder press COMMAND+ SHIFT + G   
+![image](https://user-images.githubusercontent.com/67695658/188459643-516c91b5-8620-4e69-9119-bf7ac6fc8c6b.png)
+2. type ```~/.zshrc ``` press Enter   
+![image](https://user-images.githubusercontent.com/67695658/188461413-20118e3f-2ab7-4bf5-8ccf-c5f2cc036c04.png)
+
+3. add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
+![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
+4. save the file and reopen Pycharm
 
 
-## Credit
+## 👑 Credit
+Nguyen Tuan Anh – s3864077  
+Tran Nguyen Ha Khanh – s3877707   
+Tran Mai Nhung – s3879954   
+Vo Quoc Huy – s3823236   
 Youngmoon Jung (dudans@kaist.ac.kr) at KAIST, South Korea
