@@ -31,7 +31,7 @@ class HomePage(Frame):
 
         self.count_down = ControlModel.create_text(self,
                                                    f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
-                                                   Constants.count_down_size + 1)
+                                                   self.controller.default_font_size - 8)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
 
