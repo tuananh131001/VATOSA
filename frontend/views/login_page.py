@@ -45,7 +45,7 @@ class LoginPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         self.normal_login_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
-            self.controller.default_font_size - 9)
+            self.controller.default_font_size - 8)
         self.login_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
@@ -62,15 +62,15 @@ class LoginPage(Frame):
 
         # Button
         count_down = ControlModel.create_text(self, "", 12)
-        self.training_btn = customtkinter.CTkButton(master=self, text="GO TO Enroll", command=self.go_training)
+        self.training_btn = customtkinter.CTkButton(master=self, text="Don't have an account? Register here!", command=self.go_training, fg_color="#2B2C33", text_color="yellow", hover= False)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
-                                                                       self.controller.default_font_size - 8,
+                                                                       self.controller.default_font_size - 10,
                                                                        Constants.main_color,
                                                                        Constants.alternative_text_color)
 
-        self.back_btn = ControlModel.create_click_text(self, "<- Back",
+        self.back_btn = ControlModel.create_click_text(self, "Back",
                                                        self.go_back,
                                                        self.controller.entry_height,
                                                        self.controller.default_font_size - 8,
@@ -84,11 +84,6 @@ class LoginPage(Frame):
                                                                    activating_img,
                                                                    normal_img,
                                                                    deny_img:
-                                                            # # Khanh
-                                                            # self.click_record_button(count_down, event,
-                                                            #                          activating_img,
-                                                            #                          normal_img,
-                                                            #                          deny_img))
                                                             self.click_record_button(self.normal_login_label, event,
                                                                                      activating_img,
                                                                                      normal_img,
@@ -103,8 +98,8 @@ class LoginPage(Frame):
                                    self.model.current_user["username"])
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-        self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
-        self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
+        self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
         self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
         self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
 
@@ -153,8 +148,9 @@ class LoginPage(Frame):
             return
 
         self.login_message.config(text="Login successfully. Please wait.")
-        # get apps exe paths
-        get_apps_exe_path()
+
+        # # get apps exe paths
+        # get_apps_exe_path()
 
         # delete old input
         self.login_message.config(text="")

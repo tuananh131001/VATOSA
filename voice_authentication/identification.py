@@ -177,10 +177,17 @@ def identify_with_name(loginName):
     print("name " + loginName )
     # os.chdir('C:\\Users\\TA\\Documents\\VATOSA\\voice_authentication')
 
-    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
+    dir = os.path.dirname(os.path.dirname(os.getcwd())) + '\\voice_authentication'
+    dir_backup = os.path.dirname(os.path.dirname(os.getcwd())) + '\\VATOSA\\voice_authentication'
+    if not os.path.isdir(dir) and os.path.isdir(dir_backup):
+        dir = dir_backup
+
+    os.chdir(dir)
+    # os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '\\voice_authentication')
 
     path = os.getcwd()
-    print(path)
+    print("path is: ", path)
+
     log_dir = 'model_saved'  # Where the checkpoints are saved
     embedding_dir = 'enroll_embeddings'  # Where embeddings are saved
     test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved

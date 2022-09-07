@@ -17,6 +17,7 @@ class TrainingPage(Frame):
         self.count = 0
         self.message = None
         self.count_down = None
+        self.record_left = None
 
         self.build_page()
 
@@ -28,7 +29,11 @@ class TrainingPage(Frame):
 
         self.count_down = ControlModel.create_text(self,
                                                    f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times",
-                                                   Constants.count_down_size + 1)
+                                                   self.controller.default_font_size - 8)
+
+        self.record_left = ControlModel.create_text(self, f"",
+                                                   self.controller.default_font_size - 8, 'yellow')
+
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
@@ -45,7 +50,7 @@ class TrainingPage(Frame):
 
         # Button
         # record
-        record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size,
+        record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size - 10,
                                                        "train", lambda event,
                                                                        activating_img,
                                                                        normal_img,
@@ -61,17 +66,14 @@ class TrainingPage(Frame):
                                                 self.controller.default_font_size)
 
         # packing
-        ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
-        welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
+        welcome_label.place(relx=0.5, rely=0.16, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.41, anchor=CENTER)
-        self.count_down.place(relx=0.5, rely=0.58, anchor=CENTER)
-        self.message.place(relx=0.5, rely=0.93, anchor=CENTER)
-
-        username_box.place(relx=0.5, rely=0.67, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.75, anchor=CENTER)
-
-        submit_btn.place(relx=0.5, rely=0.85, anchor=CENTER)
+        self.count_down.place(relx=0.5, rely=0.57, anchor=CENTER)
+        self.record_left.place(relx=0.5, rely=0.628, anchor=CENTER)
+        username_box.place(relx=0.5, rely=0.7, anchor=CENTER)
+        password_box.place(relx=0.5, rely=0.79, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.89, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.965, anchor=CENTER)
 
     def click_record_button(self, event, activating_img, normal_img, deny_img):
         if self.count < Constants.TOTAL_TRAIN_FILE and not self.click:
@@ -83,10 +85,11 @@ class TrainingPage(Frame):
                               normal_img)
             self.count += 1
             if self.count < Constants.TOTAL_TRAIN_FILE:
-                self.count_down.configure(
-                    text=f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times\n{Constants.TOTAL_TRAIN_FILE - self.count} times left")
+                self.record_left.configure(text=f"{Constants.TOTAL_TRAIN_FILE - self.count} times left")
+                self.count_down.configure(text=f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE - self.count} times")
             else:
                 self.count_down.configure(text=f"{Constants.TOTAL_TRAIN_FILE} records already. Please click next now.")
+                self.record_left.configure(text=f"")
 
             self.click = False
         elif self.count == Constants.TOTAL_TRAIN_FILE and not self.click:
