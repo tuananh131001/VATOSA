@@ -5,7 +5,7 @@ from frontend.control import ControlModel
 from subprocess import call
 # from home_page import HomePage
 from tkinter import *
-
+import voice_authentication.enroll
 # input username + voice -> store username + voice to json(username, voice file in json + real voice file in 1
 # specific path)
 
@@ -63,8 +63,8 @@ class EnrollPage(Frame):
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.count_down_label.place(relx=0.5, rely=0.68, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.79, anchor=CENTER)
         self.message.place(relx=0.5, rely=0.88, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.79, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
@@ -85,7 +85,8 @@ class EnrollPage(Frame):
             print("Sign up done")
             # move to next page
             print(self.model.current_user)
-            self.controller.navigate_page("login")
+            voice_authentication.enroll.main()
+            # self.controller.navigate_page("login")
         else:
             self.message.configure(text="Please record before click submit")
 

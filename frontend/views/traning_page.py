@@ -3,7 +3,7 @@ from tkinter import *
 from frontend.control import ControlModel
 from frontend.resources import Constants
 from enroll_page import EnrollPage
-from subprocess import call
+# from subprocess import call
 
 
 class TrainingPage(Frame):

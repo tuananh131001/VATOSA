@@ -108,8 +108,8 @@ def enroll_per_spk(use_cuda, test_frames, model, DB, embedding_dir):
     return embeddings
 
 def main():
-    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
-
+    c_path = os.path.dirname(os.path.dirname(os.path.dirname(os.getcwd()))) + '/VATOSA/voice_authentication/'
+    # c_path =''
     path = os.getcwd()
     print(path)
     # Settings
@@ -117,19 +117,18 @@ def main():
         use_cuda = True  # use gpu or cpu
     else:
         use_cuda = False  # use gpu or cpu
-    log_dir1 = 'model_saved'
-    log_dir2 = '../../voice_authentication/model_saved'
-    log_dir = log_dir1
+    log_dir1 = c_path + 'model_saved'
+
     embedding_size = 128
     cp_num = 27 # Which checkpoint to use?
     n_classes = 200
     test_frames = 200
 
-    if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):
-         log_dir = log_dir2
+    # if not os.path.isdir(log_dir1) and os.path.isdir(log_dir2):
+    #      log_dir = log_dir2
 
     # Load model from checkpoint
-    model = load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes)
+    model = load_model(use_cuda, log_dir1, cp_num, embedding_size, n_classes)
 
     test_feat_dir = co.TEST_FEAT_DIR
     if not os.path.isdir(co.TEST_FEAT_DIR) and os.path.isdir(co.TEST_FEAT_DIR_ANOTHER_PATH):
