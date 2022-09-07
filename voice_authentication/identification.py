@@ -20,6 +20,8 @@ def load_model(use_cuda, log_dir, cp_num, embedding_size, n_classes):
     print('=> loading checkpoint')
     # original saved file with DataParallel
     # Settings
+    path = os.getcwd()
+    print(path)
     if torch.cuda.is_available():
         checkpoint = torch.load(log_dir + '/checkpoint_' +
                                 str(cp_num) + '.pth')
@@ -115,7 +117,7 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
             best_spk = spk
     # print("Speaker identification result : %s" %best_spk)
     print(test_filename)
-    if "\\" in test_filename :
+    if "\\" in test_filename:
         true_spk = test_filename.split('/')[-1].split('\\')[0]
     else:
         true_spk = test_filename.split('/')[-2]
@@ -161,7 +163,7 @@ def main():
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 'huy','tatestauth','pls']
+                '229M2031', '230M4087', '233F4013', '236M3043', 'khanhchimte', 'huyvo', 'tuananh1', 'nhung']
 
     # Set the test speaker
     test_speaker = 'tareal'
@@ -172,18 +174,23 @@ def main():
     isUser = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
     return isUser
+
+
 def identify_with_name(loginName):
     print("Identification page main")
-    print("name " + loginName )
+    print("name " + loginName)
     # os.chdir('C:\\Users\\TA\\Documents\\VATOSA\\voice_authentication')
 
-    os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication')
+    c_path = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication/'
+
+    os.chdir(dir)
+    # os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '\\voice_authentication')
 
     path = os.getcwd()
-    print(path)
-    log_dir = 'model_saved'  # Where the checkpoints are saved
-    embedding_dir = 'enroll_embeddings'  # Where embeddings are saved
-    test_dir = 'feat_logfbank_nfilt40/test/'  # Where test features are saved
+    print(c_path)
+    log_dir = c_path + 'model_saved'  # Where the checkpoints are saved
+    embedding_dir = c_path +'enroll_embeddings'  # Where embeddings are saved
+    test_dir = c_path +'feat_logfbank_nfilt40/test/'  # Where test features are saved
 
     # Settings
     if torch.cuda.is_available():
@@ -214,8 +221,7 @@ def identify_with_name(loginName):
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
     """
 
-    spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 'huy','pls']
+    spk_list = [ 'khanhchimte',  'tuananh1', 'matsuri01anya']
 
     # Set the test speaker
     test_speaker = loginName
@@ -223,7 +229,7 @@ def identify_with_name(loginName):
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    perform_identification(
+    return perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
 
 

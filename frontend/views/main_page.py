@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
-import customtkinter
 from PIL import ImageTk, Image
 
 from frontend.resources import Constants
@@ -23,7 +22,7 @@ class VatosaApp(Tk):
             # init window size
             width = int(self.winfo_screenwidth() / 1.02)
             self.frame_width = int(width / 1.05)
-            self.frame_height = int(height / 1.1)
+            self.frame_height = int(height / 1.05)
 
             # init record button size
             self.login_record_button_size = int(self.frame_width / 5.2)
@@ -32,7 +31,7 @@ class VatosaApp(Tk):
             # init window size
             width = int(self.winfo_screenwidth() / 1.1)
             self.frame_width = int(width / 1.3)
-            self.frame_height = int(height / 1.3)
+            self.frame_height = int(height / 1.25)
 
             # init record button size
             self.login_record_button_size = int(self.frame_width / 3.4)
@@ -44,8 +43,8 @@ class VatosaApp(Tk):
 
         # label size
         # sign up
-        self.signup_welcome_label_width = int(self.frame_width / 1.85)
-        self.signup_welcome_label_height = int(self.frame_height / 7.15)
+        self.signup_welcome_label_width = int(self.frame_width / 1.75)
+        self.signup_welcome_label_height = int(self.frame_height / 9.25)
         # loginR
         self.login_welcome_label_width = int(self.frame_width / 2.27)
         self.login_welcome_label_height = int(self.frame_height / 9.28)
@@ -55,9 +54,9 @@ class VatosaApp(Tk):
         # explore
         self.explore_title_font_size = int(self.frame_width / 33)  # 32
         self.explore_list_font_size = int(self.frame_width / 40)  # 26
-        self.explore_image_size = int(self.frame_width / 14)  # 75
-        self.explore_app_font_size = int(self.frame_width / 54)  # 19
-        self.explore_app_open_font_size = int(self.frame_width / 60)  # 17
+        self.explore_image_size = int(self.frame_width / 17)  # 75
+        self.explore_app_font_size = int(self.frame_width / 57)  # 19
+        self.explore_app_open_font_size = int(self.frame_width / 62)  # 17
 
         # nav bar
         self.nav_width = int(self.frame_width / 10.5)  # 100
@@ -105,9 +104,7 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user != {"username": "", "password": ""}:
-            self.show_frame(HomePage)
-            # self.show_frame(TqrainingPage)
-            # self.show_frame(LoginPage)
+            self.show_frame(LoginPage)
         else:
             self.show_frame(EnrollPage)
 
