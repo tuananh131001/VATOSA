@@ -183,7 +183,6 @@ def identify_with_name(loginName):
 
     c_path = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication/'
 
-    os.chdir(dir)
     # os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '\\voice_authentication')
 
     path = os.getcwd()
@@ -221,7 +220,7 @@ def identify_with_name(loginName):
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
     """
 
-    spk_list = [ 'khanhchimte',  'tuananh1', 'matsuri01anya']
+    spk_list = [ 'khanhchimte',  'tuananh1', 'matsuri01anya','daredevilhuy']
 
     # Set the test speaker
     test_speaker = loginName

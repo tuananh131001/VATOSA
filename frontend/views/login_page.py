@@ -111,28 +111,28 @@ class LoginPage(Frame):
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
         print(sub_folders)
         print(self.login_name_entry.get())
-        if self.login_name_entry.get() not in sub_folders:
-            if not self.click:
-                self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
-                self.click = True
-                # validate voice
-                self.model.current_identify_result = self.model.identify_voice("login", count_down, event, activating_img, normal_img, deny_img)
+        if not self.click:
+            # if self.login_name_entry.get() not in sub_folders:
 
-                # display actions based on the identify result
-                if self.model.current_identify_result:
-                    print("Valid Voice", self.model.current_login_count)
-                    self.navigate_next_page()
-                elif not self.model.current_identify_result \
-                        and self.model.current_login_count == 3:
-                    self.change_to_alternative()
-                    print("Invalid voice", self.model.current_login_count)
-                else:
-                    print("Invalid voice", self.model.current_login_count)
-                    self.normal_login_label.configure(text="Invalid voice. Please try again")
+            self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
+            self.click = True
+            # validate voice
+            self.model.current_identify_result = self.model.identify_voice("login", count_down, event, activating_img, normal_img, deny_img)
 
-                self.click = False
-        else:
-            self.normal_login_label.configure(text="Invalid name. Please try again")
+            # display actions based on the identify result
+            if self.model.current_identify_result:
+                print("Valid Voice", self.model.current_login_count)
+                self.navigate_next_page()
+            elif not self.model.current_identify_result \
+                    and self.model.current_login_count == 3:
+                self.change_to_alternative()
+                print("Invalid voice", self.model.current_login_count)
+            else:
+                print("Invalid voice", self.model.current_login_count)
+                self.normal_login_label.configure(text="Invalid voice. Please try again")
+            # else:
+            #     self.normal_login_label.configure(text="Invalid name. Please try again")
+            self.click = False
 
     def change_to_alternative(self):
         # hide voice login button, display login with alternative method
