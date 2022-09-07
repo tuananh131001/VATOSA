@@ -29,16 +29,17 @@ class EnrollPage(Frame):
 
     def build_page(self):
         # label
-        welcome_label = ControlModel.create_label_image(self, "vatosa_enroll_title",
+        welcome_label = ControlModel.create_label_image(self, "enroll_title",
                                                         (self.controller.signup_welcome_label_width,
-                                                         self.controller.signup_welcome_label_height))
+                                                         self.controller.signup_welcome_label_height - 17))
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
-                                                    f"enroll your voice", Constants.count_down_size)
+                                                    f"enroll your voice", Constants.count_down_size + 2)
+
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
             self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to enroll'.upper(),
-            self.controller.default_font_size - 10
+            self.controller.default_font_size - 8
         )
 
         # Button
@@ -60,10 +61,10 @@ class EnrollPage(Frame):
 
         # packing
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        record_btn.place(relx=0.5, rely=0.53, anchor=CENTER)
-        self.count_down_label.place(relx=0.5, rely=0.7, anchor=CENTER)
-        submit_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
-        self.message.place(relx=0.5, rely=0.9, anchor=CENTER)
+        record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.count_down_label.place(relx=0.5, rely=0.68, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.88, anchor=CENTER)
+        submit_btn.place(relx=0.5, rely=0.79, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:

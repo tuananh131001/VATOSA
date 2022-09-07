@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/
 from tkinter import *
-import customtkinter
 from PIL import ImageTk, Image
 
 from frontend.resources import Constants
@@ -46,7 +45,7 @@ class VatosaApp(Tk):
         # sign up
         self.signup_welcome_label_width = int(self.frame_width / 1.85)
         self.signup_welcome_label_height = int(self.frame_height / 7.15)
-        # loginR
+        # login
         self.login_welcome_label_width = int(self.frame_width / 2.27)
         self.login_welcome_label_height = int(self.frame_height / 9.28)
         # font size

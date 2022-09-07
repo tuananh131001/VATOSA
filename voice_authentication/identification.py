@@ -183,6 +183,9 @@ def identify_with_name(loginName):
 
     c_path = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication/'
 
+    os.chdir(dir)
+    # os.chdir(os.path.dirname(os.path.dirname(os.getcwd())) + '\\voice_authentication')
+
     path = os.getcwd()
     print(c_path)
     log_dir = c_path + 'model_saved'  # Where the checkpoints are saved

@@ -143,7 +143,8 @@ Otherwise train and enroll will not work
 3. add this line ```export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"```   
 ![image](https://user-images.githubusercontent.com/67695658/188459449-fc053325-eddf-4c5c-b8d1-9f7bd746c512.png)
 4. save the file and reopen Pycharm
-
+5. still cannot ,try this one.   
+https://github.com/ohmtech-rdi/eurorack-blocks/issues/444#issuecomment-1153155080.   
 
 ## 👑 Credit
 Nguyen Tuan Anh – s3864077  
