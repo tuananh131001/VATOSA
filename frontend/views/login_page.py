@@ -138,6 +138,7 @@ class LoginPage(Frame):
         # hide voice login button, display login with alternative method
         self.record_btn.destroy()
         self.change_alternative_label.destroy()
+        self.login_name_entry.destroy()
 
         # pack
         self.normal_login_label.configure(text="voice control and authentication to open software applications".upper())
