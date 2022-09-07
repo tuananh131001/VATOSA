@@ -16,10 +16,10 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "dataset\\open excel",
-        "dataset\\open teams",
-        "dataset\\open word",
         "dataset\\open zalo",
+        "dataset\\open teams",
+        "dataset\\open excel",
+        "dataset\\open word",
 
     ]
     _instance = None
@@ -109,30 +109,34 @@ if __name__ == "__main__":
     assert kss is kss1
 
     # make a prediction
-    # keyword = kss.predict("test/close excel nhung 9.wav")
-    # keyword2 = kss.predict("test/close pp nhung 10.wav")
-    keyword3 = kss.predict("test/close excel nhung 2s 15.wav")
-    keyword4 = kss.predict("test/close word nhung 2s 10.wav")
-    # keyword5 = kss.predict("test/open Excel nhung 2s 2.wav")
-    keyword6 = kss.predict("test/open word nhung 2s 15.wav")
-    # keyword8 = kss.predict("test/openWordTA9.wav")
 
-    # print('Expected output: "close excel"')
-    # print("Actual output: " + keyword)
-    # print("---------------------------------------")
-    # print('Expected output: "close pp"')
-    # print("Actual output 2: " + keyword2)
-    print('Expected output3: "close excel"')
-    print("Actual output 3: " + keyword3)
-    print('Expected output4: "close word"')
-    print("Actual output 4: " + keyword4)
+    keyword3 = kss.predict("test/close excel huy test 1 22050 1.wav")
+    keyword4 = kss.predict("test/close excelhuy test 2 22050 1.wav")
+    keyword5 = kss.predict("test/close excel huy test 3 22050 1.wav")
 
-    # print('Expected output: "open excel"')
-    # print("Actual output:5 " + keyword5)
-    # print("---------------------------------------")
-    print('Expected output6: "open word"')
-    print("Actual output 6: " + keyword6)
-    # print('Expected output: "open vs"')
-    # print("Actual output 7: " + keyword7)
-    # print('Expected output: "open word"')
-    # print("Actual output 8: " + keyword8)
+    keyword6 = kss.predict("test/close word huy test 1 22050 1.wav")
+    keyword7 = kss.predict("test/close word huy test 2 22050 1.wav")
+    keyword8 = kss.predict("test/close word huy test 3 22050 1.wav")
+
+    keyword9 = kss.predict("test/open excel huy test 1 22050 1.wav")
+    keyword10 = kss.predict("test/open excel huy test 2 22050 1.wav")
+    keyword11 = kss.predict("test/open excel huy test 3 22050 1.wav")
+
+    keyword1 = kss.predict("test/open word huy test 1 22050 1.wav")
+    keyword2 = kss.predict("test/open word huy test 2 22050 1.wav")
+    keyword0 = kss.predict("test/open word huy test 3 22050 1.wav")
+
+    print(keyword0)
+    print(keyword1)
+    print(keyword2)
+    print(keyword6)
+    print(keyword7)
+    print(keyword8)
+    print(keyword9)
+    print(keyword10)
+    print(keyword11)
+    print(keyword3)
+    print(keyword4)
+    print(keyword5)
+
+   
