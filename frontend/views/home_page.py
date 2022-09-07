@@ -31,7 +31,7 @@ class HomePage(Frame):
 
         self.count_down = ControlModel.create_text(self,
                                                    f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
-                                                   Constants.count_down_size + 1)
+                                                   self.controller.default_font_size - 8)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
 
@@ -75,50 +75,35 @@ class HomePage(Frame):
 
     def process_command(self, command_wav_file):
         try:
+
             command_text = prediction.speech_to_text(command_wav_file)
-            if "\\" in command_text:
-                command_split_dataset = command_text.split("\\")
-            else:
-                command_split_dataset = command_text.split('\r')
-
-            command_split = command_split_dataset[-1].split(" ", 1)
+            command_split = command_text.split("\\")
+            app = command_split[1]
         except IndexError:
-            command_split = []
+            app = ""
+        print(command_wav_file)
+        print("command: ", app)
+        if app != "":
+            self.message.configure(text=f"RECEIVE COMMAND: OPEN {app.upper()}")
+            # if command == 'open':
+            path = Apps.app_paths.get(app)
+            print(path)
+            if path is None:
+                self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
 
-        print("command: ", command_text)
-        print(command_split)
-        # if len(command_split) == 1:
-        # command = command_split[0]
-        app = command_split[0].lower()
-
-        # if (command != 'open' and command != 'close') or (app not in Constants.apps_dict.keys()):
-        #     self.message.configure(text="Unsupported command. Please try again.")
-        #     return
-
-        self.message.configure(text=f"RECEIVE COMMAND: {command_split[0].upper()}")
-        # if command == 'open':
-        path = Apps.app_paths.get(app)
-        print(path)
-        if path is None:
-            self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
-        else:
-            if app == "excel":
-                os.system('open -a /Applications/Microsoft\ Excel.app')
-            elif app == "team":
-                os.system('open -a /Applications/Microsoft\ Teams.app')
-            elif app == "word":
-                os.system('open -a /Applications/Microsoft\ Word.app')
             else:
-                os.system(f'open -a {app}')
-            subprocess.Popen([path, '-new-tab'])
-            self.result.configure(text=f"RESULT: {app.upper()} is opened")
+                if app == "excel":
+                    os.system('open -a /Applications/Microsoft\ Excel.app')
+                elif app == "team":
+                    os.system('open -a /Applications/Microsoft\ Teams.app')
+                elif app == "word":
+                    os.system('open -a /Applications/Microsoft\ Word.app')
+                else:
+                    os.system(f'open -a {app}')
+                subprocess.Popen([path, '-new-tab'])
+                self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
-            # elif command == 'close':
-            #     if os.system(f"taskkill /f /im {Constants.apps_dict.get(app)}") == 0:
-            #         self.result.configure(text=f"RESULT: {app.upper()} is closed")
-            #     else:
-            #         self.result.configure(text=f"RESULT: Cannot close. {app.upper()} isn't running now")
+        else:
+            self.message.configure(text="Please try again.")
+            return
 
-        # else:
-        #     self.message.configure(text="Cannot recognize command. Please try again.")
-        #     return
