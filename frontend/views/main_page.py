@@ -44,8 +44,8 @@ class VatosaApp(Tk):
 
         # label size
         # sign up
-        self.signup_welcome_label_width = int(self.frame_width / 1.85)
-        self.signup_welcome_label_height = int(self.frame_height / 7.15)
+        self.signup_welcome_label_width = int(self.frame_width / 1.75)
+        self.signup_welcome_label_height = int(self.frame_height / 9.25)
         # loginR
         self.login_welcome_label_width = int(self.frame_width / 2.27)
         self.login_welcome_label_height = int(self.frame_height / 9.28)
