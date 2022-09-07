@@ -117,7 +117,7 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
             best_spk = spk
     # print("Speaker identification result : %s" %best_spk)
     print(test_filename)
-    if "\\" in test_filename :
+    if "\\" in test_filename:
         true_spk = test_filename.split('/')[-1].split('\\')[0]
     else:
         true_spk = test_filename.split('/')[-2]
@@ -174,9 +174,11 @@ def main():
     isUser = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
     return isUser
+
+
 def identify_with_name(loginName):
     print("Identification page main")
-    print("name " + loginName )
+    print("name " + loginName)
     # os.chdir('C:\\Users\\TA\\Documents\\VATOSA\\voice_authentication')
 
     os.chdir(os.path.dirname(os.getcwd()) + '/voice_authentication')
@@ -217,7 +219,7 @@ def identify_with_name(loginName):
     """
 
     spk_list = ['103F3021', '207F2088', '213F5100', '217F3038', '225M4062',
-                '229M2031', '230M4087', '233F4013', '236M3043', 'khanhchimte','huyvo','tuananh1','nhung']
+                '229M2031', '230M4087', '233F4013', '236M3043', 'khanhchimte',  'tuananh1', 'nhung']
 
     # Set the test speaker
     test_speaker = loginName
@@ -225,7 +227,7 @@ def identify_with_name(loginName):
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    perform_identification(
+    return perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
 
 

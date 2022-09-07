@@ -4,27 +4,247 @@
     <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="merge with huyne, add apps to apps list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/control/ControlModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/control/ControlModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/resources/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/enroll_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/enroll_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/103F3021.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/103F3021.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/207F2088.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/207F2088.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/213F5100.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/213F5100.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/217F3038.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/217F3038.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/225M4062.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/225M4062.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/229M2031.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/229M2031.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/230M4087.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/230M4087.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/233F4013.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/233F4013.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/236M3043.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/236M3043.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/240M3063.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/240M3063.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/hello.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/hello.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/huy.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/huy.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/nhung.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/nhung.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/pls.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/pls.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/s3864077.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/s3864077.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tareal.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tareal.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tatestauth.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tatestauth.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/testphone.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/testphone.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/nhung/nhung/enroll.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/nhung/nhung/enroll.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/login_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/traning_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/traning_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/123/123/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/asdad/asdad/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/asdasdas1/asdasdas1/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dadad/dadad/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_11.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/dev/wav/New_Recording_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/easdca/easdca/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train2.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train3.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/knn/knn/train9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train1.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train10.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train2.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train2.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train3.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train3.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train4.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train6.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train7.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train8.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nhung/nhung/train9.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/nvsjdalsndaksndj/nvsjdalsndaksndj/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train2.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train3.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/pls/pls/train9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_10.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_11.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_11.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_6.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_7.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_8.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/New_Recording_9.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_1.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_2.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_2.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_3.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3823236/s3823236/s3823236_3.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_10.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_11.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_11.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_4.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_6.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_7.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_8.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3864077/s3864077/New_Recording_9.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/1.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/1.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/10.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/10.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/2.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/2.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/3.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/3.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/4.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/4.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/5.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/6.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/6.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/7.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/7.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/8.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/8.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/9.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3877707/s3877707/9.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 1 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 1 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 10 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 10 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 2 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 2 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 3 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 3 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 4 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 4 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 5 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 5 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 6 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 6 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 7 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 7 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 8 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 8 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 9 Nhung 5s.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/feat/train_logfbank_nfilt40/s3879954/s3879954/AnyConv.com__Voice 9 Nhung 5s.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/123/123/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/asdad/asdad/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/asdasdas1/asdasdas1/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/dadad/dadad/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/easdca/easdca/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train10.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train5.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train6.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train7.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train8.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/knn/knn/train9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/nvsjdalsndaksndj/nvsjdalsndaksndj/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train10.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train5.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train6.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train7.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train8.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/pls/pls/train9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_10.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_11.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_5.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_6.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_7.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_8.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/New_Recording_9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/s3823236_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/s3823236_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3823236/s3823236/s3823236_3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_10.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_11.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_5.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_6.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_7.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_8.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3864077/s3864077/New_Recording_9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/10.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/5.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/6.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/7.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/8.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3877707/s3877707/9.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 1 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 10 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 2 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 3 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 4 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 5 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 6 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 7 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 8 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/s3879954/s3879954/AnyConv.com__Voice 9 Nhung 5s.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/sadasdasd/sadasdasd/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/sdsda/sdsda/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/sdsdsdsa/sdsdsdsa/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/dev/wav/smdankjdanjkldnka/smdankjdanjkldnka/train1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/hello/hello/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/hello/hello/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/huy/huy/huyenroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/huy/huy/huyenroll.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/huy/huy/huytest.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/huy/huy/huytest.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/huyvo/huyvo/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/khanhchimte/khanhchimte/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/nhung/nhung/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/nhung/nhung/enroll.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/nhung/nhung/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/nhung/nhung/test.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/pls/pls/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/pls/pls/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/sss/sss/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/sss/sss/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/tareal/tareal/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/tareal/tareal/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/tatestauth/tatestauth/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/tatestauth/tatestauth/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/testphone/testphone/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/testphone/testphone/test.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/feat/test_logfbank_nfilt40/tuananh1/tuananh1/enroll.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/hello/hello/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/hello/hello/test.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/huy/huy/huyenroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/huy/huy/huytest.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/huyvo/huyvo/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/khanhchimte/khanhchimte/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/nhung/nhung/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/nhung/nhung/test.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/pls/pls/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/pls/pls/test.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/sss/sss/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/sss/sss/test.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tareal/tareal/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/testphone/testphone/enroll.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/testphone/testphone/test.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/tuananh1/tuananh1/enroll.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/voice_authentication/identification.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/identification.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +455,7 @@
       <workItem from="1662393795551" duration="5466000" />
       <workItem from="1662470416821" duration="497000" />
       <workItem from="1662548105133" duration="973000" />
-      <workItem from="1662553118115" duration="1320000" />
+      <workItem from="1662553118115" duration="4049000" />
     </task>
     <task id="LOCAL-00001" summary="merge with demo_ver&#10;update directory to store 10 training files&#10;still cannot run train.py on my lap">
       <created>1661922897714</created>
@@ -293,7 +513,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="merge with huyne, add apps to apps list" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662554392465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662557175953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
     <SUITE FILE_PATH="coverage/VATOSA$process_dataset.coverage" NAME="process_dataset Coverage Results" MODIFIED="1662540639562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_controller" />
     <SUITE FILE_PATH="coverage/VATOSA_group$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1660811545991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$enroll__1_.coverage" NAME="enroll (1) Coverage Results" MODIFIED="1660647027133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />

@@ -400,7 +400,7 @@ class ControlModel:
                     shutil.copy2(wav_file,
                                  f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
                 # voice_authentication.enroll.main()
-                voice_authentication.train.main()
+                # voice_authentication.train.main()
 
                 # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
                 #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
@@ -454,7 +454,7 @@ class ControlModel:
                     normal_img)
         self.write_record(self.current_user.get("username"), record_type)
         voice_authentication.enroll.main()
-        voice_authentication.identification.identify_with_name((self.current_user.get("username")))
+        return voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
         # self.current_identify_result = identify.main()
 
