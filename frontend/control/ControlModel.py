@@ -10,6 +10,7 @@ import pickle
 import shutil
 from voice_authentication.extract import feat_extraction
 import voice_authentication.train
+import voice_authentication.enroll
 
 # import voice_authentication.identification as identify
 import numpy as np
@@ -367,10 +368,8 @@ class ControlModel:
             feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
             test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
             os.makedirs(test_dir, exist_ok=True)
-            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p',test_dir) # test file
-            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p',test_dir) # enroll file
-
-
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p', test_dir)  # test file
+            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p', test_dir)  # enroll file
 
             # extract_MFB(wav_file, test_dir, f'{test_dir}/test.p')
 
@@ -394,49 +393,51 @@ class ControlModel:
                 os.makedirs(train_dir, exist_ok=True)
                 os.makedirs(another_train_dir, exist_ok=True)
                 feat_extraction(dataroot_dir=c.TRAIN_AUDIO_VOX1, mode='train')
-                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p', test_dir)  # test file
-                shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p', test_dir)  # enroll file
+                # enroll file
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     print(i)
                     wav_file = f'{train_wav_dir}/train{i + 1}.wav'
-                    shutil.copy2(wav_file, f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
+                    shutil.copy2(wav_file,
+                                 f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
+                # voice_authentication.enroll.main()
                 voice_authentication.train.main()
 
-                    # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
-                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
-                    # with open(f'{train_dir}/train{i + 1}.p', 'wb') as f:
-                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
-                    # with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
-                    #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+                # with open(f'{another_train_dir}/train{i + 1}.p', 'wb') as f:
+                #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+                # with open(f'{train_dir}/train{i + 1}.p', 'wb') as f:
+                #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
+                # with open(f'{train_dir}/train{i + 1}.pkl', 'wb') as f:
+                #     pickle.dump(f'{train_wav_dir}/train{i + 1}.wav', f)
 
             except OSError as error:
                 print("Directory can not be created: ", error)
 
         elif record_type == "enroll":
-            try:
-                # write recording file
-                wav_dir = f'{Constants.audio_filepath + username}/{username}'
-                os.makedirs(wav_dir, exist_ok=True)
-                wav_file = f'{wav_dir}/enroll.wav'
+            # try:
+            # write recording file
+            wav_dir = Constants.audio_filepath + f'{ username}/{username}'
+            os.makedirs(wav_dir, exist_ok=True)
+            wav_file = f'{wav_dir}/enroll.wav'
 
-                test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
-                os.makedirs(test_dir, exist_ok=True)
+            test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
+            os.makedirs(test_dir, exist_ok=True)
 
-                write(wav_file, self.freq, self.recording)
-                extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
+            write(wav_file, self.freq, self.recording)
+            feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
+            # extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
 
-                # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
-                # os.makedirs(test_dir, exist_ok=True)
-                # with open(f'{test_dir}/enroll.p', 'wb') as f:
-                #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
-                # with open(f'{test_dir}/test.p', 'wb') as f:
-                #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
+            # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
+            # os.makedirs(test_dir, exist_ok=True)
+            # with open(f'{test_dir}/enroll.p', 'wb') as f:
+            #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
+            # with open(f'{test_dir}/test.p', 'wb') as f:
+            #     pickle.dump(f'{Constants.audio_filepath + username}/{username}/enroll.wav', f)
 
-                # add for authenticate here
-            except:
-                # tam thoi
-                pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
-                write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
+            # add for authenticate here
+        # except:
+        #     # tam thoi
+        #     pathlib.Path(f'{Constants.audio_filepath + username}/{username}').mkdir(parents=True, exist_ok=True)
+        #     write(f'{Constants.audio_filepath + username}/{username}/test.wav', self.freq, self.recording)
 
     def identify_voice(self,
                        record_type, count_down, event,
@@ -451,7 +452,6 @@ class ControlModel:
         voice_authentication.identification.identify_with_name((self.current_user.get("username")))
         # final result
         # self.current_identify_result = identify.main()
-
 
         # display result via changing record button appearance
         if not self.current_identify_result:

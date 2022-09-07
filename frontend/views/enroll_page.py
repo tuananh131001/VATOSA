@@ -2,9 +2,8 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from traning_page import TrainingPage
 from subprocess import call
-
+# from home_page import HomePage
 from tkinter import *
 
 # input username + voice -> store username + voice to json(username, voice file in json + real voice file in 1
@@ -18,11 +17,12 @@ class EnrollPage(Frame):
         self.controller = root
         self.model = root.model
         self.click = False
+        self.count_record = 0  # for checking if user has record yet then click submit
 
         # tkinter element
         self.username_entry = None
         self.password_entry = None
-        self.enroll_message = None
+        self.message = None
         self.count_down_label = None
 
         self.build_page()
@@ -35,22 +35,11 @@ class EnrollPage(Frame):
         footer_label = ControlModel.create_footer(self, self.controller.default_font_size)
         count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.SIGNUP_DURATION} seconds to "
                                                     f"enroll your voice", Constants.count_down_size)
-        self.enroll_message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
+        self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
-            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
+            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to enroll'.upper(),
             self.controller.default_font_size - 10
         )
-        # Entry Input
-        username_box = ControlModel.create_input_text(self, "Username", self.controller.entry_width,
-                                                      self.controller.entry_height,
-                                                      self.controller.default_font_size)
-        password_box = ControlModel.create_input_text(self, "Password", self.controller.entry_width,
-                                                      self.controller.entry_height,
-                                                      self.controller.default_font_size,
-                                                      True)
-
-        self.username_entry = ControlModel.get_input_children(username_box)
-        self.password_entry = ControlModel.get_input_children(password_box)
 
         # Button
         # record
@@ -63,7 +52,7 @@ class EnrollPage(Frame):
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
-        submit_btn = ControlModel.create_button(self, "Next".upper(),
+        submit_btn = ControlModel.create_button(self, "Enroll".upper(),
                                                 self.sign_up,
                                                 self.controller.entry_width,
                                                 self.controller.entry_height,
@@ -73,10 +62,8 @@ class EnrollPage(Frame):
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         record_btn.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.count_down_label.place(relx=0.5, rely=0.6, anchor=CENTER)
-        username_box.place(relx=0.5, rely=0.67, anchor=CENTER)
-        password_box.place(relx=0.5, rely=0.75, anchor=CENTER)
         submit_btn.place(relx=0.5, rely=0.85, anchor=CENTER)
-        self.enroll_message.place(relx=0.5, rely=0.92, anchor=CENTER)
+        self.message.place(relx=0.5, rely=0.92, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         if not self.click:
@@ -86,70 +73,17 @@ class EnrollPage(Frame):
                               activating_img,
                               normal_img)
             self.click = False
+            self.count_record += 1
 
     def sign_up(self):
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-        allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
-        if username == "" or password == "" or not self.model.has_record_enroll:
-            self.enroll_message.configure(text="Please record and fill in all the information")
-            return
-        elif len(password) < 5:
-            self.enroll_message.configure(text="Password must have at least 5 characters")
-            return
-        elif any((not c.isalnum()) and (c not in allowed) for c in password):
-            self.enroll_message.configure(text="Password can only include alphanumeric, !, @, #, $, %, ^, &, *")
-            return
+        if self.count_record != 0:
+            self.model.write_record(self.model.current_user)
+            call(["python", Constants.enroll_py_path])
 
-        # Write date to json file
-        user_info_dict = {"username": username, "password": password}
-        self.model.write_file(user_info_dict)
-        self.model.write_record(username)
+            print("Sign up done")
+            # move to next page
+            print(self.model.current_user)
+            self.controller.navigate_page("login")
+        else:
+            self.message.configure(text="Please record before click submit")
 
-        # get_apps_exe_path()
-
-        # delete old input
-        self.username_entry.delete(0, END)
-        self.password_entry.delete(0, END)
-        print("Sign up done")
-        # move to next page
-        print(self.model.current_user)
-        self.controller.show_frame(TrainingPage)
-
-
-# def get_apps_exe_path():
-#     apps = ["EXCEL.EXE", "WINWORD.EXE", "POWERPNT.EXE", "Code.exe"]
-#     paths = []
-#     for app in apps:
-#         # try path in dir C:
-#         path = find_file(app, "C:")
-#
-#         # if cannot find any path then find in dir D:
-#         if path is None:
-#             path = find_file(app, "D:\\")
-#
-#         # if still cannot find in dir D: then print message
-#         if path is None:
-#             print("cannot find path for ", app)
-#
-#         paths.append(path)
-#
-#     with open(Constants.APPS_PY, 'w') as f:
-#         f.write(f"EXCEL = \"{paths[0]}\"\n")
-#         f.write(f"WORD =  \"{paths[1]} \"\n")
-#         f.write(f"POWERPOINT =  \"{paths[2]} \"\n")
-#         f.write(f"VSCODE =  \"{paths[3]}\"\n")
-#
-#
-# # ref: https://www.tutorialspoint.com/file-searching-using-python
-# def find_file(filename, search_path):
-#     """
-#     Function to find the first matched file, then returns the path to that file
-#     If no matched file is found, returns None
-#     """
-#     # Walking top-down from the root
-#     for root, dir, files in os.walk(search_path):
-#         files_temp = list(map(str.lower, files))
-#         if filename.lower() in files_temp:
-#             result = os.path.join(root, filename)
-#             return result
