@@ -29,7 +29,8 @@ class HomePage(Frame):
                                                         (self.controller.login_welcome_label_width,
                                                          self.controller.login_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
+        self.count_down = ControlModel.create_text(self,
+                                                   f"Press and Speak in {Constants.COMMAND_DURATION} seconds to make command",
                                                    Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
@@ -80,7 +81,6 @@ class HomePage(Frame):
             else:
                 command_split_dataset = command_text.split('\r')
 
-
             command_split = command_split_dataset[-1].split(" ", 1)
         except IndexError:
             command_split = []
@@ -88,7 +88,7 @@ class HomePage(Frame):
         print("command: ", command_text)
         print(command_split)
         # if len(command_split) == 1:
-            # command = command_split[0]
+        # command = command_split[0]
         app = command_split[0].lower()
 
         # if (command != 'open' and command != 'close') or (app not in Constants.apps_dict.keys()):
@@ -102,7 +102,14 @@ class HomePage(Frame):
         if path is None:
             self.result.configure(text=f"RESULT: Cannot open. Not found {app.upper()}")
         else:
-            os.system("open -a TextEdit")
+            if app == "excel":
+                os.system('open -a /Applications/Microsoft\ Excel.app')
+            elif app == "team":
+                os.system('open -a /Applications/Microsoft\ Teams.app')
+            elif app == "word":
+                os.system('open -a /Applications/Microsoft\ Word.app')
+            else:
+                os.system(f'open -a {app}')
             subprocess.Popen([path, '-new-tab'])
             self.result.configure(text=f"RESULT: {app.upper()} is opened")
 
