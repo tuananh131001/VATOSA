@@ -2,9 +2,8 @@
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
-from login_page import LoginPage
 from subprocess import call
-
+# from home_page import HomePage
 from tkinter import *
 
 # input username + voice -> store username + voice to json(username, voice file in json + real voice file in 1
@@ -38,7 +37,7 @@ class EnrollPage(Frame):
                                                     f"enroll your voice", Constants.count_down_size)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
-            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to login'.upper(),
+            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to enroll'.upper(),
             self.controller.default_font_size - 10
         )
 
@@ -53,7 +52,7 @@ class EnrollPage(Frame):
                                                                                 activating_img,
                                                                                 normal_img,
                                                                                 deny_img))
-        submit_btn = ControlModel.create_button(self, "Next".upper(),
+        submit_btn = ControlModel.create_button(self, "Enroll".upper(),
                                                 self.sign_up,
                                                 self.controller.entry_width,
                                                 self.controller.entry_height,
@@ -84,7 +83,7 @@ class EnrollPage(Frame):
             print("Sign up done")
             # move to next page
             print(self.model.current_user)
-            self.controller.show_frame(LoginPage)
+            self.controller.navigate_page("login")
         else:
             self.message.configure(text="Please record before click submit")
 

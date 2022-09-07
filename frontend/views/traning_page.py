@@ -26,7 +26,9 @@ class TrainingPage(Frame):
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
 
-        self.count_down = ControlModel.create_text(self, f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times", Constants.count_down_size + 1)
+        self.count_down = ControlModel.create_text(self,
+                                                   f"Press and Speak in {Constants.TRAIN_DURATION} seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times",
+                                                   Constants.count_down_size + 1)
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
 
         # Entry Input
@@ -45,9 +47,9 @@ class TrainingPage(Frame):
         # record
         record_btn = ControlModel.create_record_button(self, self.controller.signup_record_button_size,
                                                        "train", lambda event,
-                                                       activating_img,
-                                                       normal_img,
-                                                       deny_img=None:
+                                                                       activating_img,
+                                                                       normal_img,
+                                                                       deny_img=None:
                                                        self.click_record_button(event,
                                                                                 activating_img,
                                                                                 normal_img,
@@ -81,7 +83,8 @@ class TrainingPage(Frame):
                               normal_img)
             self.count += 1
             if self.count < Constants.TOTAL_TRAIN_FILE:
-                self.count_down.configure(text=f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times\n{Constants.TOTAL_TRAIN_FILE - self.count} times left")
+                self.count_down.configure(
+                    text=f"Press and Speak in 5 seconds\nRepeat for {Constants.TOTAL_TRAIN_FILE} times\n{Constants.TOTAL_TRAIN_FILE - self.count} times left")
             else:
                 self.count_down.configure(text=f"{Constants.TOTAL_TRAIN_FILE} records already. Please click next now.")
 
@@ -92,6 +95,7 @@ class TrainingPage(Frame):
     def check_submit(self, username, password):
         allowed = ['!', '@', '#', '$', '%', '^', '&', '*']
         if self.count != Constants.TOTAL_TRAIN_FILE:
+            self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
             return False
         if username == "" or password == "" or not self.model.has_record_enroll:
             self.message.configure(text="Please record and fill in all the information")
@@ -103,6 +107,7 @@ class TrainingPage(Frame):
             self.message.configure(text="Password can only include alphanumeric, !, @, #, $, %, ^, &, *")
             return False
         return True
+
 
     def submit(self):
         try:
@@ -134,7 +139,6 @@ class TrainingPage(Frame):
                 self.controller.show_frame(EnrollPage)
 
             else:
-                self.message.configure(text=f"Please record {Constants.TOTAL_TRAIN_FILE} times to register")
                 return
 
         except IOError as err:

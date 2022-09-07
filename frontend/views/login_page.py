@@ -1,9 +1,12 @@
 import os
 
+import customtkinter
+
 from frontend.resources import Constants
 from frontend.control import ControlModel
 from home_page import HomePage
 from tkinter import *
+from traning_page import TrainingPage
 
 
 class LoginPage(Frame):
@@ -25,10 +28,13 @@ class LoginPage(Frame):
         self.login_btn = None
         self.login_message = None
         self.back_btn = None
+        self.training_btn = None
         # self.register_btn = None
 
         # create and place tkinter elements
         self.build_page()
+
+
 
     def build_page(self):
 
@@ -56,6 +62,7 @@ class LoginPage(Frame):
 
         # Button
         count_down = ControlModel.create_text(self, "", 12)
+        self.training_btn = customtkinter.CTkButton(master=self, text="GO TO Enroll", command=self.go_training)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
@@ -92,7 +99,6 @@ class LoginPage(Frame):
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
-
         ControlModel.create_footer(self, self.controller.default_font_size, "header",
                                    self.model.current_user["username"])
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
@@ -100,6 +106,7 @@ class LoginPage(Frame):
         self.normal_login_label.place(relx=0.5, rely=0.78, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.85, anchor=CENTER)
         self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
+        self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
 
@@ -169,10 +176,10 @@ class LoginPage(Frame):
         self.normal_login_label.destroy()
         self.back_btn.destroy()
         self.build_page()
-
-    # def go_register(self):
-    #     self.controller.show_frame(EnrollPage)
-
+    def go_enroll(self):
+        self.controller.show_frame(EnrollPage)
+    def go_training(self):
+        self.controller.show_frame(TrainingPage)
 
 def get_apps_exe_path():
     app_paths = {}
