@@ -4,7 +4,6 @@
     <list default="true" id="bb7180a5-0f72-40f7-ae1e-c91922c8d4f7" name="Changes" comment="Merge remote-tracking branch 'origin/new_khanh' into new_khanh">
       <change beforePath="$PROJECT_DIR$/.idea/VATOSA_group.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VATOSA_group.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_9_2022_4_27_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_9_2022_4_27_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/resources/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/resources/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/enroll_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/enroll_page.py" afterDir="false" />
@@ -13,30 +12,26 @@
       <change beforePath="$PROJECT_DIR$/frontend/views/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/login_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/main_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/traning_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/traning_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/103F3021.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/103F3021.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/207F2088.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/207F2088.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/213F5100.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/213F5100.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/217F3038.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/217F3038.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/225M4062.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/225M4062.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/229M2031.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/229M2031.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/230M4087.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/230M4087.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/233F4013.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/233F4013.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/236M3043.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/236M3043.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/240M3063.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/240M3063.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/hello.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/hello.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/huy.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/huy.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/nhung.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/nhung.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/pls.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/pls.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/s3864077.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/s3864077.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tareal.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tareal.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tatestauth.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/tatestauth.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/testphone.pth" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/enroll_embeddings/testphone.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/temp/temp/enroll.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/temp/temp/enroll.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/temp/temp/test.wav" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/extractAudio/wavs/voxceleb1/test/wav/temp/temp/test.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice_authentication/feat_logfbank_nfilt40/train/t " beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/voice_authentication/identification.py" beforeDir="false" afterPath="$PROJECT_DIR$/voice_authentication/identification.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -90,12 +85,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Admin\anaconda3\envs\VATOSA_group\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/frontend/views" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voice_authentication/identification.py" />
+      <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -221,7 +216,7 @@
     <SUITE FILE_PATH="coverage/VATOSA_group$train.coverage" NAME="train Coverage Results" MODIFIED="1662093134257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA_group$traning_page__1_.coverage" NAME="traning_page (1) Coverage Results" MODIFIED="1660412089690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
     <SUITE FILE_PATH="coverage/VATOSA_group$SR_Dataset.coverage" NAME="SR_Dataset Coverage Results" MODIFIED="1662103192280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
-    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662558313256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
+    <SUITE FILE_PATH="coverage/VATOSA$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1662601929757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/views" />
     <SUITE FILE_PATH="coverage/VATOSA$train.coverage" NAME="train Coverage Results" MODIFIED="1662466601628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$identification__1_.coverage" NAME="identification (1) Coverage Results" MODIFIED="1660647118243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/voice_authentication" />
     <SUITE FILE_PATH="coverage/VATOSA$ControlModel.coverage" NAME="ControlModel Coverage Results" MODIFIED="1662461275968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frontend/control" />

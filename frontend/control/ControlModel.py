@@ -6,21 +6,17 @@
 
 import os
 import time
-import pickle
 import shutil
 from voice_authentication.extract import feat_extraction
 import voice_authentication.train
 import voice_authentication.enroll
 
-# import voice_authentication.identification as identify
 import numpy as np
 
 from frontend.resources import Constants
 from voice_authentication.extractAudio.feat_extract import constants as c
 import voice_authentication.enroll
 import voice_authentication.identification
-import scipy.io as sio
-import scipy.io.wavfile
 from python_speech_features import *
 
 import json
