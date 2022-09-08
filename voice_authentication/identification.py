@@ -104,7 +104,7 @@ def l2_norm(input, alpha):
     return output
 
 
-def perform_identification(use_cuda, model, embeddings, test_filename, test_frames, spk_list):
+def perform_identification(use_cuda, model, embeddings, test_filename, test_frames, spk_list, username_input=""):
     test_embedding = get_embeddings(
         use_cuda, test_filename, model, test_frames)
     max_score = -10 ** 8
@@ -123,8 +123,8 @@ def perform_identification(use_cuda, model, embeddings, test_filename, test_fram
         true_spk = test_filename.split('/')[-2]
     print("\n=== Speaker identification ===")
     print("True speaker : %s\nPredicted speaker : %s\nResult : %s\n" %
-          (true_spk, best_spk, true_spk == best_spk))
-    return true_spk == best_spk
+          (username_input, best_spk, username_input == best_spk))
+    return username_input == best_spk, best_spk
 
 
 def main():
@@ -171,7 +171,7 @@ def main():
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    isUser = perform_identification(
+    isUser , predict_spk = perform_identification(
         use_cuda, model, embeddings, test_path, test_frames, spk_list)
     return isUser
 
@@ -188,8 +188,8 @@ def identify_with_name(loginName):
     path = os.getcwd()
     print(c_path)
     log_dir = c_path + 'model_saved'  # Where the checkpoints are saved
-    embedding_dir = c_path +'enroll_embeddings'  # Where embeddings are saved
-    test_dir = c_path +'feat_logfbank_nfilt40/test/'  # Where test features are saved
+    embedding_dir = c_path + 'enroll_embeddings'  # Where embeddings are saved
+    test_dir = c_path + 'feat_logfbank_nfilt40/test/'  # Where test features are saved
 
     # Settings
     if torch.cuda.is_available():
@@ -220,16 +220,17 @@ def identify_with_name(loginName):
     '229M2031', '230M4087', '233F4013', '236M3043', '240M3063'
     """
 
-    spk_list = [ 'khanhchimte',  'tuananh1', 'matsuri01anya','daredevilhuy']
+    spk_list = ['khanhchimte', 'tuananh1', 'matsuri01anya', 'daredevilhuy']
 
     # Set the test speaker
-    test_speaker = loginName
+    test_speaker = "temp"
 
     test_path = os.path.join(test_dir, test_speaker, 'test.p')
 
     # Perform the test
-    return perform_identification(
-        use_cuda, model, embeddings, test_path, test_frames, spk_list)
+    isUser , predict_spk = perform_identification(
+        use_cuda, model, embeddings, test_path, test_frames, spk_list, loginName)
+    return isUser, predict_spk
 
 
 if __name__ == '__main__':

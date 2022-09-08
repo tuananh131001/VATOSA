@@ -31,6 +31,7 @@ class LoginPage(Frame):
         self.login_message = None
         self.back_btn = None
         self.training_btn = None
+        self.model.best_spk = None
         # self.register_btn = None
 
         # create and place tkinter elements
@@ -65,7 +66,9 @@ class LoginPage(Frame):
 
         # Button
         count_down = ControlModel.create_text(self, "", 12)
-        self.training_btn = customtkinter.CTkButton(master=self, text="Don't have an account? Register here!", command=self.go_training, fg_color="#2B2C33", text_color="yellow", hover= False)
+        self.training_btn = customtkinter.CTkButton(master=self, text="Don't have an account? Register here!",
+                                                    command=self.go_training, fg_color="#2B2C33", text_color="yellow",
+                                                    hover=False)
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
@@ -117,19 +120,26 @@ class LoginPage(Frame):
             self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
             self.click = True
             # validate voice
-            self.model.current_identify_result = self.model.identify_voice("login", count_down, event, activating_img, normal_img, deny_img)
+            self.model.current_identify_result, self.model.best_spk = self.model.identify_voice("login", count_down,
+                                                                                                event, activating_img,
+                                                                                                normal_img, deny_img)
 
             # display actions based on the identify result
             if self.model.current_identify_result:
                 print("Valid Voice", self.model.current_login_count)
+
+                self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
+                self.model.write_file(self.model.current_user)
+                ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                           self.model.current_user["username"])
                 self.navigate_next_page()
             elif not self.model.current_identify_result \
                     and self.model.current_login_count == 3:
                 self.change_to_alternative()
-                print("Invalid voice", self.model.current_login_count)
+                print("Invalid voice ", self.model.current_login_count)
             else:
-                print("Invalid voice", self.model.current_login_count)
-                self.normal_login_label.configure(text="Invalid voice. Please try again")
+                print("Invalid voice , we guess your are ", self.model.best_spk)
+                self.normal_login_label.configure(text=f'You are not {self.login_name_entry.get()}. We guess you are {self.model.best_spk}')
             # else:
             #     self.normal_login_label.configure(text="Invalid name. Please try again")
             self.click = False
