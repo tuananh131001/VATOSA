@@ -104,9 +104,9 @@ class VatosaApp(Tk):
 
         # check if open sign up page first or login page first
         if self.model.current_user != {"username": "", "password": ""}:
-            self.show_frame(TrainingPage)
-        else:
             self.show_frame(EnrollPage)
+        else:
+            self.show_frame(TrainingPage)
 
     def show_frame(self, current_frame):
         frame = self.frames[current_frame]
