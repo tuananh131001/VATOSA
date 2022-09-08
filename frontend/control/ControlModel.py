@@ -133,7 +133,7 @@ def create_footer(root, default_font_size, title_type="footer", username=""):
     # footer_font_size = 16
     footer_font_size = int(default_font_size / 1.55)
     if title_type != "footer":
-        footer = customtkinter.CTkLabel(master=root, text=f'Hello {username}',
+        footer = customtkinter.CTkLabel(master=root, textvariable=username,
                                         text_color=Constants.footer_text_color,
                                         bg_color=Constants.main_color,
                                         text_font=("Heiti SC", footer_font_size),
@@ -304,6 +304,9 @@ class ControlModel:
 
         self.current_identify_result = False
         self.current_login_count = 0
+
+        self.current_header_text = StringVar()
+        self.current_header_text.set("")
 
         self.read_file()
 

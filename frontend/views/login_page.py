@@ -152,6 +152,7 @@ class LoginPage(Frame):
 
                 self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
                 self.model.write_file(self.model.current_user)
+                self.model.current_header_text.set(f'Hello {self.login_name_entry.get()}')
                 ControlModel.create_footer(self, self.controller.default_font_size, "header",
                                            self.model.current_user["username"])
                 self.navigate_next_page()

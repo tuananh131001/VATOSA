@@ -65,6 +65,6 @@ class ExplorePage(Frame):
 
         # placing
         ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
+                                   self.model.current_header_text)
         title_label.place(relx=0.5, rely=0.1, anchor=CENTER)
         ControlModel.create_footer(self, self.controller.default_font_size)
