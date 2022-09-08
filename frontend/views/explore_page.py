@@ -55,7 +55,7 @@ class ExplorePage(Frame):
                 app_image = ControlModel.create_label_image(self, f'app_list/{app}', image_size)
 
 
-            app_title = ControlModel.create_text(self, app, self.controller.explore_app_font_size)
+            app_title = ControlModel.create_text(self, app.capitalize(), self.controller.explore_app_font_size)
 
             # place elements
             app_image.place(relx=x_position, rely=y_position, anchor=CENTER)
