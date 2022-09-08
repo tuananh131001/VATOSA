@@ -86,7 +86,7 @@ class EnrollPage(Frame):
             # move to next page
             print(self.model.current_user)
             voice_authentication.enroll.main()
-            # self.controller.navigate_page("login")
+            self.controller.navigate_page("login")
         else:
             self.message.configure(text="Please record before click submit")
 
