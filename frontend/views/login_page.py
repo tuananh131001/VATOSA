@@ -178,7 +178,6 @@ class LoginPage(Frame):
         self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.72, anchor=CENTER)
         self.login_message.place(relx=0.5, rely=0.79, anchor=CENTER)
-        self.training_btn.place(relx=0.5, rely=0.84, anchor=CENTER)
         self.back_btn.place(relx=0, rely=0.04, anchor=NW)
 
     def login(self):
@@ -189,17 +188,14 @@ class LoginPage(Frame):
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
 
         if username_input != "" and username_input not in sub_folders:
-            print('not in')
             self.login_message.configure(text="You don't have an account. Please register")
             return
 
         if username_input == "" or password_input == "":
-            print("empty")
             self.login_message.configure(text="Please enter username and password")
             return
 
         if username_input in sub_folders:
-            print("yes")
             if password_input != self.model.current_user.get("password"):
                 self.login_message.configure(text="Invalid login credentials. Please try again")
                 return
