@@ -23,7 +23,7 @@ class TrainingPage(Frame):
 
     def build_page(self):
         # label
-        welcome_label = ControlModel.create_label_image(self, "vatosa_enroll_title",
+        welcome_label = ControlModel.create_label_image(self, "enroll_title",
                                                         (self.controller.signup_welcome_label_width,
                                                          self.controller.signup_welcome_label_height))
 
@@ -126,8 +126,6 @@ class TrainingPage(Frame):
                 self.model.write_record(username, "train")
 
                 # call(["python", Constants.train_py_path])
-
-                # call(["python", Constants.enroll_py_path])
                 print("Train done")
 
                 # get_apps_exe_path()

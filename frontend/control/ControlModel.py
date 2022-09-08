@@ -6,21 +6,17 @@
 
 import os
 import time
-import pickle
 import shutil
 from voice_authentication.extract import feat_extraction
 import voice_authentication.train
 import voice_authentication.enroll
 
-# import voice_authentication.identification as identify
 import numpy as np
 
 from frontend.resources import Constants
 from voice_authentication.extractAudio.feat_extract import constants as c
 import voice_authentication.enroll
 import voice_authentication.identification
-import scipy.io as sio
-import scipy.io.wavfile
 from python_speech_features import *
 
 import json
@@ -137,7 +133,7 @@ def create_footer(root, default_font_size, title_type="footer", username=""):
     # footer_font_size = 16
     footer_font_size = int(default_font_size / 1.55)
     if title_type != "footer":
-        footer = customtkinter.CTkLabel(master=root, text=f'Hello {username}',
+        footer = customtkinter.CTkLabel(master=root, textvariable=username,
                                         text_color=Constants.footer_text_color,
                                         bg_color=Constants.main_color,
                                         text_font=("Heiti SC", footer_font_size),
@@ -308,6 +304,9 @@ class ControlModel:
 
         self.current_identify_result = False
         self.current_login_count = 0
+
+        self.current_header_text = StringVar()
+        self.current_header_text.set("")
 
         self.read_file()
 

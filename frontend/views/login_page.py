@@ -1,9 +1,8 @@
 import os
 
-import customtkinter
-
 from frontend.resources import Constants
 from frontend.control import ControlModel
+from enroll_page import EnrollPage
 from home_page import HomePage
 from tkinter import *
 from traning_page import TrainingPage
@@ -66,13 +65,18 @@ class LoginPage(Frame):
 
         # Button
         count_down = ControlModel.create_text(self, "", 12)
-        self.training_btn = customtkinter.CTkButton(master=self, text="Don't have an account? Register here!",
-                                                    command=self.go_training, fg_color="#2B2C33", text_color="yellow",
-                                                    hover=False)
+        # self.training_btn = customtkinter.CTkButton(master=self, text="Don't have an account? Register here!",
+        #                                             command=self.go_training, fg_color="#2B2C33", text_color="yellow",
+        #                                             hover=False)
+        self.training_btn = ControlModel.create_click_text(self, "Don't have an account? Register here!",
+                                                                       self.go_training,
+                                                                       self.controller.entry_height,
+                                                                       self.controller.default_font_size - 10,
+                                                                       Constants.main_color, "yellow")
         self.change_alternative_label = ControlModel.create_click_text(self, "Alternative Login Here".upper(),
                                                                        self.change_to_alternative,
                                                                        self.controller.entry_height,
-                                                                       self.controller.default_font_size - 10,
+                                                                       self.controller.default_font_size - 9,
                                                                        Constants.main_color,
                                                                        Constants.alternative_text_color)
 
@@ -84,7 +88,7 @@ class LoginPage(Frame):
                                                        Constants.main_text_color)
 
         # record
-        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 50,
+        self.record_btn = ControlModel.create_record_button(self, self.controller.login_record_button_size - 80,
                                                             "login",
                                                             lambda event,
                                                                    activating_img,
@@ -100,25 +104,43 @@ class LoginPage(Frame):
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
+        # welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
+        # self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
+        # self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
+        # self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
+        # self.login_name.place(relx=0.5, rely=0.72, anchor=CENTER)
+        # self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
+        # self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
+
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
-        self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-        self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
+        self.record_btn.place(relx=0.5, rely=0.46, anchor=CENTER)
+        # self.login_message.place(relx=0.5, rely=0.78, anchor=CENTER)
+        self.login_name.place(relx=0.5, rely=0.67, anchor=CENTER)
+        self.normal_login_label.place(relx=0.5, rely=0.765, anchor=CENTER)
         self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
-        self.login_name.place(relx=0.5, rely=0.72, anchor=CENTER)
-        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
-        self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
+        self.training_btn.place(relx=0.5, rely=0.89, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
+        self.model.current_identify_result = False
         folder = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication' + '/feat_logfbank_nfilt40/test'
-        print(folder)
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
-        print(sub_folders)
+
         print(self.login_name_entry.get())
+
         if not self.click:
-            # if self.login_name_entry.get() not in sub_folders:
+            self.click = True
+            if self.login_name_entry.get() == "":
+                self.normal_login_label.configure(text=f"Please enter username")
+                self.click = False
+                return
+            if self.login_name_entry.get() not in sub_folders:
+                self.normal_login_label.configure(text=f"You don't have an account. Please register")
+                self.click = False
+                return
 
             self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
-            self.click = True
+            print(self.model.current_user)
+            # self.click = True
             # validate voice
             self.model.current_identify_result, self.model.best_spk = self.model.identify_voice("login", count_down,
                                                                                                 event, activating_img,
@@ -130,6 +152,7 @@ class LoginPage(Frame):
 
                 self.model.current_user = {"username": self.login_name_entry.get(), "password": "12345"}
                 self.model.write_file(self.model.current_user)
+                self.model.current_header_text.set(f'Hello {self.login_name_entry.get()}')
                 ControlModel.create_footer(self, self.controller.default_font_size, "header",
                                            self.model.current_user["username"])
                 self.navigate_next_page()
@@ -148,36 +171,59 @@ class LoginPage(Frame):
         # hide voice login button, display login with alternative method
         self.record_btn.destroy()
         self.change_alternative_label.destroy()
+        self.login_name.destroy()
 
         # pack
-        self.normal_login_label.configure(text="voice control and authentication to open software applications".upper())
-        self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
-        self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
-        self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)
+        self.normal_login_label.configure(text="")
+        self.username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
+        self.login_btn.place(relx=0.5, rely=0.72, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.79, anchor=CENTER)
         self.back_btn.place(relx=0, rely=0.04, anchor=NW)
 
     def login(self):
         username_input = self.username_entry.get()
         password_input = self.password_entry.get()
 
-        # invalid
-        if username_input != self.model.current_user.get("username") \
-                or password_input != self.model.current_user.get("password"):
-            print("Invalid login")
-            self.login_message.config(text="Invalid login credentials. Please try again")
+        folder = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication' + '/feat_logfbank_nfilt40/test'
+        sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
+
+        if username_input != "" and username_input not in sub_folders:
+            self.login_message.configure(text="You don't have an account. Please register")
             return
 
-        self.login_message.config(text="Login successfully. Please wait.")
+        if username_input == "" or password_input == "":
+            self.login_message.configure(text="Please enter username and password")
+            return
+
+        if username_input in sub_folders:
+            if password_input != self.model.current_user.get("password"):
+                self.login_message.configure(text="Invalid login credentials. Please try again")
+                return
+
+            # delete old input
+            self.login_message.config(text="Login successfully. Please wait.")
+            self.login_message.config(text="")
+            self.username_entry.delete(0, END)
+            self.password_entry.delete(0, END)
+            self.model.current_identify_result = True
+            self.navigate_next_page()
+
+        # # invalid
+        # if username_input != self.model.current_user.get("username") \
+        #         or password_input != self.model.current_user.get("password"):
+        #     self.login_message.config(text="Invalid login credentials. Please try again")
+        #     return
 
         # # get apps exe paths
         # get_apps_exe_path()
 
         # delete old input
-        self.login_message.config(text="")
-        self.username_entry.delete(0, END)
-        self.password_entry.delete(0, END)
-        self.model.current_identify_result = True
-        self.navigate_next_page()
+        # self.login_message.config(text="")
+        # self.username_entry.delete(0, END)
+        # self.password_entry.delete(0, END)
+        # self.model.current_identify_result = True
+        # self.navigate_next_page()
 
     def navigate_next_page(self):
         self.controller.show_frame(HomePage)

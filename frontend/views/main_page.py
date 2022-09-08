@@ -43,9 +43,9 @@ class VatosaApp(Tk):
 
         # label size
         # sign up
-        self.signup_welcome_label_width = int(self.frame_width / 1.75)
-        self.signup_welcome_label_height = int(self.frame_height / 9.25)
-        # loginR
+        self.signup_welcome_label_width = int(self.frame_width / 1.85)
+        self.signup_welcome_label_height = int(self.frame_height / 10)  # 7.15
+        # login
         self.login_welcome_label_width = int(self.frame_width / 2.27)
         self.login_welcome_label_height = int(self.frame_height / 9.28)
         # font size
@@ -54,9 +54,9 @@ class VatosaApp(Tk):
         # explore
         self.explore_title_font_size = int(self.frame_width / 33)  # 32
         self.explore_list_font_size = int(self.frame_width / 40)  # 26
-        self.explore_image_size = int(self.frame_width / 17)  # 75
-        self.explore_app_font_size = int(self.frame_width / 57)  # 19
-        self.explore_app_open_font_size = int(self.frame_width / 62)  # 17
+        self.explore_image_size = int(self.frame_width / 14)  # 75
+        self.explore_app_font_size = int(self.frame_width / 54)  # 19
+        self.explore_app_open_font_size = int(self.frame_width / 60)  # 17
 
         # nav bar
         self.nav_width = int(self.frame_width / 10.5)  # 100
@@ -106,7 +106,7 @@ class VatosaApp(Tk):
         if self.model.current_user != {"username": "", "password": ""}:
             self.show_frame(LoginPage)
         else:
-            self.show_frame(EnrollPage)
+            self.show_frame(TrainingPage)
 
     def show_frame(self, current_frame):
         frame = self.frames[current_frame]

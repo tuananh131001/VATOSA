@@ -37,7 +37,7 @@ class HomePage(Frame):
 
         # footer or header
         ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
+                                   self.model.current_header_text)
         ControlModel.create_footer(self, self.controller.default_font_size)
 
         # Button

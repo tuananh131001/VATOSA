@@ -38,7 +38,7 @@ class EnrollPage(Frame):
 
         self.message = ControlModel.create_text(self, '', Constants.count_down_size, 'red')
         self.count_down_label = ControlModel.create_text(
-            self, f'Press and Speak in {Constants.LOGIN_DURATION} seconds to enroll'.upper(),
+            self, f'Press and Speak in {Constants.SIGNUP_DURATION} seconds to enroll'.upper(),
             self.controller.default_font_size - 8
         )
 
@@ -86,7 +86,7 @@ class EnrollPage(Frame):
             # move to next page
             print(self.model.current_user)
             voice_authentication.enroll.main()
-            # self.controller.navigate_page("login")
+            self.controller.navigate_page("login")
         else:
             self.message.configure(text="Please record before click submit")
 
