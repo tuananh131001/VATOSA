@@ -4,6 +4,7 @@ import customtkinter
 
 from frontend.resources import Constants
 from frontend.control import ControlModel
+from frontend.views.enroll_page import EnrollPage
 from home_page import HomePage
 from tkinter import *
 from traning_page import TrainingPage
@@ -100,13 +101,20 @@ class LoginPage(Frame):
                                                     self.controller.entry_height,
                                                     self.controller.default_font_size)
 
+        # welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
+        # self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
+        # self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
+        # self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
+        # self.login_name.place(relx=0.5, rely=0.72, anchor=CENTER)
+        # self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
+        # self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
+
         welcome_label.place(relx=0.5, rely=0.2, anchor=CENTER)
         self.record_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
-        self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
-        self.change_alternative_label.place(relx=0.5, rely=0.83, anchor=CENTER)
-        self.login_name.place(relx=0.5, rely=0.72, anchor=CENTER)
-        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
-        self.training_btn.place(relx=0.5, rely=0.90, anchor=CENTER)
+        self.normal_login_label.place(relx=0.5, rely=0.71, anchor=CENTER)
+        self.login_name.place(relx=0.5, rely=0.8, anchor=CENTER)
+        self.change_alternative_label.place(relx=0.5, rely=0.87, anchor=CENTER)
+        self.training_btn.place(relx=0.5, rely=0.92, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
         folder = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication' + '/feat_logfbank_nfilt40/test'
@@ -148,14 +156,17 @@ class LoginPage(Frame):
         # hide voice login button, display login with alternative method
         self.record_btn.destroy()
         self.change_alternative_label.destroy()
-        self.login_name_entry.destroy()
+        self.login_name.destroy()
 
         # pack
         self.normal_login_label.configure(text="voice control and authentication to open software applications".upper())
+        self.normal_login_label.place(relx=0.5, rely=0.76, anchor=CENTER)
+        self.training_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.username_box.place(relx=0.5, rely=0.45, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.53, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.63, anchor=CENTER)
         self.back_btn.place(relx=0, rely=0.04, anchor=NW)
+        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
 
     def login(self):
         username_input = self.username_entry.get()
