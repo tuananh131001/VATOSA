@@ -6,17 +6,21 @@
 
 import os
 import time
+import pickle
 import shutil
 from voice_authentication.extract import feat_extraction
 import voice_authentication.train
 import voice_authentication.enroll
 
+# import voice_authentication.identification as identify
 import numpy as np
 
 from frontend.resources import Constants
 from voice_authentication.extractAudio.feat_extract import constants as c
 import voice_authentication.enroll
 import voice_authentication.identification
+import scipy.io as sio
+import scipy.io.wavfile
 from python_speech_features import *
 
 import json
@@ -133,7 +137,7 @@ def create_footer(root, default_font_size, title_type="footer", username=""):
     # footer_font_size = 16
     footer_font_size = int(default_font_size / 1.55)
     if title_type != "footer":
-        footer = customtkinter.CTkLabel(master=root, textvariable=username,
+        footer = customtkinter.CTkLabel(master=root, text=f'Hello {username}',
                                         text_color=Constants.footer_text_color,
                                         bg_color=Constants.main_color,
                                         text_font=("Heiti SC", footer_font_size),
@@ -305,9 +309,6 @@ class ControlModel:
         self.current_identify_result = False
         self.current_login_count = 0
 
-        self.current_header_text = StringVar()
-        self.current_header_text.set("")
-
         self.read_file()
 
     # recording
@@ -360,8 +361,8 @@ class ControlModel:
             feat_extraction(dataroot_dir=c.TEST_AUDIO_VOX1, mode='test')
             test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
             os.makedirs(test_dir, exist_ok=True)
+            print("copy file .p of your voice to " + test_dir)
             shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/test.p', test_dir)  # test file
-            shutil.copy2(f'{Constants.test_p_filepath + username}/{username}/enroll.p', test_dir)  # enroll file
 
             # extract_MFB(wav_file, test_dir, f'{test_dir}/test.p')
 
@@ -375,8 +376,6 @@ class ControlModel:
         elif record_type == "train":
             try:
                 train_wav_dir = Constants.train_wav_filepath + f"{username}/{username}"
-                train_p_dir = Constants.train_filepath + f"{username}/{username}"
-
                 os.makedirs(train_wav_dir, exist_ok=True)
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     write(f'{train_wav_dir}/train{i + 1}.wav', self.freq, self.recording_train[i])
@@ -390,10 +389,9 @@ class ControlModel:
                 # enroll file
                 for i in range(Constants.TOTAL_TRAIN_FILE):
                     print(i)
-                    wav_file = f'{train_p_dir}/train{i + 1}.p'
-                    print(wav_file)
+                    wav_file = f'{train_wav_dir}/train{i + 1}.wav'
                     shutil.copy2(wav_file,
-                                 another_train_dir + f"/{username}")  # copy all .p to train folder
+                                 f'{Constants.FEAT_LOGBANK_DIR}/train/{username} ')  # copy all .p to train folder
                 # voice_authentication.enroll.main()
                 # voice_authentication.train.main()
 
@@ -423,6 +421,7 @@ class ControlModel:
             shutil.copy2(c.TEST_FEAT_VOX1 + f'/test_logfbank_nfilt40/{username}/{username}/enroll.p',
                          test_dir)
 
+
             # extract_MFB(wav_file, test_dir, f'{test_dir}/enroll.p')
 
             # test_dir = Constants.FEAT_LOGBANK_DIR + f"test/{username}"
@@ -449,7 +448,6 @@ class ControlModel:
         self.write_record("temp", record_type)
         # voice_authentication.enroll.main()
         return voice_authentication.identification.identify_with_name((self.current_user.get("username")))
-
         # final result
         # self.current_identify_result = identify.main()
 
