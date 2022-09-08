@@ -21,6 +21,8 @@ class HomePage(Frame):
         self.proc = None
 
         ControlModel.create_nav(self, self.controller, "nav_home")
+        ControlModel.create_footer(self, self.controller.default_font_size, "header",
+                                   self.model.current_user["username"])
 
         self.build_page()
 
@@ -36,8 +38,6 @@ class HomePage(Frame):
         self.result = ControlModel.create_text(self, '', Constants.count_down_size, 'yellow')
 
         # footer or header
-        ControlModel.create_footer(self, self.controller.default_font_size, "header",
-                                   self.model.current_user["username"])
         ControlModel.create_footer(self, self.controller.default_font_size)
 
         # Button
