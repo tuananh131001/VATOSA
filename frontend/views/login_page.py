@@ -121,6 +121,7 @@ class LoginPage(Frame):
         self.training_btn.place(relx=0.5, rely=0.89, anchor=CENTER)
 
     def click_record_button(self, count_down, event, activating_img, normal_img, deny_img):
+        self.model.current_identify_result = False
         folder = os.path.dirname(os.path.dirname(os.getcwd())) + '/voice_authentication' + '/feat_logfbank_nfilt40/test'
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
 
@@ -176,9 +177,9 @@ class LoginPage(Frame):
         self.username_box.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.password_box.place(relx=0.5, rely=0.6, anchor=CENTER)
         self.login_btn.place(relx=0.5, rely=0.72, anchor=CENTER)
-        self.login_message.place(relx=0.5, rely=0.81, anchor=CENTER)
+        self.login_message.place(relx=0.5, rely=0.79, anchor=CENTER)
+        self.training_btn.place(relx=0.5, rely=0.84, anchor=CENTER)
         self.back_btn.place(relx=0, rely=0.04, anchor=NW)
-        self.login_message.place(relx=0.5, rely=0.71, anchor=CENTER)
 
     def login(self):
         username_input = self.username_entry.get()
@@ -188,14 +189,21 @@ class LoginPage(Frame):
         sub_folders = [name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))]
 
         if username_input != "" and username_input not in sub_folders:
-            self.login_message.config(text="You don't have an account. Please register")
+            print('not in')
+            self.login_message.configure(text="You don't have an account. Please register")
             return
 
         if username_input == "" or password_input == "":
-            self.login_message.config(text="Please enter username and password")
+            print("empty")
+            self.login_message.configure(text="Please enter username and password")
             return
 
         if username_input in sub_folders:
+            print("yes")
+            if password_input != self.model.current_user.get("password"):
+                self.login_message.configure(text="Invalid login credentials. Please try again")
+                return
+
             # delete old input
             self.login_message.config(text="Login successfully. Please wait.")
             self.login_message.config(text="")
